@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@everapi/ipbase-js':
+        specifier: ^1.0.8
+        version: 1.0.8
       '@radix-ui/react-dialog':
         specifier: ^1.1.1
         version: 1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -160,6 +163,9 @@ packages:
   '@eslint/js@8.57.0':
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  '@everapi/ipbase-js@1.0.8':
+    resolution: {integrity: sha512-8ejiEQ1SCa5a2HKxDoim9kUa8zEiwCIbk0ebFDnNB7FKJszG/LogP3GDTg8sjC6WZqdleFTEhsOiwSRvZqlgVQ==}
 
   '@floating-ui/core@1.6.6':
     resolution: {integrity: sha512-Vkvsw6EcpMHjvZZdMkSY+djMGFbt7CRssW99Ne8tar2WLnZ/l3dbxeTShbLQj+/s35h+Qb4cmnob+EzwtjrXGQ==}
@@ -2668,6 +2674,8 @@ snapshots:
       - supports-color
 
   '@eslint/js@8.57.0': {}
+
+  '@everapi/ipbase-js@1.0.8': {}
 
   '@floating-ui/core@1.6.6':
     dependencies:

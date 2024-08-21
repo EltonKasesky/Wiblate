@@ -5,6 +5,7 @@ import axios from 'axios';
 import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
 import Members from '@/components/Members';
+import LocationDisplay from '@/components/LocationDisplay';
 
 interface User {
   id: string;
@@ -18,6 +19,7 @@ export default function UsersPage(){
     <>
     <Header />
     <Members />
+    <LocationDisplay />
     <Footer />
     </>
   )
