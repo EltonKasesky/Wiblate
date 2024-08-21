@@ -10,6 +10,7 @@ import {
 import { Label } from '@/components/ui/label';
 import Link from 'next/link';
 import AuthActions from '@/app/actions/auth-actions';
+import GoogleLoginButton from './GoogleLoginButton';
 
 export default function SignUpForm() {
   return (
@@ -47,9 +48,10 @@ export default function SignUpForm() {
               className="border rounded w-full p-3 text-black" // Mesma classe do LoginForm
             />
           </div>
+          <GoogleLoginButton />
           <button
             type='submit'
-            className='mt-10 bg-rose-950 text-slate-50 p-3 rounded'
+            className='mt-3 bg-rose-950 text-slate-50 p-3 rounded'
           >
             Criar Conta
           </button>

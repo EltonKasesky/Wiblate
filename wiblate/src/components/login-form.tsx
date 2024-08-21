@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import GoogleLoginButton from './GoogleLoginButton';
 
 const LoginForm = () => {
   const router = useRouter();
@@ -60,9 +61,10 @@ const LoginForm = () => {
             />
           </div>
           {error && <span className="text-red-400 text-sm block mt-2">{error}</span>}
+          <GoogleLoginButton />
           <button
             type='submit'
-            className='mt-10 bg-rose-950 text-slate-50 p-3 rounded'
+            className='mt-3 bg-rose-950 text-slate-50 p-3 rounded'
           >
             Entrar
           </button>
