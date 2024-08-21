@@ -87,7 +87,7 @@ export default function Insert() {
                         <option value="" disabled>
                           Selecione uma tabela
                         </option>
-                        <option value="primaryslide">Revisão SAEP</option>
+                        <option value="primaryslide">Destaque</option>
                         <option value="logic">Lógica de Programação</option>
                         <option value="databank">Banco de Dados</option>
                         <option value="networkstructure">
