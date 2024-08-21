@@ -6,11 +6,11 @@ export default function NavFooter() {
         <div className="row">
             <div className="col-3 col-md-6 col-sm-6">
                 <div className="mt-5">
-                    <p><b>SaepFlix</b></p>
+                    <p><b>Wiblate</b></p>
                     <ul className="footer-menu">
                         <li>
-                            <Link href="/about" className="nav-footer">
-                                Sobre
+                            <Link href="/" className="nav-footer">
+                                Gêneros
                             </Link>
                         </li>
                         <li>
@@ -19,13 +19,13 @@ export default function NavFooter() {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/pricing" className="nav-footer">
-                                Pricing plans
+                            <Link href="/about" className="nav-footer">
+                                Sobre
                             </Link>
                         </li>
                         <li>
-                            <Link href="/contacts" className="nav-footer">
-                                Contacts
+                            <Link href="/" className="nav-footer">
+                                Contato
                             </Link>
                         </li>
                     </ul>

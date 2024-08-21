@@ -31,8 +31,8 @@ export default function Header() {
               onMouseLeave={() => setHover(false)}
             >
               <i className="bx bx-movie-play bx-tada text-main-color"></i>
-              <span className={hover ? 'text-main-color' : 'text-text-color'}>SAEP</span>
-              <span className={hover ? 'text-text-color' : 'text-main-color'}>FLIX</span>
+              <span className={hover ? 'text-main-color' : 'text-text-color'}>WIBL</span>
+              <span className={hover ? 'text-text-color' : 'text-main-color'}>ATE</span>
             </div>
           </Link>
           <NavHeader userCargo={userCargo} isLoggedIn={status === 'authenticated'} />

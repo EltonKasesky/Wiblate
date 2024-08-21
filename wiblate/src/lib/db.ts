@@ -1,10 +1,7 @@
 import { Pool } from 'pg';
 
 const pool = new Pool({
-  connectionString: process.env.POSTGRES_URL, // Use a variável de ambiente correta
-  ssl: {
-    rejectUnauthorized: false, // Dependendo do banco de dados, pode ser necessário
-  },
+  connectionString: process.env.POSTGRES_URL,
 });
 
 export const query = async (text: string, params: (string | number)[]) => {

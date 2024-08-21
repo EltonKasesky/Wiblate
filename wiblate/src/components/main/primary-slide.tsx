@@ -69,7 +69,7 @@ export default function PrimarySlide() {
           <div className='owl-carousel carousel-nav-center' id='hero-carousel'>
             {/* SLIDE ITEM */}
             <div className='hero-slide-item'>
-              <Image src='/slides/programming-code-backend.jpg' alt='Black Panther' width={1920} height={1080} priority/>
+              <Image src='/slides/programming-code-backend.jpg' alt='Black Panther' width={1920} height={1080} priority />
               <div className='overlay'></div>
               <div className='hero-slide-item-content'>
                 <div className='item-content-wraper'>
@@ -81,7 +81,7 @@ export default function PrimarySlide() {
                     <div className='movie-info'><span>Educação</span></div>
                   </div>
                   <div className='item-content-description top-down delay-4'>
-                    A revisão é um processo crucial para consolidar o conhecimento e garantir a compreensão dos tópicos abordados. 
+                    A revisão é um processo crucial para consolidar o conhecimento e garantir a compreensão dos tópicos abordados.
                     Envolve a repetição e a análise crítica do material estudado para aprimorar o desempenho e o entendimento geral.
                   </div>
                   <div className='item-action top-down delay-6'>
@@ -96,7 +96,7 @@ export default function PrimarySlide() {
             {/* END SLIDE ITEM */}
             {/* SLIDE ITEM */}
             <div className='hero-slide-item'>
-              <Image src='/slides/programming-code-frontend.jpg' alt='Supergirl' width={1920} height={1080} priority/>
+              <Image src='/slides/programming-code-frontend.jpg' alt='Supergirl' width={1920} height={1080} priority />
               <div className='overlay'></div>
               <div className='hero-slide-item-content'>
                 <div className='item-content-wraper'>
@@ -108,7 +108,7 @@ export default function PrimarySlide() {
                     <div className='movie-info'><span>Educação</span></div>
                   </div>
                   <div className='item-content-description top-down delay-4'>
-                    A lógica de programação é a base para criar algoritmos e desenvolver soluções de software. 
+                    A lógica de programação é a base para criar algoritmos e desenvolver soluções de software.
                     Envolve a criação de instruções passo a passo para resolver problemas e implementar funcionalidades.
                   </div>
                   <div className='item-action top-down delay-6'>
@@ -123,7 +123,7 @@ export default function PrimarySlide() {
             {/* END SLIDE ITEM */}
             {/* SLIDE ITEM */}
             <div className='hero-slide-item'>
-              <Image src='/slides/network.jpg' alt='Wanda Vision' width={1920} height={1080} priority/>
+              <Image src='/slides/network.jpg' alt='Wanda Vision' width={1920} height={1080} priority />
               <div className='overlay'></div>
               <div className='hero-slide-item-content'>
                 <div className='item-content-wraper'>
@@ -135,7 +135,7 @@ export default function PrimarySlide() {
                     <div className='movie-info'><span>Infraestrutura</span></div>
                   </div>
                   <div className="item-content-description top-down delay-4">
-                    O banco de dados é uma coleção estruturada de dados que pode ser gerenciada e acessada de maneira eficiente. 
+                    O banco de dados é uma coleção estruturada de dados que pode ser gerenciada e acessada de maneira eficiente.
                     Ele armazena informações essenciais para suportar operações de negócios e sistemas de informação.
                   </div>
                   <div className="item-action top-down delay-6">

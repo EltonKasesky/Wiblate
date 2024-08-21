@@ -10,13 +10,13 @@ export default function Footer() {
                     <div className="col-4 col-md-6 col-sm-12">
                         <div className="mt-5">
                             <div className="w-full max-w-150px">
-                                <Link href="#" className="mt-footer-logo flex justify-start items-center text-logo-footer font-black" id="link_footer">
-                                    <i className='bx bx-movie-play bx-tada text-main-color text-3xl'></i><span className="text-text-color">SAEP</span><span className="text-main-color">FLIX</span>
+                                <Link href="/" className="mt-footer-logo flex justify-start items-center text-logo-footer font-black" id="link_footer">
+                                    <i className='bx bx-movie-play bx-tada text-main-color text-3xl'></i><span className="text-text-color">WIBL</span><span className="text-main-color">ATE</span>
                                 </Link>
                             </div>
                             <p>
-                                Estamos entusiasmados em trazer o SAEPflix para você! 
-                                Agradecemos pelo seu apoio e esperamos que você aproveite o conteúdo!
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae blanditiis architecto sunt dignissimos doloremque. 
+                                In ad obcaecati animi explicabo libero voluptas impedit, excepturi ratione cum. Esse iusto at quam minus!
                             </p>
                             <SocialFooter />
                         </div>
