@@ -98,7 +98,7 @@ export default function Insert() {
           <div className="hidden insert-image:block w-full h-insert-image max-w-insert">
             <Image
               className="rounded-l-lg"
-              src='/images/insert-image.png'
+              src='/images/insert/insert-image.png'
               width={500}
               height={762}
               alt='Insert Image'

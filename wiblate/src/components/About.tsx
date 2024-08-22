@@ -38,7 +38,7 @@ export default function About() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
                             <div className="text-center">
                                 <Image
-                                    src="/images/team-member-1.png"
+                                    src="/images/about/team-member-1.png"
                                     alt="Pedro Henrique Cler"
                                     width={144}
                                     height={144}
@@ -82,7 +82,7 @@ export default function About() {
 
                             <div className="text-center">
                                 <Image
-                                    src="/images/team-member-2.png"
+                                    src="/images/about/team-member-2.png"
                                     alt="Elton Kasesky"
                                     width={144}
                                     height={144}
