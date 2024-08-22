@@ -17,27 +17,33 @@ const config: Config = {
         "box-bg": "#221f1f",
         'message-bg-success': '#d4edda',
         'message-bg-error': '#f8d7da',
+        'insert-modal-bg': '#181616'
       },
       maxWidth: {
         "150px": "150px",
         'insert': '500px'
       },
+      minWidth: {
+        'insert-image': '1000px'
+      },
       margin: {
         "footer-logo": "-2.5rem"
       },
       padding: {
-        "copyright": '10px'
+        "copyright": '10px',
+        'insert-form': '54px'
       },
       height: {
         "social-item": "30px",
-        "100": "25rem"
+        "100": "25rem",
+        'insert-image': '762px'
       },
       width: {
         "social-item": "30px",
-        "nav-header": "90%"
+        "nav-header": "90%",
       },
       borderRadius2: {
-        "social-item": "50%"
+        "social-item": "50%",
       },
       textColor: {
         "main-color": "#2974f7",
@@ -116,6 +122,9 @@ const config: Config = {
       transitionDuration: {
         '500': '500ms',
       },
+      screens: {
+        'insert-image': '1000px'
+      }
     },
   },
   plugins: [],

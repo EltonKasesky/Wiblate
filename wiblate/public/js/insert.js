@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const initializeFileDrop = (dropAreaId, inputId) => {
         const dropArea = document.getElementById(dropAreaId);
         const inputElement = document.getElementById(inputId);
-        const dropText = dropArea.querySelector('.drop-text-insert');
+        const dropText = dropArea.querySelector('.drop-text-insert'); // Sem ID
 
         if (!dropArea || !inputElement || !dropText) return;
 
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const file = e.dataTransfer.files[0];
             if (file) {
                 inputElement.files = e.dataTransfer.files;
-                dropText.textContent = file.name;  // Atualiza o texto do span
+                dropText.textContent = file.name; // Atualiza o texto do span
             }
         });
 
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         inputElement.addEventListener('change', e => {
             const file = e.target.files[0];
             if (file) {
-                dropText.textContent = file.name;  // Atualiza o texto do span
+                dropText.textContent = file.name; // Atualiza o texto do span
             }
         });
     };

@@ -52,7 +52,6 @@ export default function Main() {
 
     setCarouselKey((prevKey) => prevKey + 1);
 
-    // Use setTimeout with 0 delay as an alternative to setImmediate
     setTimeout(initializeCarousels, 0);
 
   }, [pathname]);
@@ -68,9 +67,12 @@ export default function Main() {
       <NetworkStructure id="network-structure" />
 
       <Script
-        src="https://code.jquery.com/jquery-3.6.0.min.js"
-        strategy="beforeInteractive"
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossOrigin="anonymous"
+        strategy='beforeInteractive'
       />
+      
       <Script
         src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
         strategy="beforeInteractive"

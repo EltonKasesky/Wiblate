@@ -143,6 +143,10 @@
     @apply block bg-message-bg-error text-message-color-error border-insert border-solid border-message-border-error text-center;
   }
 
+  .modal-input-table {
+    @apply w-full px-4 py-2 text-left text-black bg-white hover:opacity-80 rounded-md transition-all ease-in duration-75;
+  }
+
   .videos-carousel .item {
     display: block;
     width: 100%;
