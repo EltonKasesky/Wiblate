@@ -10,6 +10,7 @@
 }
 
 @layer components {
+
   /* FOOTER  */
   .social-item {
     @apply grid place-items-center rounded-full transition-all duration-100;
@@ -110,8 +111,8 @@
     @apply text-xl uppercase font-bold text-white hover:text-[var(--main-color)] transition-colors duration-300;
   }
 
-   /* INSERT */
-   .input-insert {
+  /* INSERT */
+  .input-insert {
     @apply flex flex-col w-full bg-transparent;
   }
 
@@ -154,154 +155,171 @@
     margin: 0;
     overflow: hidden;
     box-sizing: border-box;
-}
+  }
 
-.videos-carousel .owl-carousel .owl-item {
+  .videos-carousel .owl-carousel .owl-item {
     display: flex;
     justify-content: center;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
+  }
 
-.videos-carousel .owl-carousel .owl-item > div {
+  .videos-carousel .owl-carousel .owl-item>div {
     width: 100%;
-}
+  }
 
-.videos-carousel .owl-carousel .owl-item img {
+  .videos-carousel .owl-carousel .owl-item img {
     display: block;
     width: 100%;
     height: auto;
-    object-fit: contain; /* Ajusta a imagem para caber no contêiner sem cortar */
-    object-position: center; /* Centraliza a imagem no contêiner */
-}
+    object-fit: contain;
+    /* Ajusta a imagem para caber no contêiner sem cortar */
+    object-position: center;
+    /* Centraliza a imagem no contêiner */
+  }
 
-.videos-carousel .owl-carousel .owl-nav button.owl-prev,
-.videos-carousel .owl-carousel .owl-nav button.owl-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: #fff;
-  cursor: pointer;
-  outline: none;
-  z-index: 1000 !important;  /* Ensure the buttons are on top */
-}
+  .videos-carousel .owl-carousel .owl-nav button.owl-prev,
+  .videos-carousel .owl-carousel .owl-nav button.owl-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    z-index: 1000 !important;
+    /* Ensure the buttons are on top */
+  }
 
-.videos-carousel .owl-carousel .owl-nav button.owl-prev {
-  left: 5px;  /* Adjust the position as needed */
-  top: 180px;
-}
+  .videos-carousel .owl-carousel .owl-nav button.owl-prev {
+    left: 5px;
+    /* Adjust the position as needed */
+    top: 180px;
+  }
 
-.videos-carousel .owl-carousel .owl-nav button.owl-next {
-  right: 5px;  /* Adjust the position as needed */
-  top: 180px;
-}
+  .videos-carousel .owl-carousel .owl-nav button.owl-next {
+    right: 5px;
+    /* Adjust the position as needed */
+    top: 180px;
+  }
 
 
-.movie-item {
-  display: block;
-  position: relative;
-  overflow: hidden;
-  padding-top: 56.25%; /* Mantém a proporção da imagem (16:9) */
-  cursor: pointer;
-}
+  .movie-item {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+    /* Mantém a proporção da imagem (16:9) */
+    cursor: pointer;
+  }
 
-.movie-item img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.3s linear;
-}
+  .movie-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s linear;
+  }
 
-.movie-item:hover img {
-  transform: scale(1.2);
-}
+  .movie-item:hover img {
+    transform: scale(1.2);
+  }
 
-.movie-item-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 5px;
-  background-color: rgba(0, 0, 0, 0.8);
-  transition: background-color 0.3s;
-}
+  .movie-item-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: background-color 0.3s;
+  }
 
-.movie-item-content::before {
-  content: "";
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
-}
+  .movie-item-content::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  }
 
-.movie-item-title {
-  color: white;
-  font-size: 1.5rem;
-  position: relative;
-  font-weight: 700;
-}
+  .movie-item-title {
+    color: white;
+    font-size: 1.5rem;
+    position: relative;
+    font-weight: 700;
+  }
 
-/* Ensure the owl-carousel items are displayed in a row */
-.movies-slide.owl-carousel .owl-item {
-  display: flex;
-  align-items: center; /* Center align items vertically */
-}
+  /* Ensure the owl-carousel items are displayed in a row */
+  .movies-slide.owl-carousel .owl-item {
+    display: flex;
+    align-items: center;
+    /* Center align items vertically */
+  }
 
-/* Optional: Adjust carousel item width if needed */
-.movies-slide.owl-carousel .owl-item {
-  width: auto; /* Or a specific width like 20% to fit multiple items */
-}
+  /* Optional: Adjust carousel item width if needed */
+  .movies-slide.owl-carousel .owl-item {
+    width: auto;
+    /* Or a specific width like 20% to fit multiple items */
+  }
 
-/* REPRODUCTION */
-ul li.prev {
-  position: relative;
-  width: 2rem; /* Ajuste o tamanho do botão conforme necessário */
-  height: 2rem; /* Ajuste o tamanho do botão conforme necessário */
-}
+  /* REPRODUCTION */
+  ul li.prev {
+    position: relative;
+    width: 2rem;
+    /* Ajuste o tamanho do botão conforme necessário */
+    height: 2rem;
+    /* Ajuste o tamanho do botão conforme necessário */
+  }
 
-ul li.prev span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
-  width: 2rem; /* Ajuste o tamanho do "X" conforme necessário */
-  height: 2px; /* Ajuste a altura do "X" conforme necessário */
-  background: white;
-  border-right: none;
-  border-bottom: none;
-}
+  ul li.prev span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 2rem;
+    /* Ajuste o tamanho do "X" conforme necessário */
+    height: 2px;
+    /* Ajuste a altura do "X" conforme necessário */
+    background: white;
+    border-right: none;
+    border-bottom: none;
+  }
 
-ul li.prev:hover span {
-  left: 47%;
-}
+  ul li.prev:hover span {
+    left: 47%;
+  }
 
-ul li.prev span:before {
-  content: '';
-  position: absolute;
-  width: 27px;
-  height: 3px;
-  background: white;
-  transform-origin: left;
-  transform: rotate(45deg) translate(-2px, -1.5px) scaleX(1);
-  transition: .5s;
-}
+  ul li.prev span:before {
+    content: '';
+    position: absolute;
+    width: 27px;
+    height: 3px;
+    background: white;
+    transform-origin: left;
+    transform: rotate(45deg) translate(-2px, -1.5px) scaleX(1);
+    transition: .5s;
+  }
 
-/* LOGIN */
-.login-input {
-  @apply border border-gray-300 rounded w-full p-3 text-black;
-}
+  /* LOGIN */
+  .login-input {
+    @apply border border-gray-300 rounded w-full p-3 text-black;
+  }
 
-.login-form-button {
-  @apply mt-4 bg-main-color border border-main-color text-slate-50 text-center font-semibold p-3 rounded-lg hover:bg-white hover:text-main-color transition-all duration-100;
-}
+  .login-form-button {
+    @apply mt-4 bg-main-color border border-main-color text-slate-50 text-center font-semibold p-3 rounded-lg hover:bg-white hover:text-main-color transition-all duration-100;
+  }
+
+  /* GENDER */
+  .gender-content {
+    @apply relative w-full h-52 rounded-lg shadow-lg overflow-hidden cursor-pointer;
+  }
 }
 
 @layer base {
@@ -311,60 +329,59 @@ ul li.prev span:before {
 
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
- 
+
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
- 
+
     --primary: 240 5.9% 10%;
     --primary-foreground: 0 0% 98%;
- 
+
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
- 
+
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
- 
+
     --accent: 240 4.8% 95.9%;
     --accent-foreground: 240 5.9% 10%;
- 
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
     --ring: 240 10% 3.9%;
- 
+
     --radius: 0.5rem;
   }
- 
+
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
- 
+
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
- 
+
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
- 
+
     --primary: 0 0% 98%;
     --primary-foreground: 240 5.9% 10%;
- 
+
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
- 
+
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
- 
+
     --accent: 240 3.7% 15.9%;
     --accent-foreground: 0 0% 98%;
- 
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
- 
+
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
   }
 }
- 

@@ -1,4 +1,4 @@
-import { LoginForm } from '@/components/login-form'
+import { LoginForm } from '@/components/LoginForm'
 import Header from '@/components/header/header'
 import Footer from '@/components/footer/footer'
 

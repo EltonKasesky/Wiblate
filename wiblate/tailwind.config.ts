@@ -22,7 +22,7 @@ const config: Config = {
       },
       maxWidth: {
         "150px": "150px",
-        'insert': '500px'
+        'insert': '500px',
       },
       minWidth: {
         'insert-image': '1000px'
@@ -41,12 +41,12 @@ const config: Config = {
         'insert-image': '762px',
         'login-image': '594px',
         'google-button': '50px',
-        'sign-up-image': '714px'
+        'sign-up-image': '714px',
       },
       width: {
         "social-item": "30px",
         "nav-header": "90%",
-        "login-image": '384px'
+        "login-image": '384px',
       },
       borderRadius2: {
         "social-item": "50%",
