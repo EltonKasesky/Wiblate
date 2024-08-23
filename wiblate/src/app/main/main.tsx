@@ -48,10 +48,6 @@ export default function Main() {
 
   return (
     <>
-      <head>
-        <title>XTStream</title>
-        <meta name="description" content="description"/>
-      </head>
       <div className='py-8'>
         <PrimarySlide />
         <Gender />
