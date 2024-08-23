@@ -72,17 +72,6 @@ export default function Gender() {
                             />
                         </div>
                     </SwiperSlide>
-                    <SwiperSlide className="flex justify-center items-center p-2">
-                        <div className="gender-content">
-                            <Image
-                                src='/images/gender/gender.png'
-                                layout="fill"
-                                objectFit="cover"
-                                alt="Gender"
-                                priority
-                            />
-                        </div>
-                    </SwiperSlide>
                 </Swiper>
             </div>
         </section>

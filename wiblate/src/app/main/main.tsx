@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
-import Script from 'next/script';
 import { usePathname } from 'next/navigation';
+import Script from 'next/script';
 
-// Importações de estilos do Owl Carousel
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
-// Componentes
 import PrimarySlide from '../../components/main/PrimarySlide';
 import Gender from '@/components/main/Gender';
 import NetworkStructure from '../../components/main/NetworkStructure';
@@ -16,7 +14,6 @@ import Hardware from '../../components/main/Hardware';
 import NetworkSlide from '../../components/main/NetworkSlide';
 
 export default function Main() {
-  const [setCarouselKey] = useState(0);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -50,21 +47,27 @@ export default function Main() {
   }, [pathname]);
 
   return (
-    <div className='py-8'>
-      <PrimarySlide />
-      <Gender />
-      <ProgrammingLogic id="logic" />
-      <Dados id="database-section" />
-      <Hardware id="hardware-section" />
-      <NetworkSlide />
-      <NetworkStructure id="network-structure" />
+    <>
+      <head>
+        <title>XTStream</title>
+        <meta name="description" content="description"/>
+      </head>
+      <div className='py-8'>
+        <PrimarySlide />
+        <Gender />
+        <ProgrammingLogic id="logic" />
+        <Dados id="database-section" />
+        <Hardware id="hardware-section" />
+        <NetworkSlide />
+        <NetworkStructure id="network-structure" />
 
-      <Script
-        src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-        crossOrigin="anonymous"
-        strategy='beforeInteractive'
-      />
-    </div>
+        <Script
+          src="https://code.jquery.com/jquery-3.7.1.js"
+          integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+          crossOrigin="anonymous"
+          strategy='beforeInteractive'
+        />
+      </div>
+    </>
   );
 }

@@ -8,8 +8,8 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from '@/components/ui/card'; // Substitua pelo caminho correto do seu componente de Card
-import LoadingSkeleton from '@/components/LoadingSkeleton'; // Substitua pelo caminho correto do seu componente de LoadingSkeleton
+} from '@/components/ui/card';
+import LoadingSkeleton from '@/components/LoadingSkeleton';
 
 interface Member {
   id: string;
@@ -81,7 +81,7 @@ const Members = () => {
 
   return (
     <div className="container pt-24 pb-16 mx-auto px-2 sm:px-6 lg:px-8">
-      <h1 className="text-2xl font-bold mb-4">Members List</h1>
+      <h1 className="text-2xl font-bold mb-4">Lista de Usuários</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {loading
           ? Array.from({ length: membersPerPage }).map((_, index) => (
@@ -97,7 +97,7 @@ const Members = () => {
                   <select
                     value={updatedCargos[member.id] || member.cargo}
                     onChange={(e) => handleCargoChange(member.id, e.target.value)}
-                    className="bg-gray-100 border border-gray-300 rounded px-2 py-1 w-full text-black"
+                    className="bg-gray-100 border border-gray-300 rounded px-2 py-1 w-full text-black cursor-pointer"
                   >
                     <option value="Membro">Membro</option>
                     <option value="Produtor">Produtor</option>
@@ -128,7 +128,7 @@ const Members = () => {
           onClick={handleSave}
           className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
         >
-          Save
+          Salvar
         </button>
       </div>
     </div>
