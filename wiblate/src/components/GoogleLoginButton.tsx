@@ -22,7 +22,7 @@ const GoogleLoginButton = () => {
   return (
     <button
       onClick={handleLogin}
-      className="w-full flex items-center font-semibold justify-center h-14 px-6 mt-4 text-lg  transition-colors duration-300 bg-white border-2 border-black text-black rounded-lg focus:shadow-outline hover:bg-slate-200"
+      className="w-full flex items-center font-semibold justify-center h-google-button px-6 mt-4 bg-white border border-main-color text-main-color p-3 rounded-lg hover:bg-main-color hover:text-white transition-all duration-100"
     >
       <Image src="/images/login/google.png" alt="Google Logo" width={20} height={20} />
       <span className="ml-4">Continuar com o Google</span>

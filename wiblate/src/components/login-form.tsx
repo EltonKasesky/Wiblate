@@ -5,6 +5,8 @@ import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import GoogleLoginButton from './GoogleLoginButton';
 
+import Image from 'next/image';
+
 const LoginForm = () => {
   const router = useRouter();
 
@@ -37,47 +39,63 @@ const LoginForm = () => {
   
 
   return (
-    <div className='w-full h-screen flex items-center justify-center'>
-      <form className='p-10 border rounded-lg w-96' onSubmit={handleLogin}>
-        <h1 className='text-3xl font-bold mb-4 text-white'>Login</h1>
-        <p className='text-sm text-white-700 mb-10'>Faça login para continuar.</p>
+    <section className='w-full h-screen flex items-center justify-center'>
+      {/* LOGIN IMAGE*/}
+      <section className='hidden md:block w-login-image h-login-image'>
+        <Image
+          className='rounded-l-lg'
+          src='/images/login/login-image.png'
+          width={384}
+          height={594}
+          alt='Login Image'
+          priority
+        />
+      </section>
+      {/* END LOGIN IMAGE*/}
+      {/* LOGIN FORM */}
+      <form className='px-10 py-login-form border rounded-lg md:border-0 md:border-r md:border-y md:rounded-l-none md:rounded-r-lg w-96 bg-white' onSubmit={handleLogin}>
+        <h1 className='text-3xl font-bold mb-4 text-black'>Login</h1>
+        <p className='text-md text-black font-semibold mb-10'>Faça login para continuar.</p>
         <div className='flex flex-col'>
           <div className='flex flex-col gap-1 mb-6'>
-            <label htmlFor="email" className="text-white">E-mail</label>
+            <label htmlFor="email" className="text-black font-semibold">E-mail</label>
             <input
               type="email"
               name="email"
+              placeholder='Insira seu e-mail'
               onChange={(e) => setEmail(e.target.value)}
-              className="border rounded w-full p-3 text-black"
+              className="login-input"
             />
           </div>
           <div className='flex flex-col gap-1 mb-6'>
-            <label htmlFor="password" className="text-white">Senha</label>
+            <label htmlFor="password" className="text-black font-semibold">Senha</label>
             <input
               type="password"
               name="password"
+              placeholder='Insira sua senha'
               onChange={(e) => setPassword(e.target.value)}
-              className="border rounded w-full p-3 text-black"
+              className="login-input"
             />
           </div>
           {error && <span className="text-red-400 text-sm block mt-2">{error}</span>}
           <GoogleLoginButton />
           <button
             type='submit'
-            className='mt-3 bg-rose-950 text-slate-50 p-3 rounded'
+            className='login-form-button'
           >
             Entrar
           </button>
           <button
             type='button'
             onClick={() => router.push('/portal/cadastro')}
-            className='mt-4 text-slate-50 p-3 rounded bg-blue-600'
+            className='login-form-button'
           >
             Cadastrar
           </button>
         </div>
       </form>
-    </div>
+      {/* END LOGIN FORM */}
+    </section>
   );
 };
 

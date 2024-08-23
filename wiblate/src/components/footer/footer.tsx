@@ -11,7 +11,7 @@ export default function Footer() {
                         <div className="mt-5">
                             <div className="w-full max-w-150px">
                                 <Link href="/" className="mt-footer-logo flex justify-start items-center text-logo-footer font-black" id="link_footer">
-                                    <i className='bx bx-movie-play bx-tada text-main-color text-3xl'></i><span className="text-text-color">WIBL</span><span className="text-main-color">ATE</span>
+                                    <i className='bx bx-movie-play bx-tada text-main-color text-3xl'></i><span className="text-text-color">XT</span><span className="text-main-color">STREAM</span>
                                 </Link>
                             </div>
                             <p>

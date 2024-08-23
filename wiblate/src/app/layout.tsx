@@ -8,7 +8,7 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 import { AuthProvider } from "@/providers/auth-provider";
 
 export const metadata: Metadata = {
-  title: "Wiblate",
+  title: "XTStream",
   description: "description",
 };
 
@@ -20,10 +20,8 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <head>
-        <link
-          href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
-          rel="stylesheet"
-        />
+        <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet"/>
+        <link rel="icon" href="/favicon/favicon.ico"/>
       </head>
       <body className={`${cairo.className} antialiased p-0 m-0 box-border text-main-size text-text-color`}>
         <AuthProvider>

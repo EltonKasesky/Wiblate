@@ -6,7 +6,7 @@ export default function SignUpPage() {
   return (
     <div>
       <Header />
-      <main className="flex flex-col items-center p-24">
+      <main className="flex flex-col items-center p-10">
       <SignUpForm />
       </main>
       <Footer />

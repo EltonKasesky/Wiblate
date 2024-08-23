@@ -294,7 +294,14 @@ ul li.prev span:before {
   transition: .5s;
 }
 
+/* LOGIN */
+.login-input {
+  @apply border border-gray-300 rounded w-full p-3 text-black;
+}
 
+.login-form-button {
+  @apply mt-4 bg-main-color border border-main-color text-slate-50 text-center font-semibold p-3 rounded-lg hover:bg-white hover:text-main-color transition-all duration-100;
+}
 }
 
 @layer base {

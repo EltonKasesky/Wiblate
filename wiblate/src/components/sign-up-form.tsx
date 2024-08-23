@@ -11,58 +11,75 @@ import { Label } from '@/components/ui/label';
 import Link from 'next/link';
 import AuthActions from '@/app/actions/auth-actions';
 import GoogleLoginButton from './GoogleLoginButton';
+import Image from 'next/image';
 
 export default function SignUpForm() {
   return (
-    <div className='w-full h-screen flex items-center justify-center'>
-      <form className='p-10 border rounded-lg w-96' action={AuthActions.createAccount}>
-        <h1 className='text-3xl font-bold mb-4 text-white'>Cadastro</h1>
-        <p className='text-sm text-white-700 mb-10'>Preencha os campos abaixo para criar uma conta.</p>
+    <section className='w-full h-screen flex flex-row-reverse items-center justify-center'>
+      {/* LOGIN IMAGE*/}
+      <section className='hidden md:block w-login-image h-sign-up-image'>
+        <Image
+          className='rounded-r-lg'
+          src='/images/login/sign-up-image.png'
+          width={384}
+          height={714}
+          alt='Login Image'
+          priority
+        />
+      </section>
+      {/* END LOGIN IMAGE*/}
+      <form className='px-10 py-login-form border rounded-lg md:border-0 md:border-l md:border-y md:rounded-r-none md:rounded-l-lg w-96 bg-white' action={AuthActions.createAccount}>
+        <h1 className='text-3xl font-bold mb-4 text-black'>Cadastro</h1>
+        <p className='text-md text-black font-semibold mb-10'>Preencha os campos abaixo para criar uma conta.</p>
         <div className='flex flex-col'>
           <div className='flex flex-col gap-1 mb-6'>
-            <label htmlFor="name" className="text-white">Nome</label>
+            <label htmlFor="name" className="text-black font-semibold">Nome</label>
             <input
               id="name"
               name="name"
+              type='string'
+              placeholder='Insira seu nome'
               required
-              className="border rounded w-full p-3 text-black" // Mesma classe do LoginForm
+              className="login-input"
             />
           </div>
           <div className='flex flex-col gap-1 mb-6'>
-            <label htmlFor="email" className="text-white">Email</label>
+            <label htmlFor="email" className="text-black font-semibold">Email</label>
             <input
               id="email"
               name="email"
               type="email"
+              placeholder='Insira seu e-mail'
               required
-              className="border rounded w-full p-3 text-black" // Mesma classe do LoginForm
+              className="login-input"
             />
           </div>
           <div className='flex flex-col gap-1 mb-6'>
-            <label htmlFor="password" className="text-white">Senha</label>
+            <label htmlFor="password" className="text-black font-semibold">Senha</label>
             <input
               id="password"
               name="password"
               type="password"
+              placeholder='Insira sua senha'
               required
-              className="border rounded w-full p-3 text-black" // Mesma classe do LoginForm
+              className="login-input"
             />
           </div>
           <GoogleLoginButton />
           <button
             type='submit'
-            className='mt-3 bg-rose-950 text-slate-50 p-3 rounded'
+            className='login-form-button'
           >
             Criar Conta
           </button>
           <Link
             href="/portal/login"
-            className='mt-4 text-slate-50 p-3 rounded bg-blue-600 inline-block text-center'
+            className='login-form-button'
           >
             Já Tenho Conta
           </Link>
         </div>
       </form>
-    </div>
+    </section>
   );
 }
