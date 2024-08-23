@@ -10,8 +10,8 @@ const GoogleLoginButton = () => {
   const handleLogin = async () => {
     setLoading(true);
     try {
-      // Redireciona o usuário para o Google para autenticação
-      await signIn('google', { callbackUrl: '/' }); // Ajuste a URL de retorno conforme necessário
+      
+      await signIn('google', { callbackUrl: '/' }); 
     } catch (error) {
       console.error('Error logging in with Google:', error);
     } finally {
