@@ -3,6 +3,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Gender() {
     return (
@@ -30,46 +31,54 @@ export default function Gender() {
                 >
                     <SwiperSlide className="flex justify-center items-center p-2">
                         <div className="gender-content">
-                            <Image
-                                src='/images/gender/gender.png'
-                                layout="fill"
-                                objectFit="cover"
-                                alt="Gender"
-                                priority
-                            />
+                            <Link href='/events'>
+                                <Image
+                                    src='/images/gender/events.png'
+                                    layout="fill"
+                                    objectFit="cover"
+                                    alt="Gender"
+                                    priority
+                                />
+                            </Link>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide className="flex justify-center items-center p-2">
                         <div className="gender-content">
-                            <Image
-                                src='/images/gender/gender.png'
-                                layout="fill"
-                                objectFit="cover"
-                                alt="Gender"
-                                priority
-                            />
+                            <Link href='/gastronomy'>
+                                <Image
+                                    src='/images/gender/gastronomy.png'
+                                    layout="fill"
+                                    objectFit="cover"
+                                    alt="Gender"
+                                    priority
+                                />
+                            </Link>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide className="flex justify-center items-center p-2">
                         <div className="gender-content">
-                            <Image
-                                src='/images/gender/gender.png'
-                                layout="fill"
-                                objectFit="cover"
-                                alt="Gender"
-                                priority
-                            />
+                            <Link href='/knowcity'>
+                                <Image
+                                    src='/images/gender/knowcity.png'
+                                    layout="fill"
+                                    objectFit="cover"
+                                    alt="Gender"
+                                    priority
+                                />
+                            </Link>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide className="flex justify-center items-center p-2">
                         <div className="gender-content">
-                            <Image
-                                src='/images/gender/gender.png'
-                                layout="fill"
-                                objectFit="cover"
-                                alt="Gender"
-                                priority
-                            />
+                            <Link href='/news'>
+                                <Image
+                                    src='/images/gender/news.png'
+                                    layout="fill"
+                                    objectFit="cover"
+                                    alt="Gender"
+                                    priority
+                                />
+                            </Link>
                         </div>
                     </SwiperSlide>
                 </Swiper>
