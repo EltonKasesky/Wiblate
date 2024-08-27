@@ -9,7 +9,7 @@ import {
   CardContent,
   CardFooter,
 } from '@/components/ui/card'; // Substitua pelo caminho correto do seu componente de Card
-import LoadingSkeleton from '@/components/LoadingSkeleton'; // Substitua pelo caminho correto do seu componente de LoadingSkeleton
+import LoadingSkeleton from '@/components/Skeleton/LoadingSkeleton'; // Substitua pelo caminho correto do seu componente de LoadingSkeleton
 
 interface Member {
   id: string;

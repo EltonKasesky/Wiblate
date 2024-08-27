@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import GoogleLoginButton from './GoogleLoginButton';
-
 import Image from 'next/image';
 
 const LoginForm = () => {
@@ -36,11 +35,12 @@ const LoginForm = () => {
       console.log('[LOGIN_ERROR]: ', error);
     }
   };
-  
+
+  const clearError = () => setError('');
 
   return (
     <section className='w-full h-screen flex items-center justify-center'>
-      {/* LOGIN IMAGE*/}
+      {/* LOGIN IMAGE */}
       <section className='hidden md:block w-login-image h-login-image'>
         <Image
           className='rounded-l-lg'
@@ -51,7 +51,7 @@ const LoginForm = () => {
           priority
         />
       </section>
-      {/* END LOGIN IMAGE*/}
+      {/* END LOGIN IMAGE */}
       {/* LOGIN FORM */}
       <form className='px-10 py-login-form border rounded-lg md:border-0 md:border-r md:border-y md:rounded-l-none md:rounded-r-lg w-96 bg-white' onSubmit={handleLogin}>
         <h1 className='text-3xl font-bold mb-4 text-black'>Login</h1>
@@ -78,7 +78,7 @@ const LoginForm = () => {
             />
           </div>
           {error && <span className="text-red-400 text-sm block mt-2">{error}</span>}
-          <GoogleLoginButton />
+          <GoogleLoginButton clearError={clearError} />
           <button
             type='submit'
             className='login-form-button'

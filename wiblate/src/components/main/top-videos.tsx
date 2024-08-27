@@ -1,5 +1,5 @@
 import React from 'react';
-import VideoSection from '@/components/VideoSectionTop';
+import VideoSection from '@/components/Videos/VideoSectionTop';
 
 const TopVideos = () => {
   return (

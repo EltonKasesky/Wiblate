@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
-import MovieItemSkeleton from './MovieItemSkeleton';
+import MovieItemSkeleton from '../Skeleton/MovieItemSkeleton';
 import MovieItem from './MovieItem';
 
 // Definindo os tipos para os dados do vídeo

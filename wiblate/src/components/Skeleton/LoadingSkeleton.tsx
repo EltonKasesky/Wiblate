@@ -1,6 +1,6 @@
 "use client";
 
-import { Skeleton } from '@/components/MembersSkeleton';
+import { Skeleton } from '@/components/Skeleton/MembersSkeleton';
 
 const LoadingSkeleton = () => (
   <div className="border border-slate-200 shadow-sm dark:border-slate-800 p-4">
