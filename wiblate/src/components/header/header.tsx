@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 
 import NavHeader from '@/components/header/nav-header';
 
@@ -73,11 +73,11 @@ export default function Header() {
             )}
             <li className='pb-4'>
               {status === 'authenticated' ? (
-                <Link href="/api/auth/signout">
-                  <div className="btn btn-hover uppercase font-bold py-2 px-6 cursor-pointer">
-                    <span className="relative z-10">Logout</span>
-                  </div>
-                </Link>
+                <Link href="/portal/logout">
+                <div className="btn btn-hover uppercase font-bold py-2 px-6 cursor-pointer">
+                  <span className="relative z-10">Logout</span>
+                </div>
+              </Link>
               ) : (
                 <Link href="/portal/login">
                   <div className="btn btn-hover uppercase font-bold py-2 px-6 cursor-pointer">

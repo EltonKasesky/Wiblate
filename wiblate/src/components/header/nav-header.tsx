@@ -10,10 +10,10 @@ export default function NavHeader({ userCargo, isLoggedIn }: NavHeaderProps) {
     <div className="hidden md:flex md:items-center md:ml-auto">
       <ul className="flex flex-row space-x-8 items-center">
         <li className="nav-header">
-          <Link href="/" className="cursor-pointer">INÍCIO</Link>
+          <Link href="/" className="cursor-pointer">Início</Link>
         </li>
         <li className="nav-header">
-          <Link href="/about" className="cursor-pointer">SOBRE</Link>
+          <Link href="/about" className="cursor-pointer">Sobre</Link>
         </li>
         {userCargo && ["Produtor", "Gerenciador", "Administrador"].includes(userCargo) && (
           <>
@@ -31,7 +31,7 @@ export default function NavHeader({ userCargo, isLoggedIn }: NavHeaderProps) {
         )}
         <li>
           {isLoggedIn ? (
-            <Link href="/api/auth/signout">
+            <Link href="/portal/logout">
               <div className="btn btn-hover uppercase font-bold py-2 px-6 cursor-pointer">
                 <span className="relative z-10">Logout</span>
               </div>
