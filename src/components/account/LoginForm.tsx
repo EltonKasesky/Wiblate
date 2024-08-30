@@ -39,7 +39,7 @@ const LoginForm = () => {
   
 
   return (
-    <section className='w-full h-screen flex items-center justify-center'>
+    <section className='w-full h-screen flex items-center justify-center my-10 sm:my-0'>
       {/* LOGIN IMAGE*/}
       <section className='hidden md:block w-login-image h-login-image'>
         <Image
