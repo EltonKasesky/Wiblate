@@ -10,7 +10,7 @@ export default function SignUpForm() {
   const errorMessage = cookies().get('signup_error')?.value || null;
 
   return (
-    <section className='w-full h-screen flex flex-row-reverse items-center justify-center my-14 sm:my-0'>
+    <section className='w-full h-screen flex flex-row-reverse items-center justify-center my-20 sm:my-0'>
       {/* LOGIN IMAGE */}
       <section className='hidden md:block w-login-image h-sign-up-image'>
         <Image
