@@ -1,5 +1,5 @@
 import React from "react";
-import VideoSection from "@/components/VideoSection";
+import VideoSection from "../videos/VideoSection";
 
 interface ProgrammingLogicProps {
   id: string;

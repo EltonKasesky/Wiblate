@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
-import MovieItemSkeleton from './MovieItemSkeleton';
+import MovieItemSkeleton from '../skeleton/MovieItemSkeleton';
 import MovieItem from './MovieItem';
 
-// Definindo os tipos para os dados do vídeo
 interface VideoData {
   id: string;
   title: string;
@@ -28,7 +27,7 @@ const VideoSection: React.FC<VideoSectionProps> = ({ sectionId, endpoint }) => {
   const [loading, setLoading] = useState(true);
 
   const fetchYouTubeData = async (videoId: string): Promise<{ id: string; title: string } | null> => {
-    const API_KEY = 'AIzaSyCj7QvS4R23iJWq4ip2hMDq_k0Ka5sG1Ds'; // Substitua pelo seu valor real
+    const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
     try {
       const response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${API_KEY}&part=snippet`);
       const videoData = response.data.items[0];

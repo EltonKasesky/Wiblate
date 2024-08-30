@@ -9,7 +9,7 @@ import {
   CardContent,
   CardFooter,
 } from '@/components/ui/card';
-import LoadingSkeleton from '@/components/LoadingSkeleton';
+import LoadingSkeleton from '@/components/skeleton/LoadingSkeleton';
 
 interface Member {
   id: string;
