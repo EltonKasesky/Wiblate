@@ -133,6 +133,7 @@ const config: Config = {
       },
       screens: {
         'insert-image': '1000px',
+        'terms-privacy': '1400px'
       },
     },
   },
