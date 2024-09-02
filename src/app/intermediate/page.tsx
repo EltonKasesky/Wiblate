@@ -4,7 +4,7 @@ import Intermediate from "@/components/intermediate";
 import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
 import Copyright from '@/components/footer/copyright';
-import ProtectedPage from "@/components/ProtectedPage";
+import ProtectedPage from "@/components/protection/ProtectedPage";
 
 export default function IntermediatePage(){
     return (

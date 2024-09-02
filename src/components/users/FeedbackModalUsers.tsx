@@ -7,7 +7,7 @@ type FeedbackModalProps = {
   feedbackMessage: string;
 };
 
-export default function FeedbackModal({
+export default function FeedbackModalUsers({
   isOpen,
   closeModal,
   feedbackMessage,

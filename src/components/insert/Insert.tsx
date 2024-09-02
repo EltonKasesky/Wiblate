@@ -1,6 +1,6 @@
 import { useState, FormEvent, useRef } from "react";
-import TableSelectModal from "./insert/TableSelectModal";
-import FeedbackModal from "./insert/FeedbackModal";
+import TableSelectModal from "./TableSelectModal";
+import FeedbackModalInsert from "./FeedbackModalInsert";
 import Image from "next/image";
 
 export default function Insert() {
@@ -197,7 +197,7 @@ export default function Insert() {
         tableMap={tableMap}
       />
 
-      <FeedbackModal
+      <FeedbackModalInsert
         isOpen={isFeedbackOpen}
         closeModal={() => setIsFeedbackOpen(false)}
         feedbackMessage={feedbackMessage}

@@ -3,14 +3,14 @@ import { ReactNode, useEffect } from 'react'
 
 type ProtectedPageProps = {
   children: ReactNode
-  allowedCargos: string[] // Os cargos permitidos para acessar a página
+  allowedCargos: string[]
 }
 
 const ProtectedPage = ({ children, allowedCargos }: ProtectedPageProps) => {
   const { data: session, status } = useSession()
 
   useEffect(() => {
-    if (status === 'loading') return // Não fazer nada enquanto a sessão está carregando
+    if (status === 'loading') return
 
     if (!session) {
       // Redirecionar para a página de login se o usuário não estiver autenticado
@@ -31,7 +31,6 @@ const ProtectedPage = ({ children, allowedCargos }: ProtectedPageProps) => {
     return <>{children}</>
   }
 
-  // Renderizar null se o redirecionamento ainda não ocorreu
   return null
 }
 

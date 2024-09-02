@@ -7,9 +7,9 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
-  CardFooter,
 } from '@/components/ui/card';
 import LoadingSkeleton from '@/components/skeleton/LoadingSkeleton';
+import FeedbackModalUsers from './FeedbackModalUsers';
 
 interface Member {
   id: string;
@@ -26,10 +26,13 @@ const Members = () => {
   const { data: session } = useSession();
   const userCargo = session?.user?.cargo;
   const [members, setMembers] = useState<Member[]>([]);
+  const [filteredMembers, setFilteredMembers] = useState<Member[]>([]);
   const [updatedCargos, setUpdatedCargos] = useState<UpdatedCargos>({});
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
-  const [searchQuery, setSearchQuery] = useState<string>(''); // Estado de busca
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [feedbackMessage, setFeedbackMessage] = useState<string>('');
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const membersPerPage = 12;
 
   useEffect(() => {
@@ -42,11 +45,12 @@ const Members = () => {
       try {
         const endpoint =
           userCargo === 'Administrador'
-            ? `/api/users/memberADM?q=${searchQuery}`
-            : `/api/users/members?q=${searchQuery}`;
+            ? '/api/users/memberADM'
+            : '/api/users/members';
 
         const response = await axios.get(endpoint);
         setMembers(response.data);
+        setFilteredMembers(response.data);
         setLoading(false);
       } catch (error) {
         console.error('Failed to fetch members', error);
@@ -54,7 +58,7 @@ const Members = () => {
     };
 
     fetchMembers();
-  }, [userCargo, searchQuery]);
+  }, [userCargo]);
 
   const handleCargoChange = (id: string, cargo: string) => {
     setUpdatedCargos((prev) => ({ ...prev, [id]: cargo }));
@@ -66,38 +70,53 @@ const Members = () => {
         axios.post('/api/users/update', { id, cargo })
       );
       await Promise.all(updates);
-      alert('Cargos updated successfully');
+      setFeedbackMessage('Cargo atualizado com sucesso!');
     } catch (error) {
       console.error('Failed to update cargos', error);
-      alert('Failed to update cargos');
+      setFeedbackMessage('Erro ao atualizar cargos!');
+    } finally {
+      setIsModalOpen(true);
     }
   };
 
-  // Paginação
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const term = e.target.value.toLowerCase();
+    setSearchTerm(term);
+    if (term) {
+      const filtered = members.filter(
+        (member) =>
+          member.name.toLowerCase().includes(term) ||
+          member.email.toLowerCase().includes(term)
+      );
+      setFilteredMembers(filtered);
+    } else {
+      setFilteredMembers(members);
+    }
+  };
+
   const indexOfLastMember = currentPage * membersPerPage;
   const indexOfFirstMember = indexOfLastMember - membersPerPage;
-  const currentMembers = members.slice(indexOfFirstMember, indexOfLastMember);
+  const currentMembers = filteredMembers.slice(
+    indexOfFirstMember,
+    indexOfLastMember
+  );
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
-    setCurrentPage(1);
-  };
-
   return (
-    <div className="container pt-24 pb-16 mx-auto px-2 my-20 sm:px-6 lg:px-8 md:my-0">
+    <div className="container pt-24 pb-16 mx-auto px-2 mt-20 mb-10 sm:px-6 md:my-0 lg:px-8">
       <h1 className="text-2xl font-bold mb-4">Lista de Usuários</h1>
-      
-      {/* Campo de busca */}
       <input
         type="text"
-        placeholder="Buscar por nome ou e-mail"
-        value={searchQuery}
-        onChange={handleSearchChange}
-        className="mb-4 p-2 border rounded w-full text-black"
+        placeholder="Buscar por nome ou email"
+        value={searchTerm}
+        onChange={handleSearch}
+        className="mb-4 p-2 border border-gray-300 rounded w-full text-black"
       />
-
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {loading
           ? Array.from({ length: membersPerPage }).map((_, index) => (
@@ -123,11 +142,9 @@ const Members = () => {
               </Card>
             ))}
       </div>
-
-      {/* Paginação */}
       <div className="flex justify-center mt-4">
         <div>
-          {Array.from({ length: Math.ceil(members.length / membersPerPage) }, (_, i) => (
+          {Array.from({ length: Math.ceil(filteredMembers.length / membersPerPage) }, (_, i) => (
             <button
               key={i}
               onClick={() => paginate(i + 1)}
@@ -140,8 +157,6 @@ const Members = () => {
           ))}
         </div>
       </div>
-
-      {/* Botão de salvar */}
       <div className="flex justify-center mt-4">
         <button
           onClick={handleSave}
@@ -150,6 +165,13 @@ const Members = () => {
           Salvar
         </button>
       </div>
+
+      {/* Feedback Modal */}
+      <FeedbackModalUsers
+        isOpen={isModalOpen}
+        closeModal={closeModal}
+        feedbackMessage={feedbackMessage}
+      />
     </div>
   );
 };
