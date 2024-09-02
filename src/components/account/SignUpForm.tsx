@@ -17,7 +17,7 @@ export default function SignUpForm() {
           className='rounded-r-lg'
           src='/images/login/sign-up-image.png'
           width={384}
-          height={714}
+          height={766}
           alt='Login Image'
           priority
         />

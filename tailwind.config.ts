@@ -41,7 +41,7 @@ const config: Config = {
         'insert-image': '762px',
         'login-image': '594px',
         'google-button': '50px',
-        'sign-up-image': '714px',
+        'sign-up-image': '766px',
         'gender-pages-image-mobile': '500px',
         'gender-pages-image': '700px'
       },
