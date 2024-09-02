@@ -28,7 +28,8 @@ const Members = () => {
   const [members, setMembers] = useState<Member[]>([]);
   const [updatedCargos, setUpdatedCargos] = useState<UpdatedCargos>({});
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [loading, setLoading] = useState<boolean>(true); // Estado de carregamento
+  const [loading, setLoading] = useState<boolean>(true);
+  const [searchQuery, setSearchQuery] = useState<string>(''); // Estado de busca
   const membersPerPage = 12;
 
   useEffect(() => {
@@ -41,19 +42,19 @@ const Members = () => {
       try {
         const endpoint =
           userCargo === 'Administrador'
-            ? '/api/users/memberADM'
-            : '/api/users/members';
+            ? `/api/users/memberADM?q=${searchQuery}`
+            : `/api/users/members?q=${searchQuery}`;
 
         const response = await axios.get(endpoint);
         setMembers(response.data);
-        setLoading(false); // Definindo loading como falso após carregar os dados
+        setLoading(false);
       } catch (error) {
         console.error('Failed to fetch members', error);
       }
     };
 
     fetchMembers();
-  }, [userCargo]);
+  }, [userCargo, searchQuery]);
 
   const handleCargoChange = (id: string, cargo: string) => {
     setUpdatedCargos((prev) => ({ ...prev, [id]: cargo }));
@@ -79,9 +80,24 @@ const Members = () => {
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+    setCurrentPage(1);
+  };
+
   return (
-    <div className="container pt-24 pb-16 mx-auto px-2 sm:px-6 lg:px-8">
+    <div className="container pt-24 pb-16 mx-auto px-2 my-20 sm:px-6 lg:px-8 md:my-0">
       <h1 className="text-2xl font-bold mb-4">Lista de Usuários</h1>
+      
+      {/* Campo de busca */}
+      <input
+        type="text"
+        placeholder="Buscar por nome ou e-mail"
+        value={searchQuery}
+        onChange={handleSearchChange}
+        className="mb-4 p-2 border rounded w-full text-black"
+      />
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {loading
           ? Array.from({ length: membersPerPage }).map((_, index) => (
@@ -107,8 +123,9 @@ const Members = () => {
               </Card>
             ))}
       </div>
+
+      {/* Paginação */}
       <div className="flex justify-center mt-4">
-        {/* Pagination */}
         <div>
           {Array.from({ length: Math.ceil(members.length / membersPerPage) }, (_, i) => (
             <button
@@ -123,6 +140,8 @@ const Members = () => {
           ))}
         </div>
       </div>
+
+      {/* Botão de salvar */}
       <div className="flex justify-center mt-4">
         <button
           onClick={handleSave}

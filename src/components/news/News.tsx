@@ -6,6 +6,7 @@ import Script from "next/script";
 import Image from "next/image";
 import BackButton from "../ui/BackButton";
 import Hardware from "../main/Hardware";
+import AnnounceNews from "./Announce";
 
 export default function News() {
     useEffect(() => {
@@ -46,6 +47,7 @@ export default function News() {
                         className="object-cover object-center w-full h-full max-w-full max-h-full"
                     />
                 </div>
+                <AnnounceNews />
                 <Hardware id="hardware-section"/>
             </section>
 
