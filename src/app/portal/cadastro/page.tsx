@@ -6,7 +6,7 @@ export default function SignUpPage() {
   return (
     <div>
       <Header />
-      <main className="flex flex-col items-center py-10">
+      <main className="flex flex-col items-center py-16">
       <SignUpForm />
       </main>
       <Footer />

@@ -37,6 +37,7 @@ const LoginForm = () => {
     }
   };
   
+  const clearError = () => setError('');
 
   return (
     <section className='w-full h-screen flex items-center justify-center my-10 sm:my-0'>
@@ -78,7 +79,7 @@ const LoginForm = () => {
             />
           </div>
           {error && <span className="text-red-400 text-sm block mt-2">{error}</span>}
-          <GoogleLoginButton />
+          <GoogleLoginButton clearError={clearError}/>
           <button
             type='submit'
             className='login-form-button'

@@ -5,6 +5,7 @@ import axios from 'axios';
 import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
 import Members from '@/components/Members';
+import ProtectedPage from '@/components/ProtectedPage';
 
 interface User {
   id: string;
@@ -16,9 +17,11 @@ interface User {
 export default function UsersPage(){
   return (
     <>
+    <ProtectedPage allowedCargos={["Produtor", "Gerenciador", "Administrador"]}>
     <Header />
     <Members />
     <Footer />
+    </ProtectedPage>
     </>
   )
 }

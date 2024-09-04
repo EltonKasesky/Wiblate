@@ -143,11 +143,11 @@ export default function About() {
                     <h2 className="text-3xl font-bold mb-4">O Que Nossos Usuários Dizem</h2>
                     <div className="space-y-8">
                         <blockquote className="border-l-4 border-blue-500 pl-4 italic text-lg">
-                            &quotProjeto muito bem estruturado e de alto nível, tem muito futuro pela frente.&quot <br />
+                            &quot;Projeto muito bem estruturado e de alto nível, tem muito futuro pela frente.&quot; <br />
                             — Arthur Giangiarulo <span className="font-bold text-purple-700">— Professor da rede FIRJAN SENAI</span>
                         </blockquote>
                         <blockquote className="border-l-4 border-blue-500 pl-4 italic text-lg">
-                        &quotÉ extremamente gratificante ver o impacto positivo que nosso projeto tem na vida dos alunos. Cada feedback positivo nos motiva a continuar trabalhando duro para oferecer o melhor suporte possível.&quot <br />
+                        &quot;É extremamente gratificante ver o impacto positivo que nosso projeto tem na vida dos alunos. Cada feedback positivo nos motiva a continuar trabalhando duro para oferecer o melhor suporte possível.&quot; <br />
                             — Pedro Cler <span className="font-bold text-purple-700">— Membro da equipe</span>
                         </blockquote>
                     </div>
