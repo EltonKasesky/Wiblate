@@ -32,52 +32,48 @@ export default function AnnounceNews() {
                     <SwiperSlide className="flex justify-center items-center p-2">
                         <div className="gender-content">
                             <Link href='#'>
-                                <Image
-                                    src='/images/announce/news/announce.png'
-                                    layout="fill"
-                                    objectFit="cover"
-                                    alt="Gender"
-                                    priority
-                                />
+                                <div className='flex justify-center items-center h-gender-item bg-gender-bg'>
+                                    <div className='flex flex-col items-center justify-center w-full gap-3'>
+                                        <p className='text-6xl font-bold text-center'>Anúncio</p>
+                                        <p className='text-2xl text-center'>XTSTREAM</p>
+                                    </div>
+                                </div>
                             </Link>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide className="flex justify-center items-center p-2">
                         <div className="gender-content">
                             <Link href='#'>
-                                <Image
-                                    src='/images/announce/news/announce.png'
-                                    layout="fill"
-                                    objectFit="cover"
-                                    alt="Gender"
-                                    priority
-                                />
+                                <div className='flex justify-center items-center h-gender-item bg-gender-bg'>
+                                    <div className='flex flex-col items-center justify-center w-full gap-3'>
+                                        <p className='text-6xl font-bold text-center'>Anúncio</p>
+                                        <p className='text-2xl text-center'>XTSTREAM</p>
+                                    </div>
+                                </div>
                             </Link>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide className="flex justify-center items-center p-2">
                         <div className="gender-content">
                             <Link href='#'>
-                                <Image
-                                    src='/images/announce/news/announce.png'
-                                    layout="fill"
-                                    objectFit="cover"
-                                    alt="Gender"
-                                    priority
-                                />
+                                <div className='flex justify-center items-center h-gender-item bg-gender-bg'>
+                                    <div className='flex flex-col items-center justify-center w-full gap-3'>
+                                        <p className='text-6xl font-bold text-center'>Anúncio</p>
+                                        <p className='text-2xl text-center'>XTSTREAM</p>
+                                    </div>
+                                </div>
                             </Link>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide className="flex justify-center items-center p-2">
                         <div className="gender-content">
                             <Link href='#'>
-                                <Image
-                                    src='/images/announce/news/announce.png'
-                                    layout="fill"
-                                    objectFit="cover"
-                                    alt="Gender"
-                                    priority
-                                />
+                                <div className='flex justify-center items-center h-gender-item bg-gender-bg'>
+                                    <div className='flex flex-col items-center justify-center w-full gap-3'>
+                                        <p className='text-6xl font-bold text-center'>Anúncio</p>
+                                        <p className='text-2xl text-center'>XTSTREAM</p>
+                                    </div>
+                                </div>
                             </Link>
                         </div>
                     </SwiperSlide>

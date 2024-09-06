@@ -8,7 +8,6 @@ export const query = async (text: string, params: (string | number)[]) => {
   try {
     const client = await pool.connect();
     try {
-      // Log the query and parameters for debugging
       console.log('Executing query:', text);
       console.log('With parameters:', params);
 

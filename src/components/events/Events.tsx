@@ -36,7 +36,7 @@ export default function Events() {
     return (
         <>
             <section className="flex flex-col w-full h-full pb-20">
-                <div className="flex justify-center items-center relative w-full h-gender-pages-image-mobile overflow-hidden lg:h-gender-pages-image">
+                <section className="flex justify-center items-center relative w-full h-gender-pages-image-mobile overflow-hidden lg:h-gender-pages-image">
                     <BackButton />
                     <Image
                         src='/slides/network.jpg'
@@ -46,9 +46,9 @@ export default function Events() {
                         priority
                         className="object-cover object-center w-full h-full max-w-full max-h-full"
                     />
-                </div>
+                </section>
                 <AnnounceEvents />
-                <Hardware id="hardware-section"/>
+                <Hardware id="hardware-section" />
             </section>
 
             <Script

@@ -30,54 +30,50 @@ export default function Gender() {
                     }}
                 >
                     <SwiperSlide className="flex justify-center items-center p-2">
-                        <div className="gender-content">
+                        <section className="gender-content">
                             <Link href='/events'>
-                                <Image
-                                    src='/images/gender/events.png'
-                                    layout="fill"
-                                    objectFit="cover"
-                                    alt="Gender"
-                                    priority
-                                />
+                                <div className='flex justify-center items-center h-gender-item bg-gender-bg'>
+                                    <div className='flex flex-col items-center justify-center w-full gap-3'>
+                                        <p className='text-6xl font-bold text-center'>Eventos</p>
+                                        <p className='text-2xl text-center'>XTSTREAM</p>
+                                    </div>
+                                </div>
                             </Link>
-                        </div>
+                        </section>
                     </SwiperSlide>
                     <SwiperSlide className="flex justify-center items-center p-2">
                         <div className="gender-content">
                             <Link href='/gastronomy'>
-                                <Image
-                                    src='/images/gender/gastronomy.png'
-                                    layout="fill"
-                                    objectFit="cover"
-                                    alt="Gender"
-                                    priority
-                                />
+                                <div className='flex justify-center items-center h-gender-item bg-gender-bg'>
+                                    <div className='flex flex-col items-center justify-center w-full gap-3'>
+                                        <p className='text-6xl sm:text-5xl gender-item:text-6xl font-bold text-center'>Gastronomia</p>
+                                        <p className='text-2xl text-center'>XTSTREAM</p>
+                                    </div>
+                                </div>
                             </Link>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide className="flex justify-center items-center p-2">
                         <div className="gender-content">
                             <Link href='/knowcity'>
-                                <Image
-                                    src='/images/gender/knowcity.png'
-                                    layout="fill"
-                                    objectFit="cover"
-                                    alt="Gender"
-                                    priority
-                                />
+                                <div className='flex justify-center items-center h-gender-item bg-gender-bg'>
+                                    <div className='flex flex-col items-center justify-center w-full gap-3'>
+                                        <p className='text-6xl sm:text-5xl font-bold text-center'>Conheça Petrópolis</p>
+                                        <p className='text-2xl text-center'>XTSTREAM</p>
+                                    </div>
+                                </div>
                             </Link>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide className="flex justify-center items-center p-2">
                         <div className="gender-content">
                             <Link href='/news'>
-                                <Image
-                                    src='/images/gender/news.png'
-                                    layout="fill"
-                                    objectFit="cover"
-                                    alt="Gender"
-                                    priority
-                                />
+                                <div className='flex justify-center items-center h-gender-item bg-gender-bg'>
+                                    <div className='flex flex-col items-center justify-center w-full gap-3'>
+                                        <p className='text-6xl font-bold text-center'>Notícias</p>
+                                        <p className='text-2xl text-center'>XTSTREAM</p>
+                                    </div>
+                                </div>
                             </Link>
                         </div>
                     </SwiperSlide>

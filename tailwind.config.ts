@@ -19,6 +19,7 @@ const config: Config = {
         'message-bg-error': '#f8d7da',
         'insert-modal-bg': '#181616',
         'main-color': '#2974f7',
+        'gender-bg': '#25262A'
       },
       maxWidth: {
         '150px': '150px',
@@ -43,12 +44,14 @@ const config: Config = {
         'google-button': '50px',
         'sign-up-image': '766px',
         'gender-pages-image-mobile': '500px',
-        'gender-pages-image': '700px'
+        'gender-pages-image': '700px',
+        'gender-item': '208px'
       },
       width: {
         'social-item': '30px',
         'nav-header': '90%',
         'login-image': '384px',
+        'gender-item': '430px'
       },
       borderRadius2: {
         'social-item': '50%',
@@ -133,7 +136,8 @@ const config: Config = {
       },
       screens: {
         'insert-image': '1000px',
-        'terms-privacy': '1400px'
+        'terms-privacy': '1400px',
+        'gender-item': '1550px'
       },
     },
   },
