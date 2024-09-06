@@ -1,14 +1,16 @@
 import { LoginForm } from '@/components/account/LoginForm';
 import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
+import Copyright from '@/components/footer/copyright';
 
 
 export default function LoginPage() {
   return (
-    <div>
-    <Header />
-    <LoginForm />
-    <Footer />
-    </div>
+    <>
+      <Header />
+      <LoginForm />
+      <Footer />
+      <Copyright />
+    </>
   )
 }

@@ -66,10 +66,8 @@ const IntermediateContent = () => {
             />
           )}
         </div>
-        <div className="absolute top-0 left-0 w-full h-full flex bg-black bg-opacity-60"></div>
         <div className="absolute top-0 left-0 w-full h-full flex">
           <div className="relative flex flex-col justify-center w-full lg:w-2/5 lg:pl-20 bg-black bg-opacity-80 lg:bg-opacity-60 p-4 lg:p-0 min-h-full lg:min-h-0">
-            <div className="absolute top-0 left-full w-1/2 h-full bg-gradient-to-r from-black to-transparent hidden lg:block"></div>
             <div className="text-white text-3xl lg:text-5xl font-bold leading-none">
               {videoTitle}
             </div>

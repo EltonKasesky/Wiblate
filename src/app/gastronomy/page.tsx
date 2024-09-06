@@ -1,6 +1,7 @@
 import Header from "@/components/header/header";
 import Gastronomy from "@/components/gastronomy/Gastronomy";
 import Footer from "@/components/footer/footer";
+import Copyright from "@/components/footer/copyright";
 
 export default function EventsPage(){
     return (
@@ -8,6 +9,7 @@ export default function EventsPage(){
             <Header />
             <Gastronomy />
             <Footer />
+            <Copyright />
         </>
     )
 }
