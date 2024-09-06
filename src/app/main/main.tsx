@@ -48,6 +48,13 @@ export default function Main() {
 
   return (
     <>
+      <Script
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossOrigin="anonymous"
+        strategy='beforeInteractive'
+      />
+      
       <div className='py-8'>
         <PrimarySlide />
         <Gender />
@@ -56,13 +63,6 @@ export default function Main() {
         <Hardware id="hardware-section" />
         <NetworkSlide />
         <NetworkStructure id="network-structure" />
-
-        <Script
-          src="https://code.jquery.com/jquery-3.7.1.js"
-          integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-          crossOrigin="anonymous"
-          strategy='beforeInteractive'
-        />
       </div>
     </>
   );

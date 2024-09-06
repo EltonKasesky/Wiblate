@@ -35,6 +35,13 @@ export default function Events() {
 
     return (
         <>
+            <Script
+                src="https://code.jquery.com/jquery-3.7.1.js"
+                integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+                crossOrigin="anonymous"
+                strategy='beforeInteractive'
+            />
+
             <section className="flex flex-col w-full h-full pb-20">
                 <section className="flex justify-center items-center relative w-full h-gender-pages-image-mobile overflow-hidden lg:h-gender-pages-image">
                     <BackButton />
@@ -50,13 +57,6 @@ export default function Events() {
                 <AnnounceEvents />
                 <Hardware id="hardware-section" />
             </section>
-
-            <Script
-                src="https://code.jquery.com/jquery-3.7.1.js"
-                integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-                crossOrigin="anonymous"
-                strategy='beforeInteractive'
-            />
         </>
     );
 }
