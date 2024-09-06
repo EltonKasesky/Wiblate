@@ -3,8 +3,6 @@ import "@/app/globals.css";
 import "../../public/styles/main.css";
 import { cairo } from '@/app/fonts';
 import '../../public/styles/jquerygrid.css';
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
 import { AuthProvider } from "@/providers/auth-provider";
 
 export const metadata: Metadata = {
