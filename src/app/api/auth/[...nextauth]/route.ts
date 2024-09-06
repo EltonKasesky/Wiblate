@@ -4,15 +4,16 @@ import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { query } from '@/lib/db';
 import bcrypt from 'bcryptjs';
+import { v4 as uuidv4 } from 'uuid';
 
 const authOptions: NextAuthOptions = {
   providers: [
-    // Google Provider
+    
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
-    // Provider de credenciais existente
+    
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
@@ -25,19 +26,19 @@ const authOptions: NextAuthOptions = {
         }
         
         try {
-          // Busca o usuário no banco de dados pelo email
+          
           const result = await query('SELECT * FROM users WHERE email = $1', [credentials.email]);
           console.log('[QUERY_RESULT]:', result);
           
           const user = result[0];
           
-          // Se o usuário não for encontrado, retorne null
+          
           if (!user) {
             console.log('[USER_NOT_FOUND]');
             return null;
           }
           
-          // Verifica a senha usando bcrypt
+          
           const isValidPassword = await bcrypt.compare(credentials.password, user.password);
           console.log('[PASSWORD_VALIDATION]:', isValidPassword);
           
@@ -46,12 +47,12 @@ const authOptions: NextAuthOptions = {
             return null;
           }
           
-          // Retorne o usuário encontrado
+          
           return {
             id: user.id.toString(),
             email: user.email as string,
             name: user.name as string,
-            cargo: user.cargo // Inclua cargo aqui
+            cargo: user.cargo 
           };
         } catch (error) {
           console.error('Error authorizing user:', error);
@@ -64,26 +65,25 @@ const authOptions: NextAuthOptions = {
     async signIn({ user, account, profile }) {
       if (account?.provider === 'google') {
         try {
-          // Verificar se o usuário já existe no banco de dados
           const result = await query('SELECT * FROM users WHERE email = $1', [user?.email ?? '']);
           let dbUser = result[0];
-
-          // Se o usuário não existir, crie um novo usuário com o cargo padrão 'Membro'
+  
+          
           if (!dbUser && user) {
             const newUser = await query(
               `INSERT INTO users (id, email, name, cargo) VALUES ($1, $2, $3, $4) RETURNING *`,
-              [user.id ?? '', user.email ?? '', user.name ?? '', 'Membro']
+              [uuidv4(), user.email ?? '', user.name ?? '', 'Membro']
             );
             dbUser = newUser[0];
           }
-
-          // Adicionar o cargo ao objeto user
+  
+          
           if (user && dbUser) {
             user.cargo = dbUser.cargo;
           }
           return true;
         } catch (error) {
-          console.error('Error during Google sign in:', error);
+          console.error('Erro durante o login com Google:', error);
           return false;
         }
       }
