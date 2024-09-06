@@ -139,6 +139,9 @@ const config: Config = {
         'terms-privacy': '1400px',
         'gender-item': '1550px'
       },
+      ringColor: {
+        'main-color': '#2974f7'
+      },
     },
   },
   plugins: [],
