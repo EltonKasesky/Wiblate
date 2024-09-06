@@ -10,7 +10,7 @@ export default function NavFooter() {
                     <ul className="footer-menu">
                         <li>
                             <Link href="/" className="nav-footer">
-                                Gêneros
+                                Início
                             </Link>
                         </li>
                         <li>
@@ -36,22 +36,22 @@ export default function NavFooter() {
                     <p><b>Browse</b></p>
                     <ul className="footer-menu">
                         <li>
-                            <Link href="/about" className="nav-footer">
+                            <Link href="#" className="nav-footer">
                                 About us
                             </Link>
                         </li>
                         <li>
-                            <Link href="/profile" className="nav-footer">
+                            <Link href="#" className="nav-footer">
                                 My profile
                             </Link>
                         </li>
                         <li>
-                            <Link href="/pricing" className="nav-footer">
+                            <Link href="#" className="nav-footer">
                                 Pricing plans
                             </Link>
                         </li>
                         <li>
-                            <Link href="/contacts" className="nav-footer">
+                            <Link href="#" className="nav-footer">
                                 Contacts
                             </Link>
                         </li>

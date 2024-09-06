@@ -30,7 +30,7 @@ export default function Gender() {
                     }}
                 >
                     <SwiperSlide className="flex justify-center items-center p-2">
-                        <section className="gender-content">
+                        <div className="gender-content">
                             <Link href='/events'>
                                 <div className='flex justify-center items-center h-gender-item bg-gender-bg'>
                                     <div className='flex flex-col items-center justify-center w-full gap-3'>
@@ -39,7 +39,7 @@ export default function Gender() {
                                     </div>
                                 </div>
                             </Link>
-                        </section>
+                        </div>
                     </SwiperSlide>
                     <SwiperSlide className="flex justify-center items-center p-2">
                         <div className="gender-content">
