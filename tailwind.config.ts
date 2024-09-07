@@ -142,6 +142,16 @@ const config: Config = {
       ringColor: {
         'main-color': '#2974f7'
       },
+      keyframes: {
+        skeletonFade: {
+          '0%': { opacity: '0.4' },
+          '50%': { opacity: '1' },
+          '100%': { opacity: '0.4' },
+        },
+      },
+      animation: {
+        'skeleton-fade': 'skeletonFade 2s ease-in-out infinite',
+      },
     },
   },
   plugins: [],

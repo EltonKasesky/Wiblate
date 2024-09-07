@@ -2,14 +2,15 @@ import { useState, FormEvent, useRef } from "react";
 import TableSelectModal from "./TableSelectModal";
 import FeedbackModalInsert from "./FeedbackModalInsert";
 import Image from "next/image";
+import FileInput from "./FileInput";
+import TextInput from "./TextInput";
+import TableSelectButton from "./TableSelectButton";
 
 export default function Insert() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedTable, setSelectedTable] = useState<string>('');
   const [feedbackMessage, setFeedbackMessage] = useState('');
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
-  const [catalogName, setCatalogName] = useState('Selecione ou arraste seu arquivo');
-  const [backgroundName, setBackgroundName] = useState('Selecione ou arraste seu arquivo');
   const formRef = useRef<HTMLFormElement>(null);
 
   const tableMap = {
@@ -35,17 +36,6 @@ export default function Insert() {
       };
       reader.onerror = (error) => reject(error);
     });
-
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>, setFileName: (name: string) => void) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setFileName(file.name);
-    }
-  };
-
-  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-  };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -78,8 +68,6 @@ export default function Insert() {
 
       if (formRef.current) {
         formRef.current.reset();
-        setCatalogName('Selecione ou arraste seu arquivo');
-        setBackgroundName('Selecione ou arraste seu arquivo');
       }
 
       setSelectedTable('');
@@ -130,78 +118,37 @@ export default function Insert() {
                 ref={formRef}
               >
                 <div className="flex flex-col gap-insert h-full">
-                  <div className="flex flex-col">
-                    <label htmlFor="select">Selecione qual a tabela</label>
-                    <button
-                      type="button"
-                      className="border-2 border-dashed border-text-color bg-transparent rounded-sm py-1 px-4 text-text-color"
-                      onClick={openModal}
-                    >
-                      {displayTableName(selectedTable)}
-                    </button>
-                  </div>
-                  <div className="input-id-insert">
-                    <label htmlFor="idYoutube">ID do video</label>
-                    <input
-                      className="input-insert"
-                      type="text"
-                      name="idYoutube"
-                      id="idYoutube"
-                      placeholder="Ex: 8uQqaauS5UA"
-                      required
-                    />
-                  </div>
-                  <div className="input-id-insert">
-                    <label htmlFor="creators">Nome dos criadores</label>
-                    <input
-                      className="input-insert"
-                      type="text"
-                      name="creators"
-                      id="creators"
-                      placeholder="Ex: Elton Kasesky, Pedro Cler"
-                      required
-                    />
-                  </div>
-                  <div className="input-file">
-                    <label htmlFor="catalog">Imagem de catálogo</label>
-                    <div
-                      className="file-drop-insert"
-                      id="catalog-drop"
-                      onDragOver={handleDragOver}
-                    >
-                      <input
-                        type="file"
-                        name="catalog"
-                        id="catalog"
-                        className="input-insert input-file-hidden-insert"
-                        onChange={(e) => handleFileChange(e, setCatalogName)}
-                        required
-                      />
-                      <span className="flex items-center justify-start gap-2" id="dropText">
-                        <i className="bx bx-import"></i>{catalogName}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="input-file">
-                    <label htmlFor="background">Imagem de Fundo</label>
-                    <div
-                      className="file-drop-insert"
-                      id="background-drop"
-                      onDragOver={handleDragOver}
-                    >
-                      <input
-                        type="file"
-                        name="background"
-                        id="background"
-                        className="input-insert input-file-hidden-insert"
-                        onChange={(e) => handleFileChange(e, setBackgroundName)}
-                        required
-                      />
-                      <span className="flex items-center justify-start gap-2" id="dropText">
-                        <i className="bx bx-import"></i>{backgroundName}
-                      </span>
-                    </div>
-                  </div>
+                  <TableSelectButton
+                    selectedTable={selectedTable}
+                    openModal={openModal}
+                    displayTableName={displayTableName}
+                  />
+                  <TextInput
+                    id="idYoutube"
+                    label="ID do video"
+                    name="idYoutube"
+                    placeholder="Ex: 8uQqaauS5UA"
+                    required
+                  />
+                  <TextInput
+                    id="creators"
+                    label="Nome dos criadores"
+                    name="creators"
+                    placeholder="Ex: Elton Kasesky, Pedro Cler"
+                    required
+                  />
+                  <FileInput
+                    id="catalog"
+                    label="Imagem de catálogo"
+                    name="catalog"
+                    required
+                  />
+                  <FileInput
+                    id="background"
+                    label="Imagem de Fundo"
+                    name="background"
+                    required
+                  />
                   <button
                     type="submit"
                     className="border-none rounded-lg p-2 font-medium bg-main-color text-text-color transition-opacity duration-50 cursor-pointer hover:opacity-70"
@@ -229,4 +176,4 @@ export default function Insert() {
       />
     </>
   );
-}
+};

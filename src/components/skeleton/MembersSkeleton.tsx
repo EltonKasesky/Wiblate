@@ -5,15 +5,16 @@ interface SkeletonProps {
 }
 
 const Skeleton: React.FC<SkeletonProps> = ({ className }) => (
-  <div aria-live="polite" aria-busy="true" className={className}>
-    <span className="inline-flex w-full animate-pulse select-none rounded-md bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 leading-none">
+  <div aria-live="polite" aria-busy="true" className={`${className} relative overflow-hidden`}>
+    <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-100 animate-skeleton-fade" />
+    <span className="inline-flex w-full rounded-md bg-gray-100" style={{ height: '100%' }}>
       {/* Placeholder content */}
     </span>
   </div>
 );
 
 const SVGSkeleton: React.FC<SkeletonProps> = ({ className }) => (
-  <svg className={`${className} animate-pulse rounded bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800`} />
+  <svg className={`${className} animate-skeleton-fade rounded bg-gray-100`} />
 );
 
 export { Skeleton, SVGSkeleton };
