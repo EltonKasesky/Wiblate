@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 interface GoogleLoginButtonProps {
-  clearError: () => void; 
+  clearError: () => void;
 }
 
 const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({ clearError }) => {
@@ -13,7 +13,7 @@ const GoogleLoginButton: React.FC<GoogleLoginButtonProps> = ({ clearError }) => 
 
   const handleLogin = async () => {
     setLoading(true);
-    clearError();  
+    clearError();
     try {
       await signIn('google', { callbackUrl: '/' });
     } catch (error) {

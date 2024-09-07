@@ -8,6 +8,8 @@ export default function Insert() {
   const [selectedTable, setSelectedTable] = useState<string>('');
   const [feedbackMessage, setFeedbackMessage] = useState('');
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
+  const [catalogName, setCatalogName] = useState('Selecione ou arraste seu arquivo');
+  const [backgroundName, setBackgroundName] = useState('Selecione ou arraste seu arquivo');
   const formRef = useRef<HTMLFormElement>(null);
 
   const tableMap = {
@@ -33,6 +35,17 @@ export default function Insert() {
       };
       reader.onerror = (error) => reject(error);
     });
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>, setFileName: (name: string) => void) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setFileName(file.name);
+    }
+  };
+
+  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
+  };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -65,6 +78,8 @@ export default function Insert() {
 
       if (formRef.current) {
         formRef.current.reset();
+        setCatalogName('Selecione ou arraste seu arquivo');
+        setBackgroundName('Selecione ou arraste seu arquivo');
       }
 
       setSelectedTable('');
@@ -79,12 +94,12 @@ export default function Insert() {
   const closeModal = () => setIsOpen(false);
 
   const handleTableSelect = (table: string) => {
-    const tableValue = tableMap[table as keyof typeof tableMap]; // Obter o valor da tabela a partir do rótulo
+    const tableValue = tableMap[table as keyof typeof tableMap];
     if (tableValue) {
       setSelectedTable(tableValue);
       closeModal();
     }
-  };  
+  };
 
   const displayTableName = (value: string): string => {
     const entry = Object.entries(tableMap).find(([key, val]) => val === value);
@@ -149,31 +164,41 @@ export default function Insert() {
                   </div>
                   <div className="input-file">
                     <label htmlFor="catalog">Imagem de catálogo</label>
-                    <div className="file-drop-insert" id="catalog-drop">
+                    <div
+                      className="file-drop-insert"
+                      id="catalog-drop"
+                      onDragOver={handleDragOver}
+                    >
                       <input
                         type="file"
                         name="catalog"
                         id="catalog"
                         className="input-insert input-file-hidden-insert"
+                        onChange={(e) => handleFileChange(e, setCatalogName)}
                         required
                       />
-                      <span className="drop-text-insert" id="dropText">
-                        <i className="bx bx-import"></i> Selecione seu arquivo
+                      <span className="flex items-center justify-start gap-2" id="dropText">
+                        <i className="bx bx-import"></i>{catalogName}
                       </span>
                     </div>
                   </div>
                   <div className="input-file">
                     <label htmlFor="background">Imagem de Fundo</label>
-                    <div className="file-drop-insert" id="background-drop">
+                    <div
+                      className="file-drop-insert"
+                      id="background-drop"
+                      onDragOver={handleDragOver}
+                    >
                       <input
                         type="file"
                         name="background"
                         id="background"
                         className="input-insert input-file-hidden-insert"
+                        onChange={(e) => handleFileChange(e, setBackgroundName)}
                         required
                       />
-                      <span className="drop-text-insert" id="dropText">
-                        <i className="bx bx-import"></i> Selecione seu arquivo
+                      <span className="flex items-center justify-start gap-2" id="dropText">
+                        <i className="bx bx-import"></i>{backgroundName}
                       </span>
                     </div>
                   </div>
