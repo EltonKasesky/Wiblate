@@ -1,5 +1,6 @@
 import React from 'react';
 import BackButtonTermsPrivacy from '../ui/BackButtonTermsPrivacy';
+import Link from 'next/link';
 
 export default function Privacy(){
   return (
@@ -9,7 +10,7 @@ export default function Privacy(){
             <h1 className="text-2xl font-bold mb-4">Política de Privacidade</h1>
 
             <p>
-                A sua privacidade é importante para nós. É política do site XT Stream respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site <a href="https://xtstream.com.br" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">XT Stream</a>, e outros sites que possuímos e operamos.
+                A sua privacidade é importante para nós. É política do site RoyalTV respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site <Link href="https://xtstream.com.br" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">RoyalTV</Link>, e outros sites que possuímos e operamos.
             </p>
 
             <p>
@@ -37,15 +38,15 @@ export default function Privacy(){
             </p>
 
             <p>
-                O uso continuado de nosso site será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais. Se você tiver alguma dúvida sobre como lidamos com dados do usuário e informações pessoais, entre em contato conosco através <a href="https://xtstream/contato.com.br" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">do nosso formulário</a>.
+                O uso continuado de nosso site será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais. Se você tiver alguma dúvida sobre como lidamos com dados do usuário e informações pessoais, entre em contato conosco através <Link href="/contact" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">do nosso formulário</Link>.
             </p>
 
             <p>
-                Nossa política é atualizada de forma constante. O titular de dados está ciente de que o conteúdo desta Política de Privacidade pode ser alterado a critério do site XT Stream, independentemente de aviso ou notificação. Em caso de alteração, as modificações produzem todos os efeitos a partir do momento da disponibilização no site.
+                Nossa política é atualizada de forma constante. O titular de dados está ciente de que o conteúdo desta Política de Privacidade pode ser alterado a critério do site RoyalTV, independentemente de aviso ou notificação. Em caso de alteração, as modificações produzem todos os efeitos a partir do momento da disponibilização no site.
             </p>
 
             <p>
-                O site XT Stream não se responsabiliza caso você venha a utilizar seus dados de forma incorreta ou inverídica, ficando excluído de qualquer responsabilidade neste sentido.
+                O site RoyalTV não se responsabiliza caso você venha a utilizar seus dados de forma incorreta ou inverídica, ficando excluído de qualquer responsabilidade neste sentido.
             </p>
 
             <h2 className="text-xl font-bold mt-6 mb-4">Política de Cookies</h2>
@@ -97,7 +98,7 @@ export default function Privacy(){
 
             <h2 className="text-xl font-bold mt-6 mb-4">Direitos do titular de dados</h2>
             <p>
-                O titular de dados pessoais possui o direito de solicitar do site XT Stream, através do canal específico de tratamento, informações referentes aos seus dados.
+                O titular de dados pessoais possui o direito de solicitar do site RoyalTV, através do canal específico de tratamento, informações referentes aos seus dados.
             </p>
             <p>
                 Os pedidos serão analisados conforme previsto em legislação vigente dentro de um prazo de 72 horas, salvo determinação legal.
