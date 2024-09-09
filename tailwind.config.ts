@@ -19,7 +19,7 @@ const config: Config = {
         'message-bg-error': '#f8d7da',
         'insert-modal-bg': '#181616',
         'main-color': '#2974f7',
-        'gender-bg': '#25262A'
+        'gender-bg': '#25262A',
       },
       maxWidth: {
         '150px': '150px',

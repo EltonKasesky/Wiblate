@@ -4,15 +4,15 @@ import { query } from '@/lib/db';
 
 export async function POST(req: Request) {
   try {
-    const { name, email, tel, message } = await req.json();
+    const { name, email, tel, message, subject } = await req.json();
 
     const sql = `
-      INSERT INTO contact (name, email, tel, message)
-      VALUES ($1, $2, $3, $4)
+      INSERT INTO contact (name, email, tel, message, subject)
+      VALUES ($1, $2, $3, $4, $5)
       RETURNING id
     `;
 
-    const params = [name, email, tel, message];
+    const params = [name, email, tel, message, subject];
     await query(sql, params);
 
     return NextResponse.json({ success: true, message: 'Contato enviado com sucesso!' });

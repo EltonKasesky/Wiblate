@@ -323,7 +323,11 @@
 
   /* CONTACT */
   .contact-input {
-    @apply mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-main-color focus:border-main-color sm:text-sm;
+    @apply mt-1 block w-full px-3 py-2 border border-gray-300 bg-box-bg text-white rounded-md shadow-sm focus:outline-none focus:ring-main-color focus:border-main-color sm:text-sm;
+  }
+
+  .contact-label {
+    @apply block text-sm font-medium text-white;
   }
 }
 

@@ -115,7 +115,7 @@ const Members = () => {
         placeholder="Buscar por nome ou email"
         value={searchTerm}
         onChange={handleSearch}
-        className="mb-4 p-2 border border-gray-300 rounded w-full text-black"
+        className="mb-4 p-2 border border-gray-300 bg-black rounded w-full text-white"
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {loading
@@ -132,7 +132,7 @@ const Members = () => {
                   <select
                     value={updatedCargos[member.id] || member.cargo}
                     onChange={(e) => handleCargoChange(member.id, e.target.value)}
-                    className="bg-gray-100 border border-gray-300 rounded px-2 py-1 w-full text-black cursor-pointer"
+                    className="bg-box-bg border border-gray-300 rounded px-2 py-1 w-full text-white cursor-pointer"
                   >
                     <option value="Membro">Membro</option>
                     <option value="Produtor">Produtor</option>

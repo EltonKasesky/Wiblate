@@ -9,6 +9,7 @@ export default function ContactForm() {
         email: "",
         tel: "",
         message: "",
+        subject: ""
     });
     const [loading, setLoading] = useState(false);
     const [feedbackMessage, setFeedbackMessage] = useState("");
@@ -44,7 +45,7 @@ export default function ContactForm() {
             });
 
             if (res.ok) {
-                setFormData({ name: "", email: "", tel: "", message: "" });
+                setFormData({ name: "", email: "", tel: "", message: "", subject: ""});
                 setFeedbackMessage("Mensagem enviada com sucesso!");
             } else {
                 setFeedbackMessage("Erro ao enviar a mensagem.");
@@ -63,11 +64,11 @@ export default function ContactForm() {
 
     return (
         <section className="container pt-24 pb-16 mx-auto px-2 mt-20 mb-10 sm:px-6 md:my-0 lg:px-8">
-            <div className="max-w-lg mx-auto bg-white p-8 shadow-md rounded-md text-black">
+            <div className="max-w-lg mx-auto bg-box-bg p-8 shadow-md rounded-md text-white">
                 <h2 className="text-3xl font-semibold mb-6 text-center">Contato</h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                        <label htmlFor="name" className="contact-label">
                             Nome
                         </label>
                         <input
@@ -83,7 +84,7 @@ export default function ContactForm() {
                         />
                     </div>
                     <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                        <label htmlFor="email" className="contact-label">
                             Email
                         </label>
                         <input
@@ -99,7 +100,7 @@ export default function ContactForm() {
                         />
                     </div>
                     <div>
-                        <label htmlFor="tel" className="block text-sm font-medium text-gray-700">
+                        <label htmlFor="tel" className="contact-label">
                             Número de Celular
                         </label>
                         <input
@@ -115,7 +116,23 @@ export default function ContactForm() {
                         />
                     </div>
                     <div>
-                        <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                        <label htmlFor="subject" className="contact-label">
+                            Assunto do e-mail
+                        </label>
+                        <input
+                            type="text"
+                            name="subject"
+                            id="subject"
+                            value={formData.subject}
+                            onChange={handleChange}
+                            placeholder="Insira o assunto"
+                            maxLength={100}
+                            required
+                            className="contact-input"
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="message" className="contact-label">
                             Mensagem
                         </label>
                         <textarea
