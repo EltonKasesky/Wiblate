@@ -1,5 +1,5 @@
 import Header from "@/components/header/header";
-import Privacy from "@/components/privacy/privacy";
+import Privacy from "@/components/privacy/Privacy";
 import Footer from "@/components/footer/footer";
 import Copyright from "@/components/footer/copyright";
 
