@@ -60,13 +60,12 @@ export default function PrimarySlide() {
                     <SwiperSlide key={index}>
                         <div className="relative w-full h-full cursor-pointer">
                             <Image
-                                src={`data:image/jpeg;base64,${slide.catalog}`} // Usando o campo catalog
+                                src={`data:image/jpeg;base64,${slide.catalog}`}
                                 alt={`Slide ${index + 1}`}
-                                layout="fill"
-                                objectFit="cover"
+                                fill
                                 priority
-                                unoptimized={true} // Desabilita otimização para base64
-                                className="brightness-100"
+                                className="brightness-100 object-cover"
+                                style={{ objectFit: 'cover' }}
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-75"></div>
                         </div>

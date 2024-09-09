@@ -6,7 +6,14 @@ export default function NetworkSlide() {
       {/* CLOUD SLIDE SECTION */}
       <section className="section">
         <div className='hero-slide-item'>
-          <Image src='/slides/network.jpg' alt='Wanda Vision' width={1920} height={1080} />
+          <Image
+            src='/slides/network.jpg'
+            alt='Slide'
+            fill
+            priority
+            className="brightness-100 object-cover"
+            style={{ objectFit: 'cover' }}
+          />
           <div className='overlay'></div>
           <div className='hero-slide-item-content'>
             <div className='item-content-wraper'>

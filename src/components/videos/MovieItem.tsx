@@ -28,16 +28,16 @@ const MovieItem: React.FC<MovieItemProps> = ({ videoData }) => {
     }
   };
 
-  console.log(videoData.creators);
-
   return (
     <div className="item" onClick={handleClick}>
       <div className="relative w-full h-100 overflow-hidden shadow-md cursor-pointer rounded-lg">
-        <Image 
-          src={`data:image/jpeg;base64,${videoData.catalog}`} 
-          alt={videoData.title} 
-          layout="fill" 
-          objectFit="cover"
+        <Image
+          src={`data:image/jpeg;base64,${videoData.catalog}`}
+          alt={videoData.title}
+          fill
+          priority
+          className="brightness-100 object-cover"
+          style={{ objectFit: 'cover' }}
         />
         <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-40 text-white p-2">
           <div className="text-xl font-bold">{videoData.title}</div>

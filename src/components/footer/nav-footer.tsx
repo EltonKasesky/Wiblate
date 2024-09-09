@@ -97,6 +97,7 @@ export default function NavFooter() {
                                     width={200}
                                     height={60}
                                     className="inline-block transition-transform duration-200 ease-in-out hover:translate-x-1"
+                                    priority
                                 />
                             </Link>
                         </li>
@@ -108,6 +109,7 @@ export default function NavFooter() {
                                     width={200}
                                     height={60} 
                                     className="inline-block transition-transform duration-200 ease-in-out hover:translate-x-1"
+                                    priority
                                 />
                             </Link>
                         </li>
