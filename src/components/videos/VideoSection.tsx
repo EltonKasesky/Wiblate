@@ -87,7 +87,7 @@ const VideoSection: React.FC<VideoSectionProps> = ({ sectionId, endpoint }) => {
           600: { slidesPerView: 2 },
           800: { slidesPerView: 3 },
           1080: { slidesPerView: 4 },
-          1440: { slidesPerView: 5}
+          1450: { slidesPerView: 5}
         }}
       >
         {loading ? (
