@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import dynamic from 'next/dynamic';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import MovieItemSkeleton from '../skeleton/MovieItemSkeleton';
 import MovieItem from './MovieItem';
+import { Navigation, Pagination } from 'swiper/modules';
 
 interface VideoData {
   id: string;
@@ -17,10 +21,6 @@ interface VideoSectionProps {
   sectionId: string;
   endpoint: string;
 }
-
-const OwlCarousel = dynamic(() => import('react-owl-carousel'), {
-  ssr: false,
-});
 
 const VideoSection: React.FC<VideoSectionProps> = ({ sectionId, endpoint }) => {
   const [videos, setVideos] = useState<VideoData[]>([]);
@@ -76,28 +76,34 @@ const VideoSection: React.FC<VideoSectionProps> = ({ sectionId, endpoint }) => {
 
   return (
     <div className="videos-carousel" id={sectionId}>
-      <OwlCarousel
-        className="owl-carousel owl-theme"
-        loop
-        nav
-        navText={["<i className='bx bx-chevron-left'></i>", "<i className='bx bx-chevron-right'></i>"]}
-        autoplayHoverPause
-        responsive={{
-          0: { items: 1 },
-          600: { items: 3 },
-          1000: { items: 5 }
+      <Swiper
+        modules={[Navigation, Pagination]}
+        loop={true}
+        navigation={true}
+        pagination={{ clickable: true }}
+        spaceBetween={10}
+        breakpoints={{
+          0: { slidesPerView: 1 },
+          600: { slidesPerView: 2 },
+          800: { slidesPerView: 3 },
+          1080: { slidesPerView: 4 },
+          1440: { slidesPerView: 5}
         }}
       >
         {loading ? (
           Array.from({ length: 5 }).map((_, index) => (
-            <MovieItemSkeleton key={index} />
+            <SwiperSlide key={index}>
+              <MovieItemSkeleton />
+            </SwiperSlide>
           ))
         ) : (
           videos.map(video => (
-            <MovieItem key={video.uniqueKey} videoData={video} />
+            <SwiperSlide key={video.uniqueKey}>
+              <MovieItem videoData={video} />
+            </SwiperSlide>
           ))
         )}
-      </OwlCarousel>
+      </Swiper>
     </div>
   );
 };
