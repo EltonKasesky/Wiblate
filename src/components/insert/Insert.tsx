@@ -14,7 +14,7 @@ export default function Insert() {
   const formRef = useRef<HTMLFormElement>(null);
 
   const tableMap = {
-    Destaque: 'primaryslide',
+    Banner: 'banner',
     'Lógica de Programação': 'logic',
     'Banco de Dados': 'databank',
     'Estrutura de Rede': 'networkstructure',

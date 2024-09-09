@@ -14,8 +14,8 @@ export const POST = async (req: Request) => {
     let tableName: string;
 
     switch (select) {
-      case 'primaryslide':
-        tableName = 'primaryslide';
+      case 'banner':
+        tableName = 'banner';
         break;
       case 'logic':
         tableName = 'logic';

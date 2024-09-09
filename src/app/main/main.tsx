@@ -1,4 +1,4 @@
-import PrimarySlide from '../../components/main/PrimarySlide';
+import Banner from '@/components/main/Banner';
 import Gender from '@/components/main/Gender';
 import NetworkStructure from '../../components/main/NetworkStructure';
 import Dados from '../../components/main/DatabaseSection';
@@ -10,7 +10,7 @@ export default function Main() {
   return (
     <>
       <div className='py-8'>
-        <PrimarySlide />
+        <Banner />
         <Gender />
         <ProgrammingLogic id="logic" />
         <Dados id="database-section" />
