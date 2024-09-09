@@ -60,26 +60,26 @@ export default function NavFooter() {
             </div>
             <div className="col-3 col-md-6 col-sm-6">
                 <div className="mt-5">
-                    <p><b>Equipe</b></p>
+                    <p><b>Browse</b></p>
                     <ul className="footer-menu">
                         <li>
-                            <Link href="https://p-cler.github.io/PortfolioCler/" className="nav-footer" target="_blank" rel="noopener noreferrer">
-                                Pedro Cler
+                            <Link href="#" className="nav-footer">
+                                About us
                             </Link>
                         </li>
                         <li>
-                            <Link href="https://github.com/eltonkasesky" className="nav-footer" target="_blank" rel="noopener noreferrer">
-                                Elton Kasesky
+                            <Link href="#" className="nav-footer">
+                                My profile
                             </Link>
                         </li>
                         <li>
-                            <Link href="#" className="nav-footer" target="_blank" rel="noopener noreferrer">
-                                Desenvolvedor
+                            <Link href="#" className="nav-footer">
+                                Pricing plans
                             </Link>
                         </li>
                         <li>
-                            <Link href="#" className="nav-footer" target="_blank" rel="noopener noreferrer">
-                                Desenvolvedor
+                            <Link href="#" className="nav-footer">
+                                Contacts
                             </Link>
                         </li>
                     </ul>
