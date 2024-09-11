@@ -58,7 +58,7 @@ export default function PrimarySlide() {
             >
                 {slides.map((slide, index) => (
                     <SwiperSlide key={index}>
-                        <div className="relative w-full h-full cursor-pointer">
+                        <div className="relative w-full h-full">
                             <Image
                                 src={`data:image/jpeg;base64,${slide.catalog}`}
                                 alt={`Slide ${index + 1}`}
