@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useSession } from "next-auth/react";
+import ContactInfo from "./ContactInfo";
 import FeedbackModalContact from "./FeedbackModalContact";
-import { Session } from "inspector/promises";
 
 export default function ContactForm() {
     const { data: session } = useSession();
@@ -36,7 +36,7 @@ export default function ContactForm() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        if(!session){
+        if (!session) {
             setFeedbackMessage("Erro ao enviar, você precisa realizar o login para enviar este formulário.")
             setIsModalOpen(true);
             return;
@@ -55,7 +55,7 @@ export default function ContactForm() {
             });
 
             if (res.ok) {
-                setFormData({ name: "", email: "", tel: "", message: "", subject: ""});
+                setFormData({ name: "", email: "", tel: "", message: "", subject: "" });
                 setFeedbackMessage("Mensagem enviada com sucesso!");
             } else {
                 setFeedbackMessage("Erro ao enviar a mensagem.");
@@ -73,8 +73,9 @@ export default function ContactForm() {
     };
 
     return (
-        <section className="container pt-24 pb-16 mx-auto px-2 mt-20 mb-10 sm:px-6 md:my-0 lg:px-8">
-            <div className="max-w-lg mx-auto bg-box-bg p-8 shadow-md rounded-md text-white">
+        <section className="flex items-center justify-center flex-wrap container pt-24 pb-16 mx-auto px-2 mt-20 mb-10 sm:px-6 md:my-0 lg:px-8">
+            <ContactInfo />
+            <section className="w-full max-w-md bg-box-bg p-8 shadow-md rounded-r-md text-white">
                 <h2 className="text-3xl font-semibold mb-6 text-center">Contato</h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
@@ -173,7 +174,7 @@ export default function ContactForm() {
                     closeModal={closeModal}
                     feedbackMessage={feedbackMessage}
                 />
-            </div>
+            </section>
         </section>
     );
 }

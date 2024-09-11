@@ -92,7 +92,7 @@ export default function NavFooter() {
                         <li>
                             <Link href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer">
                                 <Image 
-                                    src="/footer/google-play.png" 
+                                    src="/images/footer/google-play.png" 
                                     alt="Google Play" 
                                     width={200}
                                     height={60}
@@ -104,7 +104,7 @@ export default function NavFooter() {
                         <li>
                             <Link href="https://www.apple.com/br/app-store" target="_blank" rel="noopener noreferrer">
                                 <Image 
-                                    src="/footer/app-store.png" 
+                                    src="/images/footer/app-store.png" 
                                     alt="App Store" 
                                     width={200}
                                     height={60} 

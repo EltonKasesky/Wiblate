@@ -45,7 +45,8 @@ const config: Config = {
         'sign-up-image': '766px',
         'gender-pages-image-mobile': '500px',
         'gender-pages-image': '700px',
-        'gender-item': '208px'
+        'gender-item': '208px',
+        'contact-info': '664px'
       },
       width: {
         'social-item': '30px',

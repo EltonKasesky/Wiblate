@@ -44,9 +44,9 @@ export default function Header() {
               onClick={() => setMenuOpen(!menuOpen)}
             >
               {menuOpen ? (
-                <Image src="/header/close-menu.svg" width={30} height={30} alt="Close menu" />
+                <Image src="/images/header/close-menu.svg" width={30} height={30} alt="Close menu" />
               ) : (
-                <Image src="/header/open-menu.svg" width={30} height={30} alt="Open menu" />
+                <Image src="/images/header/open-menu.svg" width={30} height={30} alt="Open menu" />
               )}
             </button>
           </div>
