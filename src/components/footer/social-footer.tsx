@@ -7,8 +7,8 @@ export default function SocialFooter() {
                 <i className="bx bxl-facebook"></i>
             </Link>
 
-            <Link href="https://x.com" target="_blank" className="social-item ml-5">
-                <i className="bx bxl-twitter"></i>
+            <Link href="https://youtube.com" target="_blank" className="social-item ml-5">
+                <i className='bx bxl-youtube'></i>
             </Link>
             
             <Link href="https://www.instagram.com" target="_blank" className="social-item ml-5">

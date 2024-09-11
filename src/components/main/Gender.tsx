@@ -7,7 +7,7 @@ import Link from 'next/link';
 export default function Gender() {
     return (
         <section className="container flex justify-center items-center pt-5 w-full">
-            <div className="w-full">
+            <div className="w-full select-none">
                 <Swiper
                     spaceBetween={10}
                     slidesPerView={1}

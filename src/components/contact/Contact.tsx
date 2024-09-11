@@ -1,9 +1,12 @@
 'use client';
 
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 import FeedbackModalContact from "./FeedbackModalContact";
+import { Session } from "inspector/promises";
 
 export default function ContactForm() {
+    const { data: session } = useSession();
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -32,6 +35,13 @@ export default function ContactForm() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if(!session){
+            setFeedbackMessage("Erro ao enviar, você precisa realizar o login para enviar este formulário.")
+            setIsModalOpen(true);
+            return;
+        }
+
         setLoading(true);
         setFeedbackMessage("");
 

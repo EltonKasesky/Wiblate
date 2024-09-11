@@ -54,7 +54,7 @@ export default function PrimarySlide() {
                 pagination={{ clickable: true }}
                 effect="fade"
                 autoplay={{ delay: 5000, disableOnInteraction: false }}
-                className="h-[500px] md:h-[600px] lg:h-[700px]"
+                className="h-[500px] md:h-[600px] lg:h-[700px] select-none"
             >
                 {slides.map((slide, index) => (
                     <SwiperSlide key={index}>

@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import MovieItemSkeleton from '../skeleton/MovieItemSkeleton';
 import MovieItem from './MovieItem';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 
 interface VideoData {
   id: string;
@@ -75,12 +75,11 @@ const VideoSection: React.FC<VideoSectionProps> = ({ sectionId, endpoint }) => {
   }, [endpoint]);
 
   return (
-    <div className="videos-carousel" id={sectionId}>
+    <div className="videos-carousel select-none" id={sectionId}>
       <Swiper
-        modules={[Navigation, Pagination]}
+        modules={[Navigation]}
         loop={true}
         navigation={true}
-        pagination={{ clickable: true }}
         spaceBetween={10}
         breakpoints={{
           0: { slidesPerView: 1 },
