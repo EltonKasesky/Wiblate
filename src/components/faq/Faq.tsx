@@ -15,12 +15,12 @@ export default function FAQ() {
 
             <h2 className="text-xl font-semibold mt-6 mb-4">2. Como posso me cadastrar no RoyalTV?</h2>
             <p>
-                Para se cadastrar no RoyalTV, clique no botão "Cadastrar" no topo da página e siga os passos indicados. Você precisará fornecer informações básicas como nome, e-mail e criar uma senha. Após o cadastro, você terá acesso aos conteúdos disponíveis.
+                Para se cadastrar no RoyalTV, clique no botão &quot;Cadastrar&quot; no topo da página e siga os passos indicados. Você precisará fornecer informações básicas como nome, e-mail e criar uma senha. Após o cadastro, você terá acesso aos conteúdos disponíveis.
             </p>
 
             <h2 className="text-xl font-semibold mt-6 mb-4">3. Como posso recuperar minha senha?</h2>
             <p>
-                Caso tenha esquecido sua senha, clique em "Esqueci minha senha" na página de login. Um e-mail será enviado com instruções para redefinir sua senha.
+                Caso tenha esquecido sua senha, clique em &quot;Esqueci minha senha&quot; na página de login. Um e-mail será enviado com instruções para redefinir sua senha.
             </p>
 
             <h2 className="text-xl font-semibold mt-6 mb-4">4. Qual a política de privacidade do RoyalTV?</h2>
