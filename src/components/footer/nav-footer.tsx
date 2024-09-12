@@ -33,21 +33,21 @@ export default function NavFooter() {
             </div>
             <div className="col-3 col-md-6 col-sm-6">
                 <div className="mt-5">
-                    <p><b>Browse</b></p>
+                    <p><b>Utilidades</b></p>
                     <ul className="footer-menu">
                         <li>
-                            <Link href="#" className="nav-footer">
-                                About us
+                            <Link href="/faq" className="nav-footer">
+                                Duvidas Frequentes
                             </Link>
                         </li>
                         <li>
-                            <Link href="#" className="nav-footer">
-                                My profile
+                            <Link href="/terms" className="nav-footer">
+                                Termos de Uso
                             </Link>
                         </li>
                         <li>
-                            <Link href="#" className="nav-footer">
-                                Pricing plans
+                            <Link href="/privacy" className="nav-footer">
+                                Privacidade de Usuário
                             </Link>
                         </li>
                         <li>
@@ -60,26 +60,26 @@ export default function NavFooter() {
             </div>
             <div className="col-3 col-md-6 col-sm-6">
                 <div className="mt-5">
-                    <p><b>Browse</b></p>
+                    <p><b>Gênero</b></p>
                     <ul className="footer-menu">
                         <li>
-                            <Link href="#" className="nav-footer">
-                                About us
+                            <Link href="/events" className="nav-footer">
+                                Eventos
                             </Link>
                         </li>
                         <li>
-                            <Link href="#" className="nav-footer">
-                                My profile
+                            <Link href="/gastronomy" className="nav-footer">
+                                Gastronomia
                             </Link>
                         </li>
                         <li>
-                            <Link href="#" className="nav-footer">
-                                Pricing plans
+                            <Link href="/knowcity" className="nav-footer">
+                                Conheça Petrópolis
                             </Link>
                         </li>
                         <li>
-                            <Link href="#" className="nav-footer">
-                                Contacts
+                            <Link href="/news" className="nav-footer">
+                                Notícias
                             </Link>
                         </li>
                     </ul>

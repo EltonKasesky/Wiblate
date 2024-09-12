@@ -46,7 +46,7 @@ export default function ContactInfo(){
                             <div>
                                 <h3 className="text-lg font-semibold text-white">FAQ - Perguntas Frequentes</h3>
                                 <p className="text-gray-400">Explore as perguntas frequentes da RoyalTV para encontrar respostas rápidas e úteis.</p>
-                                <Link href='/' className="text-main-color hover:underline">Acessar FAQ</Link>
+                                <Link href='/faq' className="text-main-color hover:underline">Acessar FAQ</Link>
                             </div>
                         </div>
                     </div>

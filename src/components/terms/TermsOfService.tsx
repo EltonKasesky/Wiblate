@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import BackButtonTermsPrivacy from "../ui/BackButtonTermsPrivacy";
 
-export default function TermsOfService(){
+export default function TermsOfService() {
     return (
         <section className="flex flex-col justify-center items-center text-left mt-12 w-full antialiased">
             <BackButtonTermsPrivacy />
