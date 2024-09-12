@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import BackButtonTermsPrivacy from '../ui/BackButtonTermsPrivacy';
 
 export default function FAQ() {
@@ -25,17 +26,17 @@ export default function FAQ() {
 
             <h2 className="text-xl font-semibold mt-6 mb-4">4. Qual a política de privacidade do RoyalTV?</h2>
             <p>
-                A privacidade dos nossos usuários é de extrema importância para nós. Consulte nossa <a href="/privacy" className="text-blue-500 hover:underline">Política de Privacidade</a> para saber mais sobre como lidamos com seus dados.
+                A privacidade dos nossos usuários é de extrema importância para nós. Consulte nossa <Link href="/privacy" className="text-blue-500 hover:underline">Política de Privacidade</Link> para saber mais sobre como lidamos com seus dados.
             </p>
 
             <h2 className="text-xl font-semibold mt-6 mb-4">5. Onde posso encontrar os Termos de Uso?</h2>
             <p>
-                Nossos Termos de Uso estão disponíveis na página <a href="/terms" className="text-blue-500 hover:underline">Termos de Uso</a>. Recomendamos que todos os usuários leiam com atenção para entender as regras e diretrizes de uso da plataforma.
+                Nossos Termos de Uso estão disponíveis na página <Link href="/terms" className="text-blue-500 hover:underline">Termos de Uso</Link>. Recomendamos que todos os usuários leiam com atenção para entender as regras e diretrizes de uso da plataforma.
             </p>
 
             <h2 className="text-xl font-semibold mt-6 mb-4">6. Como entro em contato com o suporte?</h2>
             <p>
-                Você pode entrar em contato com nosso suporte através do <a href="/contact" className="text-blue-500 hover:underline">formulário de contato</a> ou pelo e-mail suporte@royaltv.com. Estamos disponíveis para ajudá-lo com qualquer dúvida ou problema.
+                Você pode entrar em contato com nosso suporte através do <Link href="/contact" className="text-blue-500 hover:underline">formulário de contato</Link> ou pelo e-mail suporte@royaltv.com. Estamos disponíveis para ajudá-lo com qualquer dúvida ou problema.
             </p>
 
             <p className="mt-6">
