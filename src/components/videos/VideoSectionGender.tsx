@@ -2,19 +2,24 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
 import MovieItemSkeleton from '../skeleton/MovieItemSkeleton';
-import MovieItem from './MovieItem';
+import GenderItem from './GenderItem';
 
-// Definindo os tipos para os dados do vídeo
+// Definindo os tipos para os dados do evento
 interface VideoData {
   id: string;
-  title: string;
+  company_name: string;
   catalog: string;
-  background: string;
-  creators: string;
+  logo: string;
+  address: string;
+  phone: string;
+  city: string;
+  state: string;
+  description: string;
+  id_youtube: string;
   uniqueKey: string;
 }
 
-interface VideoSectionTopProps {
+interface GenderSectionProps {
   sectionId: string;
   endpoint: string;
 }
@@ -23,11 +28,11 @@ const OwlCarousel = dynamic(() => import('react-owl-carousel'), {
   ssr: false,
 });
 
-const VideoSectionTop: React.FC<VideoSectionTopProps> = ({ sectionId, endpoint }) => {
+const GenderSection: React.FC<GenderSectionProps> = ({ sectionId, endpoint }) => {
   const [videos, setVideos] = useState<VideoData[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchYouTubeData = async (videoId: string): Promise<{ id: string; title: string } | null> => {
+  const fetchYouTubeData = async (videoId: string): Promise<{ id: string } | null> => {
     const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
     try {
       const response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${API_KEY}&part=snippet`);
@@ -38,8 +43,7 @@ const VideoSectionTop: React.FC<VideoSectionTopProps> = ({ sectionId, endpoint }
       }
 
       return {
-        id: videoId,
-        title: videoData.snippet.title
+        id: videoId
       };
     } catch (error) {
       console.error('Error fetching YouTube data:', error);
@@ -47,15 +51,26 @@ const VideoSectionTop: React.FC<VideoSectionTopProps> = ({ sectionId, endpoint }
     }
   };
 
-  const loadVideos = async (endpoint: string) => {
+  const loadVideos = async () => {
     try {
       const response = await axios.get(endpoint);
       const videosData = response.data;
 
       const fetchPromises = videosData.map((video: any, index: number) =>
-        fetchYouTubeData(video.idyoutube).then(youtubeData => {
+        fetchYouTubeData(video.id_youtube).then(youtubeData => {
           if (youtubeData) {
-            return { ...youtubeData, catalog: video.catalog, background: video.background, creators: video.creators, uniqueKey: `${video.idyoutube}-${index}` };
+            return {
+              ...youtubeData,
+              company_name: video.company_name,
+              catalog: video.catalog,
+              logo: video.logo,
+              address: video.address,
+              phone: video.phone,
+              city: video.city,
+              state: video.state,
+              description: video.description,
+              uniqueKey: `${video.id_youtube}-${index}`
+            };
           }
           return null;
         })
@@ -72,7 +87,7 @@ const VideoSectionTop: React.FC<VideoSectionTopProps> = ({ sectionId, endpoint }
   };
 
   useEffect(() => {
-    loadVideos(endpoint);
+    loadVideos();
   }, [endpoint]);
 
   return (
@@ -96,7 +111,7 @@ const VideoSectionTop: React.FC<VideoSectionTopProps> = ({ sectionId, endpoint }
           ))
         ) : (
           videos.map(video => (
-            <MovieItem key={video.uniqueKey} videoData={video} />
+            <GenderItem key={video.uniqueKey} videoData={video} />
           ))
         )}
       </OwlCarousel>
@@ -104,4 +119,4 @@ const VideoSectionTop: React.FC<VideoSectionTopProps> = ({ sectionId, endpoint }
   );
 };
 
-export default VideoSectionTop;
+export default GenderSection;

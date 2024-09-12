@@ -22,6 +22,13 @@ export default function NavHeader({ userCargo, isLoggedIn }: NavHeaderProps) {
             </li>
           </>
         )}
+        {userCargo && ["Produtor", "Gerenciador", "Administrador"].includes(userCargo) && (
+          <>
+            <li className="nav-header">
+              <Link href="/Announce" className="cursor-pointer">Insert</Link>
+            </li>
+          </>
+        )}
         {userCargo && ["Gerenciador", "Administrador"].includes(userCargo) && (
           <>
             <li className="nav-header">

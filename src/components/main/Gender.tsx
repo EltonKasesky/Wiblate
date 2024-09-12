@@ -4,8 +4,22 @@ import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import Image from 'next/image';
 import Link from 'next/link';
+// import useLocation from '@/components/LocationDisplay'; // Hook para obter a localização
 
 export default function Gender() {
+    // const location = useLocation();
+    // const city = location?.city || "default";
+    // const state = location?.region || "default"; // Adiciona o estado
+    const city="Petrópolis";
+    const state="Rio de Janeiro";
+
+    const content = [
+        { page: 'events', imgSrc: '/images/gender/events.png', alt: 'Events' },
+        { page: 'gastronomy', imgSrc: '/images/gender/gastronomy.png', alt: 'Gastronomy' },
+        { page: 'knowcity', imgSrc: '/images/gender/knowcity.png', alt: 'Know City' },
+        { page: 'news', imgSrc: '/images/gender/news.png', alt: 'News' },
+    ];
+
     return (
         <section className="container flex justify-center items-center pt-5 w-full">
             <div className="w-full">
@@ -15,72 +29,28 @@ export default function Gender() {
                     pagination={{ clickable: true }}
                     modules={[Pagination]}
                     breakpoints={{
-                        640: {
-                            slidesPerView: 2,
-                        },
-                        768: {
-                            slidesPerView: 2,
-                        },
-                        1024: {
-                            slidesPerView: 3,
-                        },
-                        1280: {
-                            slidesPerView: 4,
-                        },
+                        640: { slidesPerView: 2 },
+                        768: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 },
+                        1280: { slidesPerView: 4 },
                     }}
                 >
-                    <SwiperSlide className="flex justify-center items-center p-2">
-                        <div className="gender-content">
-                            <Link href='/events'>
-                                <Image
-                                    src='/images/gender/events.png'
-                                    layout="fill"
-                                    objectFit="cover"
-                                    alt="Gender"
-                                    priority
-                                />
-                            </Link>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide className="flex justify-center items-center p-2">
-                        <div className="gender-content">
-                            <Link href='/gastronomy'>
-                                <Image
-                                    src='/images/gender/gastronomy.png'
-                                    layout="fill"
-                                    objectFit="cover"
-                                    alt="Gender"
-                                    priority
-                                />
-                            </Link>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide className="flex justify-center items-center p-2">
-                        <div className="gender-content">
-                            <Link href='/knowcity'>
-                                <Image
-                                    src='/images/gender/knowcity.png'
-                                    layout="fill"
-                                    objectFit="cover"
-                                    alt="Gender"
-                                    priority
-                                />
-                            </Link>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide className="flex justify-center items-center p-2">
-                        <div className="gender-content">
-                            <Link href='/news'>
-                                <Image
-                                    src='/images/gender/news.png'
-                                    layout="fill"
-                                    objectFit="cover"
-                                    alt="Gender"
-                                    priority
-                                />
-                            </Link>
-                        </div>
-                    </SwiperSlide>
+                    {content.map((item, index) => (
+                        <SwiperSlide key={index} className="flex justify-center items-center p-2">
+                            <div className="gender-content">
+                                {/* Passar a cidade e o estado via query string */}
+                                <Link href={`/${item.page}?city=${city}&state=${state}`}>
+                                    <Image
+                                        src={item.imgSrc}
+                                        layout="fill"
+                                        objectFit="cover"
+                                        alt={item.alt}
+                                        priority
+                                    />
+                                </Link>
+                            </div>
+                        </SwiperSlide>
+                    ))}
                 </Swiper>
             </div>
         </section>
