@@ -2,11 +2,10 @@ import Link from 'next/link';
 import DropdownMenuUser from './DropDownMenu';
 
 type NavHeaderProps = {
-  userCargo: string | null;
   isLoggedIn: boolean;
 };
 
-export default function NavHeader({ userCargo, isLoggedIn }: NavHeaderProps) {
+export default function NavHeader({ isLoggedIn }: NavHeaderProps) {
   return (
     <div className="hidden md:flex md:items-center md:ml-auto">
       <ul className="flex flex-row space-x-8 items-center">
@@ -16,16 +15,6 @@ export default function NavHeader({ userCargo, isLoggedIn }: NavHeaderProps) {
         <li className="nav-header">
           <Link href="/about" className="cursor-pointer">Sobre</Link>
         </li>
-        {userCargo && ["Produtor", "Gerenciador", "Administrador"].includes(userCargo) && (
-          <li className="nav-header">
-            <Link href="/insert" className="cursor-pointer">Insert</Link>
-          </li>
-        )}
-        {userCargo && ["Gerenciador", "Administrador"].includes(userCargo) && (
-          <li className="nav-header">
-            <Link href="/users" className="cursor-pointer">Gerenciar</Link>
-          </li>
-        )}
         <li>
           {isLoggedIn ? (
             <DropdownMenuUser />
