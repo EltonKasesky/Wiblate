@@ -30,7 +30,7 @@ export default function Header() {
               <span className="text-main-color">TV</span>
             </div>
           </Link>
-          <NavHeader userCargo={userCargo} isLoggedIn={status === 'authenticated'} />
+          <NavHeader isLoggedIn={status === 'authenticated'} />
           {/* HAMBURGER BUTTON FOR MOBILE */}
           <div className="md:hidden">
             <button
