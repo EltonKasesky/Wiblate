@@ -15,8 +15,8 @@ export default function Footer() {
                                 </Link>
                             </div>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae blanditiis architecto sunt dignissimos doloremque. 
-                                In ad obcaecati animi explicabo libero voluptas impedit, excepturi ratione cum. Esse iusto at quam minus!
+                            O RoyalTV é uma plataforma de streaming que oferece filmes, séries e eventos ao vivo. Além de entretenimento, 
+                            trazemos informações sobre eventos, gastronomia, turismo e notícias, tudo focado em Petrópolis. Descubra o melhor da cidade com a gente!
                             </p>
                             <SocialFooter />
                         </div>
