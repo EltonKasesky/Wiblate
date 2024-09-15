@@ -47,7 +47,7 @@ export default function Header() {
         </div>
 
         {/* NAV MENU MOBILE */}
-        <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} userCargo={userCargo} status={status} isLoggedIn={status === 'authenticated'}/>
+        <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} status={status} isLoggedIn={status === 'authenticated'}/>
       </div>
     </header>
   );
