@@ -15,7 +15,6 @@ export default function InsertPage() {
         <Insert />
         <Footer />
         <Copyright />
-        <Script src="/js/insert.js" strategy="afterInteractive" />
       </ProtectedPage>
     </>
   );
