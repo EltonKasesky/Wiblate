@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 
 interface NavLinkProps {
@@ -10,10 +11,16 @@ interface NavLinkProps {
 }
 
 const NavLink: React.FC<NavLinkProps> = ({ href, iconClassName, text }) => {
+    const pathname = usePathname();
+
+    const isActive = pathname === href;
+
     return (
         <Link 
             href={href} 
-            className="flex items-center w-full max-w-[90%] py-2 px-3 rounded-lg bg-gray-200 text-gray-600 transition-colors duration-300 hover:bg-gray-300"
+            className={`flex items-center w-full max-w-[90%] py-2 px-3 rounded-lg transition-colors duration-300 ${
+                isActive ? 'bg-main-color text-white' : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
+            }`}
         >
             <div className="flex items-center w-full text-left">
                 <i className={`bx ${iconClassName} text-lg`}></i>

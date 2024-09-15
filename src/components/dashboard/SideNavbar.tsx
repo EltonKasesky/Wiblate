@@ -5,7 +5,6 @@ import { signOut } from "next-auth/react";
 import NavLink from './NavLink';
 import { useState } from 'react';
 
-// Adicione a prop userCargo para SideNavbar
 type SideNavbarProps = {
     userCargo: string | null;
 };

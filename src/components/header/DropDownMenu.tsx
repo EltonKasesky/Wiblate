@@ -8,22 +8,24 @@ import { signOut, useSession } from 'next-auth/react';
 export default function DropdownMenuUser() {
   const { data: session } = useSession();
   const [userName, setUserName] = useState<string | null>(null);
+  const [userAvatar, setUserAvatar] = useState<string | null>(null);
 
   useEffect(() => {
-    console.log(session); // Verifique o conteúdo da sessão
-    const fetchUserName = async () => {
+    console.log(session);
+    const fetchUserData = async () => {
       if (session?.user?.id) {
         try {
           const res = await fetch(`/api/user/${session.user.id}`);
           const data = await res.json();
           setUserName(data.name || 'Usuário');
+          setUserAvatar(data.avatar || null);
         } catch (error) {
-          console.error('Failed to fetch user name:', error);
+          console.error('Failed to fetch user data:', error);
         }
       }
     };
 
-    fetchUserName();
+    fetchUserData();
   }, [session]);
 
   const handleLogout = () => {
@@ -35,7 +37,11 @@ export default function DropdownMenuUser() {
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon" className="overflow-hidden rounded-full">
           <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" alt={userName || 'Usuário'} />
+            {userAvatar ? (
+              <AvatarImage src={`data:image/png;base64,${userAvatar}`} alt={userName || 'Usuário'} />
+            ) : (
+              <AvatarImage src="https://github.com/shadcn.png" alt={userName || 'Usuário'} />
+            )}
             <AvatarFallback>{userName ? userName[0] : 'U'}</AvatarFallback>
           </Avatar>
         </Button>

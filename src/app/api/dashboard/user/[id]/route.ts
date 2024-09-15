@@ -1,19 +1,21 @@
 import { NextResponse } from 'next/server';
 import { pool } from '@/lib/db';
+import { promises as fs } from 'fs';
 
 export async function GET(request: Request, { params }: { params: { id: string } }) {
   const userId = params.id;
 
   try {
     const client = await pool.connect();
-    const res = await client.query('SELECT name, avatar FROM users WHERE id = $1', [userId]);
+    const res = await client.query('SELECT name, email, avatar FROM users WHERE id = $1', [userId]);
     client.release();
 
     if (res.rows.length > 0) {
       const user = res.rows[0];
       return NextResponse.json({
         name: user.name,
-        avatar: user.avatar
+        email: user.email,
+        avatar: user.avatar,
       });
     } else {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
