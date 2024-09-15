@@ -20,17 +20,21 @@ export default function SideNavbar({ userCargo }: SideNavbarProps) {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
+
     return (
         <>
             {isMenuOpen && (
                 <div
-                    className="fixed inset-0 bg-black bg-opacity-50 z-40"
-                    onClick={toggleMenu}
+                    className="fixed inset-0 bg-black bg-opacity-100 z-40" 
+                    onClick={closeMenu}
                 ></div>
             )}
 
             <button
-                className="lg:hidden p-4 fixed top-0 left-0 z-60 bg-transparent shadow-md"
+                className="lg:hidden p-4 fixed top-0 left-0 z-50 bg-transparent shadow-md"
                 onClick={toggleMenu}
             >
                 <i className="bx bx-menu text-2xl"></i>
@@ -43,7 +47,7 @@ export default function SideNavbar({ userCargo }: SideNavbarProps) {
                         <span className="ml-2">ROYAL</span>
                         <span>TV</span>
                     </Link>
-                    <button className="lg:hidden z-60" onClick={toggleMenu}>
+                    <button className="lg:hidden z-50" onClick={toggleMenu}>
                         <i className="bx bx-x text-2xl"></i>
                     </button>
                 </div>
@@ -51,23 +55,26 @@ export default function SideNavbar({ userCargo }: SideNavbarProps) {
                 <nav className="flex flex-col flex-grow mt-6">
                     <section className="flex flex-col flex-grow justify-between w-full">
                         <div className="flex flex-col items-center justify-center gap-3">
-                            <NavLink href="/dashboard/home" iconClassName="bxs-dashboard" text="Dashboard" />
-                            <NavLink href="/dashboard/user" iconClassName="bxs-user" text="Usuário" />
-                            <NavLink href="/dashboard/settings" iconClassName="bxs-cog" text="Configurações" />
-                            <NavLink href="/contact" iconClassName="bxs-envelope" text="Contato" />
+                            <NavLink href="/dashboard/home" iconClassName="bxs-dashboard" text="Dashboard" onClick={closeMenu} />
+                            <NavLink href="/dashboard/user" iconClassName="bxs-user" text="Usuário" onClick={closeMenu} />
+                            <NavLink href="/dashboard/settings" iconClassName="bxs-cog" text="Configurações" onClick={closeMenu} />
+                            <NavLink href="/contact" iconClassName="bxs-envelope" text="Contato" onClick={closeMenu} />
 
                             {userCargo && ["Produtor", "Gerenciador", "Administrador"].includes(userCargo) && (
-                                <NavLink href="/insert" iconClassName="bxs-folder-open" text="Insert" />
+                                <NavLink href="/insert" iconClassName="bxs-folder-open" text="Insert" onClick={closeMenu} />
                             )}
                             {userCargo && ["Gerenciador", "Administrador"].includes(userCargo) && (
-                                <NavLink href="/users" iconClassName="bxs-group" text="Gerenciar" />
+                                <NavLink href="/users" iconClassName="bxs-group" text="Gerenciar" onClick={closeMenu} />
                             )}
                         </div>
 
                         <div className="flex flex-col gap-3 items-center justify-center mt-auto mb-4 pt-3 lg:border-t border-gray-200">
-                            <NavLink href="/" iconClassName="bxs-home" text="Início" />
+                            <NavLink href="/" iconClassName="bxs-home" text="Início" onClick={closeMenu} />
                             <button 
-                                onClick={handleLogout} 
+                                onClick={async () => {
+                                    await handleLogout();
+                                    closeMenu();
+                                }} 
                                 className="flex items-center w-full max-w-[90%] py-2 px-3 rounded-lg bg-gray-200 transition-colors duration-300 hover:bg-gray-300"
                             >
                                 <div className="flex items-center w-full text-left">

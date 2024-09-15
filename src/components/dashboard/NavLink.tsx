@@ -8,9 +8,10 @@ interface NavLinkProps {
     href: string;
     iconClassName: string;
     text: string;
+    onClick?: () => void; // onClick opcional
 }
 
-const NavLink: React.FC<NavLinkProps> = ({ href, iconClassName, text }) => {
+const NavLink: React.FC<NavLinkProps> = ({ href, iconClassName, text, onClick }) => {
     const pathname = usePathname();
 
     const isActive = pathname === href;
@@ -21,6 +22,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, iconClassName, text }) => {
             className={`flex items-center w-full max-w-[90%] py-2 px-3 rounded-lg transition-colors duration-300 ${
                 isActive ? 'bg-main-color text-white' : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
             }`}
+            onClick={onClick}
         >
             <div className="flex items-center w-full text-left">
                 <i className={`bx ${iconClassName} text-lg`}></i>
