@@ -14,7 +14,7 @@ export default function NavFooter() {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/portal/login" className="nav-footer">
+                            <Link href="/dashboard/user" className="nav-footer">
                                 Perfil
                             </Link>
                         </li>

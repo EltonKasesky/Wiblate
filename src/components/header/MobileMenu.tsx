@@ -19,16 +19,6 @@ export default function MobileMenu({ menuOpen, setMenuOpen, userCargo, isLoggedI
         <li className="nav-header">
           <Link href="/about" className="cursor-pointer">Sobre</Link>
         </li>
-        {userCargo && ["Produtor", "Gerenciador", "Administrador"].includes(userCargo) && (
-          <>
-            <li className="nav-header">
-              <Link href="/insert" className="cursor-pointer">Insert</Link>
-            </li>
-            <li className="nav-header">
-              <Link href="/users" className="cursor-pointer">Gerenciar</Link>
-            </li>
-          </>
-        )}
         <li>
           {isLoggedIn ? (
             <DropdownMenuUser />
