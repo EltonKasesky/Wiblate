@@ -23,20 +23,11 @@ export default function Header() {
       <div className="container mx-auto px-10 max-w-nav-header">
         <div className="flex items-center justify-between w-full h-16">
           {/* LOGO */}
-          <Link href="/">
-            <div className="relative flex flex-col items-center text-2xl font-bold cursor-pointer -mt-6">
-              <Image
-                src="/images/RoyalTv.png"
-                alt="Logo Crown"
-                className="absolute"
-                width={80}
-                height={80}
-              />
-              <div className="flex items-center mt-12">
-                <i className="bx bx-movie-play bx-tada text-main-color"></i>
-                <span className="text-main-color">ROYAL</span>
-                <span className="text-text-color">PLAY</span>
-              </div>
+          <Link href="/" className='flex items-center h-full'>
+            <div className="flex items-center justify-center text-2xl font-bold cursor-pointer">
+              <i className="bx bx-movie-play bx-tada text-main-color"></i>
+              <span className="text-main-color">ROYAL</span>
+              <span className="text-text-color">PLAY</span>
             </div>
           </Link>
           <NavHeader isLoggedIn={status === 'authenticated'} />
@@ -56,7 +47,7 @@ export default function Header() {
         </div>
 
         {/* NAV MENU MOBILE */}
-        <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} status={status} isLoggedIn={status === 'authenticated'}/>
+        <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} status={status} isLoggedIn={status === 'authenticated'} />
       </div>
     </header>
   );

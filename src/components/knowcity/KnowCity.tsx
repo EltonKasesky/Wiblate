@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Script from "next/script";
 import Image from "next/image";
 import BackButton from "../ui/BackButton";
-import Know from "../Gender/Know";
+import Know from "../gender/Know";
 import AnnounceKnowCity from "./Announce";
 
 export default function KnowPage() {

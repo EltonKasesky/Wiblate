@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Script from "next/script";
 import Image from "next/image";
 import BackButton from "../ui/BackButton";
-import Gastronomy from "../Gender/Gastronomy";
+import Gastronomy from "../gender/Gastronomy";
 import AnnounceGastronomy from "./Announce";
 
 export default function GastronomyPage() {

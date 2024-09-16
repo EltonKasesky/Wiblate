@@ -49,6 +49,8 @@ const Members = () => {
             : '/api/users/members';
 
         const response = await axios.get(endpoint);
+
+        // Não há mais replicação de usuários
         setMembers(response.data);
         setFilteredMembers(response.data);
         setLoading(false);
@@ -108,7 +110,7 @@ const Members = () => {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
-    <div className="container pt-24 pb-16 mx-auto px-2 mt-20 mb-10 sm:px-6 md:my-0 lg:px-8">
+    <div className="container mx-auto px-2 mb-10 max-h-[100vh] overflow-y-auto sm:px-6 md:my-0 lg:px-8 lg:pt-4">
       <h1 className="text-2xl font-bold mb-4">Lista de Usuários</h1>
       <input
         type="text"
@@ -120,27 +122,27 @@ const Members = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {loading
           ? Array.from({ length: membersPerPage }).map((_, index) => (
-              <LoadingSkeleton key={index} />
-            ))
+            <LoadingSkeleton key={index} />
+          ))
           : currentMembers.map((member) => (
-              <Card key={member.id} className="p-4">
-                <CardHeader>
-                  <CardTitle>{member.name}</CardTitle>
-                  <CardDescription>{member.email}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <select
-                    value={updatedCargos[member.id] || member.cargo}
-                    onChange={(e) => handleCargoChange(member.id, e.target.value)}
-                    className="bg-box-bg border border-gray-300 rounded px-2 py-1 w-full text-white cursor-pointer"
-                  >
-                    <option value="Membro">Membro</option>
-                    <option value="Produtor">Produtor</option>
-                    <option value="Gerenciador">Gerenciador</option>
-                  </select>
-                </CardContent>
-              </Card>
-            ))}
+            <Card key={member.id} className="p-4">
+              <CardHeader>
+                <CardTitle>{member.name}</CardTitle>
+                <CardDescription>{member.email}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <select
+                  value={updatedCargos[member.id] || member.cargo}
+                  onChange={(e) => handleCargoChange(member.id, e.target.value)}
+                  className="bg-box-bg border border-gray-300 rounded px-2 py-1 w-full text-white cursor-pointer"
+                >
+                  <option value="Membro">Membro</option>
+                  <option value="Produtor">Produtor</option>
+                  <option value="Gerenciador">Gerenciador</option>
+                </select>
+              </CardContent>
+            </Card>
+          ))}
       </div>
       <div className="flex justify-center mt-4">
         <div>
@@ -148,9 +150,8 @@ const Members = () => {
             <button
               key={i}
               onClick={() => paginate(i + 1)}
-              className={`mx-1 py-2 px-4 rounded ${
-                currentPage === i + 1 ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-800'
-              } hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-400`}
+              className={`mx-1 py-2 px-4 rounded ${currentPage === i + 1 ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-800'
+                } hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-400`}
             >
               {i + 1}
             </button>

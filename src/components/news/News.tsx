@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Script from "next/script";
 import Image from "next/image";
 import BackButton from "../ui/BackButton";
-import News from "../Gender/News";
+import News from "../gender/News";
 import AnnounceNews from "./Announce";
 
 export default function NewsPage() {

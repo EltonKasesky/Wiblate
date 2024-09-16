@@ -96,7 +96,7 @@ export default function Insert() {
 
   return (
     <>
-      <section className="py-24 m-0 box-border text-main-size">
+      <section className="flex items-center justify-center w-full h-screen m-0 mt-[-100px] lg:mt-0 box-border text-main-size">
         <section className="flex justify-center items-center w-full h-insert">
           <div className="hidden insert-image:block w-full h-insert-image max-w-insert">
             <Image
@@ -108,7 +108,7 @@ export default function Insert() {
               priority
             />
           </div>
-          <div className="flex justify-center items-center w-full h-auto max-w-insert py-insert-form px-4 rounded-r-lg bg-box-bg">
+          <div className="flex justify-center items-center w-full h-auto max-w-insert py-4 lg:py-insert-form px-4 rounded-lg lg:rounded-none lg:rounded-r-lg bg-box-bg">
             <div className="flex flex-col justify-center items-center w-full h-full">
               <form
                 className="w-full"

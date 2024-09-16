@@ -1,16 +1,17 @@
 import { useState, FormEvent, useRef } from "react";
 import TableSelectModal from "./TableSelectModal";
 import FeedbackModalInsert from "./FeedbackModalInsert";
-import Image from "next/image";
+import FileInput from "./FileInput";
+import TextInput from "./TextInput";
 
 export default function InsertCompany() {
   const [isCityOpen, setIsCityOpen] = useState(false);
   const [isStateOpen, setIsStateOpen] = useState(false);
-  const [isGenderOpen, setIsGenderOpen] = useState(false); 
+  const [isGenderOpen, setIsGenderOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState<string>('');
-  const [selectGender, setSelectedGender] = useState<string>(''); 
+  const [selectGender, setSelectedGender] = useState<string>('');
   const [selectedState, setSelectedState] = useState<string>('Rio de Janeiro');
-  const [selectedTable, setSelectedTable] = useState<string>('eventos'); 
+  const [selectedTable, setSelectedTable] = useState<string>('eventos');
   const [feedbackMessage, setFeedbackMessage] = useState('');
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
@@ -55,20 +56,20 @@ export default function InsertCompany() {
 
     try {
       const logoFile = formData.get('logo') as File;
-      const catalogFile = formData.get('catalog') as File; 
+      const catalogFile = formData.get('catalog') as File;
 
       if (logoFile) {
         data.logo = await toBase64(logoFile);
       }
 
-      if (catalogFile) { 
+      if (catalogFile) {
         data.catalog = await toBase64(catalogFile);
       }
 
       data.city = selectedCity;
       data.state = selectedState;
       data.table = selectedTable;
-      data.gender = selectGender; 
+      data.gender = selectGender;
 
       const response = await fetch('/api/insertAnnounce', {
         method: 'POST',
@@ -99,8 +100,8 @@ export default function InsertCompany() {
   const openCityModal = () => setIsCityOpen(true);
   const closeCityModal = () => setIsCityOpen(false);
 
-  const openGenderModal = () => setIsGenderOpen(true); 
-  const closeGenderModal = () => setIsGenderOpen(false); 
+  const openGenderModal = () => setIsGenderOpen(true);
+  const closeGenderModal = () => setIsGenderOpen(false);
 
   const openStateModal = () => setIsStateOpen(true);
   const closeStateModal = () => setIsStateOpen(false);
@@ -113,11 +114,11 @@ export default function InsertCompany() {
     }
   };
 
-  const handleGenderSelect = (gender: string) => { 
+  const handleGenderSelect = (gender: string) => {
     const genderValue = genderMap[gender as keyof typeof genderMap];
     if (genderValue) {
       setSelectedGender(genderValue);
-      closeGenderModal(); 
+      closeGenderModal();
     }
   };
 
@@ -136,7 +137,7 @@ export default function InsertCompany() {
 
   const displayGenderName = (value: string): string => {
     const entry = Object.entries(genderMap).find(([key, val]) => val === value);
-    return entry ? entry[0] : 'Selecione o gênero do anúncio'; 
+    return entry ? entry[0] : 'Selecione o gênero do anúncio';
   };
 
   const displayStateName = (value: string): string => {
@@ -144,12 +145,12 @@ export default function InsertCompany() {
     return entry ? entry[0] : 'Selecione um estado';
   };
 
-  return (
+  return (  
     <>
-      <section className="pb-12 m-0 box-border text-main-size">
-        <section className="flex justify-center items-center w-full h-insert">
-          <div className="flex justify-center items-center w-full h-auto max-w-insert py-insert-form px-4 rounded-lg bg-box-bg">
-            <div className="flex flex-col justify-center items-center w-full h-full">
+      <section className="flex items-center justify-center w-full h-screen mt-8 lg:mt-0 box-border text-main-size">
+        <section className="flex justify-center items-center w-full h-auto lg:h-insert">
+          <div className="flex justify-center items-center w-full h-auto lg:max-w-[80%] px-4 pb-4 lg:py-4 rounded-lg bg-box-bg">
+            <div className="flex flex-col lg:flex-row justify-between w-full h-full gap-8">
               <form
                 className="w-full"
                 id="insertForm"
@@ -157,11 +158,9 @@ export default function InsertCompany() {
                 encType="multipart/form-data"
                 ref={formRef}
               >
-                <div className="flex flex-row gap-6 h-full" /> {/* Duas colunas */}
-
-                <div className="grid grid-cols-2 gap-4">
+                <div className="flex flex-wrap lg:flex-nowrap gap-6 w-full">
                   {/* Coluna 1 */}
-                  <div className="flex flex-col gap-insert">
+                  <div className="flex flex-col gap-4 w-full lg:w-1/2">
                     <div className="flex flex-col">
                       <label htmlFor="gender">Selecione o Gênero</label>
                       <button
@@ -172,6 +171,7 @@ export default function InsertCompany() {
                         {displayGenderName(selectGender)}
                       </button>
                     </div>
+
                     <div className="flex flex-col">
                       <label htmlFor="city">Selecione a Cidade</label>
                       <button
@@ -182,6 +182,7 @@ export default function InsertCompany() {
                         {displayCityName(selectedCity)}
                       </button>
                     </div>
+
                     <div className="flex flex-col">
                       <label htmlFor="state">Selecione o Estado</label>
                       <button
@@ -192,101 +193,60 @@ export default function InsertCompany() {
                         {displayStateName(selectedState)}
                       </button>
                     </div>
-                    <div className="input-file">
-                      <label htmlFor="logo">Logo da Empresa</label>
-                      <div className="file-drop-insert" id="logo-drop">
-                        <input
-                          type="file"
-                          name="logo"
-                          id="logo"
-                          className="input-insert input-file-hidden-insert"
-                          required
-                        />
-                        <span className="drop-text-insert" id="dropText">
-                          <i className="bx bx-import"></i> Selecione seu arquivo
-                        </span>
-                      </div>
-                    </div>
-                    <div className="input-file">
-                      <label htmlFor="catalog">Imagem de catálogo</label>
-                      <div className="file-drop-insert" id="catalog-drop">
-                        <input
-                          type="file"
-                          name="catalog"
-                          id="catalog"
-                          className="input-insert input-file-hidden-insert"
-                          required
-                        />
-                        <span className="drop-text-insert" id="dropText">
-                          <i className="bx bx-import"></i> Selecione seu arquivo
-                        </span>
-                      </div>
-                    </div>
+
+                    <FileInput
+                      id="logo"
+                      label="Logo da Empresa"
+                      name="logo"
+                      required={true}
+                    />
+
+                    <FileInput
+                      id="catalog"
+                      label="Imagem de Catálogo"
+                      name="catalog"
+                      required={true}
+                    />
                   </div>
 
                   {/* Coluna 2 */}
-                  <div className="flex flex-col gap-insert">
-                    <div className="flex flex-col">
-                      <label htmlFor="idYoutube">ID do vídeo</label>
-                      <input
-                        className="border-2 border-dashed border-text-color bg-transparent rounded-sm py-1 px-4 text-text-color"
-                        type="text"
-                        name="idYoutube"
-                        id="idYoutube"
-                        placeholder="Ex: 8uQqaauS5UA"
-                        required
-                      />
-                    </div>
+                  <div className="flex flex-col gap-4 w-full lg:w-1/2">
+                    <TextInput
+                      id="idYoutube"
+                      label="ID do vídeo"
+                      name="idYoutube"
+                      placeholder="Ex: 8uQqaauS5UA"
+                      required={true}
+                    />
 
-                    <div className="flex flex-col">
-                      <label htmlFor="companyName">Nome da Empresa</label>
-                      <input
-                        className="border-2 border-dashed border-text-color bg-transparent rounded-sm py-1 px-4 text-text-color"
-                        type="text"
-                        name="companyName"
-                        id="companyName"
-                        placeholder="Ex: Empresa XYZ"
-                        required
-                      />
-                    </div>
+                    <TextInput
+                      id="companyName"
+                      label="Nome da Empresa"
+                      name="companyName"
+                      placeholder="Ex: Empresa XYZ"
+                      required={true}
+                    />
 
-                    <div className="flex flex-col">
-                      <label htmlFor="address">Endereço</label>
-                      <input
-                        className="border-2 border-dashed border-text-color bg-transparent rounded-sm py-1 px-4 text-text-color"
-                        type="text"
-                        name="address"
-                        id="address"
-                        placeholder="Ex: Rua ABC, 123"
-                        required
-                      />
-                    </div>
+                    <TextInput
+                      id="address"
+                      label="Endereço"
+                      name="address"
+                      placeholder="Ex: Rua ABC, 123"
+                      required={true}
+                    />
 
-                    <div className="flex flex-col">
-                      <label htmlFor="phone">Telefone</label>
-                      <input
-                        className="border-2 border-dashed border-text-color bg-transparent rounded-sm py-1 px-4 text-text-color"
-                        type="text"
-                        name="phone"
-                        placeholder="Ex: (21) 99999-9999"
-                        required
-                        maxLength={15}
-                        onInput={(e) => {
-                          const input = e.currentTarget;
-                          let value = input.value.replace(/\D/g, '');
-                          if (value.length > 11) value = value.slice(0, 11);
-                          if (value.length > 0) value = '(' + value;
-                          if (value.length > 3) value = value.slice(0, 3) + ') ' + value.slice(3);
-                          if (value.length > 10) value = value.slice(0, 10) + '-' + value.slice(10);
-                          input.value = value;
-                        }}
-                      />
-                    </div>
+                    <TextInput
+                      id="phone"
+                      label="Telefone"
+                      name="phone"
+                      placeholder="Ex: (21) 99999-9999"
+                      required={true}
+                    />
 
                     <div className="flex flex-col">
                       <label htmlFor="message">Mensagem</label>
                       <textarea
-                        className="border-2 border-dashed border-text-color bg-transparent rounded-sm py-1 px-4 text-text-color"
+                        className="border-2 border-dashed border-text-color bg-transparent rounded-sm px-4 text-text-color"
                         name="message"
                         id="message"
                         rows={4}
@@ -297,30 +257,17 @@ export default function InsertCompany() {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Botão de Enviar centralizado */}
                 <div className="flex justify-center mt-6">
                   <button
                     type="submit"
-                    className="border-none rounded-lg p-2 font-medium bg-main-color text-text-color transition-opacity duration-50 cursor-pointer hover:opacity-70"
+                    className="w-full border-none rounded-lg p-2 font-medium bg-main-color text-text-color transition-opacity duration-50 cursor-pointer hover:opacity-70"
                   >
                     Enviar
                   </button>
                 </div>
               </form>
-
-              {/* Imagem abaixo do formulário */}
-              <div className="mt-6 w-full flex justify-center">
-                <Image
-                  className="rounded-lg"
-                  src='/images/insert/Teste.png'
-                  width={500}
-                  height={762}
-                  alt='Teste Image'
-                  priority
-                  layout="intrinsic" 
-                />
-              </div>
             </div>
           </div>
         </section>

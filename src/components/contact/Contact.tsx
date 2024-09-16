@@ -73,7 +73,7 @@ export default function ContactForm() {
     };
 
     return (
-        <section className="flex items-center justify-center flex-wrap container pt-24 pb-16 mx-auto px-2 mt-20 mb-10 sm:px-6 md:my-0 lg:px-8">
+        <section className="flex items-center justify-center flex-wrap container w-full h-screen pt-24 pb-16 mx-auto">
             <ContactInfo />
             <section className="w-full max-w-md bg-box-bg p-8 shadow-md rounded-r-md text-white">
                 <h2 className="text-3xl font-semibold mb-6 text-center">Contato</h2>

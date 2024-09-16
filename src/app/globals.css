@@ -113,11 +113,11 @@
 
   /* INSERT */
   .input-insert {
-    @apply flex flex-col w-full bg-transparent;
+    @apply flex flex-col w-full bg-transparent border-2 border-dashed border-text-color py-1 px-4 rounded;
   }
 
   .input-id-insert {
-    @apply border-2 border-dashed border-text-color rounded py-1 px-4 bg-transparent text-text-color
+    @apply rounded bg-transparent text-text-color
   }
 
   .file-drop-insert {

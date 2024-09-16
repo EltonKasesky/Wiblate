@@ -24,7 +24,7 @@ export default function NavFooter() {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/contact" className="nav-footer">
+                            <Link href="/dashboard/contact" className="nav-footer">
                                 Contato
                             </Link>
                         </li>

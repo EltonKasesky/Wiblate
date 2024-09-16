@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Script from "next/script";
 import Image from "next/image";
 import BackButton from "../ui/BackButton";
-import Events from "../Gender/Events";
+import Events from "../gender/Events";
 import AnnounceEvents from "./Announce";
 
 export default function EventsPage() {

@@ -35,7 +35,7 @@ export default function DropdownMenuUser() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" className="overflow-hidden rounded-full">
+        <Button variant="outline" size="icon" className="overflow-hidden rounded-full border-2 border-transparent hover:border-main-color">
           <Avatar>
             {userAvatar ? (
               <AvatarImage src={`data:image/png;base64,${userAvatar}`} alt={userName || 'Usuário'} />

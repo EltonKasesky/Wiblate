@@ -38,7 +38,6 @@ export default function Gender() {
                     {content.map((item, index) => (
                         <SwiperSlide key={index} className="flex justify-center items-center p-2">
                             <div className="gender-content">
-                                {/* Passar a cidade e o estado via query string */}
                                 <Link href={`/${item.page}?city=${city}&state=${state}`}>
                                     <div className='flex justify-center items-center h-gender-item bg-gender-bg'>
                                         <div className='flex flex-col items-center justify-center w-full gap-3'>
