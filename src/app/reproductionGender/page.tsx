@@ -1,11 +1,9 @@
 'use client';
 
-import ReproductionGender from "@/components/reproduction/ReproductionGender";
+import ReproductionPlayer from "@/components/reproduction/ReproductionGender";
 
-export default function ReproductionGenderPage(){
-    return (
-        <>
-            <ReproductionGender />
-        </>
-    )
+export default function Reproduction(){
+  return(
+    <ReproductionPlayer />
+  );
 }
