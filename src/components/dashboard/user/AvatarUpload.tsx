@@ -23,16 +23,15 @@ export default function AvatarUpload() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!selectedFile) return;
-  
+
     const formData = new FormData();
     formData.append('avatar', selectedFile);
-  
+
     try {
       const res = await fetch(`/api/dashboard/user/${session?.user?.id}/avatar`, {
         method: 'POST',
         body: formData,
       });
-  
       if (!res.ok) {
         setFeedbackMessage('Erro ao atualizar o avatar. Tente novamente.');
       } else {
@@ -44,7 +43,6 @@ export default function AvatarUpload() {
       setIsModalOpen(true);
     }
   };
-  
 
   return (
     <>

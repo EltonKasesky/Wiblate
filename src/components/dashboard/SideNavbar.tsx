@@ -4,7 +4,6 @@ import Link from "next/link";
 import { signOut } from "next-auth/react";
 import NavLink from './NavLink';
 import { useState } from 'react';
-import Image from "next/image";
 
 type SideNavbarProps = {
     userCargo: string | null;
@@ -29,7 +28,7 @@ export default function SideNavbar({ userCargo }: SideNavbarProps) {
         <>
             {isMenuOpen && (
                 <div
-                    className="fixed inset-0 bg-black bg-opacity-100 z-40"
+                    className="fixed inset-0 bg-black bg-opacity-100 z-40" 
                     onClick={closeMenu}
                 ></div>
             )}
@@ -41,24 +40,12 @@ export default function SideNavbar({ userCargo }: SideNavbarProps) {
                 <i className="bx bx-menu text-2xl"></i>
             </button>
 
-            <section className={`fixed rounded-sm lg:relative lg:w-64 lg:flex lg:flex-col h-screen w-full lg:bg-white shadow-lg lg:shadow-none transition-transform duration-300 transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'} z-50`}>
+            <section className={`fixed lg:relative lg:w-64 lg:flex lg:flex-col h-screen w-full lg:bg-white shadow-lg lg:shadow-none transition-transform duration-300 transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'} z-50`}>
                 <div className="flex justify-between items-center lg:py-3 lg:border-b lg:border-gray-200 p-4 lg:p-0">
-                    <Link href="/"
-                    className="flex items-center justify-center w-full text-xl font-extrabold text-main-color">
-                        <div className="relative flex flex-col items-center text-2xl font-bold cursor-pointer -mt-6">
-                            <Image
-                                src="/images/RoyalTv.png"
-                                alt="Logo Crown"
-                                className="absolute"
-                                width={80}
-                                height={80}
-                            />
-                            <div className="flex items-center mt-12">
-                                <i className="bx bx-movie-play bx-tada text-main-color"></i>
-                                <span className="text-main-color">ROYAL</span>
-                                <span className="text-main-color">TV</span>
-                            </div>
-                        </div>
+                    <Link href="/" className="flex items-center justify-center w-full text-xl font-extrabold text-main-color">
+                        <i className="bx bx-movie-play bx-tada text-3xl"></i>
+                        <span className="ml-2">ROYAL</span>
+                        <span>TV</span>
                     </Link>
                     <button className="lg:hidden z-50" onClick={toggleMenu}>
                         <i className="bx bx-x text-2xl"></i>
@@ -86,11 +73,11 @@ export default function SideNavbar({ userCargo }: SideNavbarProps) {
 
                         <div className="flex flex-col gap-3 items-center justify-center mt-auto mb-4 pt-3 lg:border-t border-gray-200">
                             <NavLink href="/" iconClassName="bxs-home" text="Início" onClick={closeMenu} />
-                            <button
+                            <button 
                                 onClick={async () => {
                                     await handleLogout();
                                     closeMenu();
-                                }}
+                                }} 
                                 className="flex items-center w-full max-w-[90%] py-2 px-3 rounded-lg bg-gray-200 transition-colors duration-300 hover:bg-gray-300"
                             >
                                 <div className="flex items-center w-full text-left">
