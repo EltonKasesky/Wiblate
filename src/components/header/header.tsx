@@ -3,13 +3,12 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useSession, signOut } from 'next-auth/react';
-
+import { useSession } from 'next-auth/react';
 import NavHeader from '@/components/header/nav-header';
+import MobileMenu from '@/components/header/MobileMenu';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [hover, setHover] = useState(false);
   const { data: session, status } = useSession();
   const [userCargo, setUserCargo] = useState<string | null>(null);
 
@@ -25,18 +24,22 @@ export default function Header() {
         <div className="flex items-center justify-between w-full h-16">
           {/* LOGO */}
           <Link href="/">
-            <div
-              className="flex items-center text-2xl font-bold cursor-pointer"
-              onMouseEnter={() => setHover(true)}
-              onMouseLeave={() => setHover(false)}
-            >
-              <i className="bx bx-movie-play bx-tada text-main-color"></i>
-              <span className={hover ? 'text-main-color' : 'text-text-color'}>ROYAL</span>
-              <span className={hover ? 'text-text-color' : 'text-main-color'}>TV</span>
+            <div className="relative flex flex-col items-center text-2xl font-bold cursor-pointer -mt-6">
+              <Image
+                src="/images/RoyalTv.png"
+                alt="Logo Crown"
+                className="absolute"
+                width={80}
+                height={80}
+              />
+              <div className="flex items-center mt-12">
+                <i className="bx bx-movie-play bx-tada text-main-color"></i>
+                <span className="text-main-color">ROYAL</span>
+                <span className="text-text-color">PLAY</span>
+              </div>
             </div>
           </Link>
-          <NavHeader userCargo={userCargo} isLoggedIn={status === 'authenticated'} />
-
+          <NavHeader isLoggedIn={status === 'authenticated'} />
           {/* HAMBURGER BUTTON FOR MOBILE */}
           <div className="md:hidden">
             <button
@@ -53,41 +56,7 @@ export default function Header() {
         </div>
 
         {/* NAV MENU MOBILE */}
-        <div className={`md:hidden ${menuOpen ? 'block' : 'hidden'}`}>
-          <ul className="flex flex-col space-y-4 items-center">
-            <li className="nav-header">
-              <Link href="/" className="cursor-pointer">Início</Link>
-            </li>
-            <li className="nav-header">
-              <Link href="/about" className="cursor-pointer">Sobre</Link>
-            </li>
-            {userCargo && ["Produtor", "Gerenciador", "Administrador"].includes(userCargo) && (
-              <>
-                <li className="nav-header">
-                  <Link href="/insert" className="cursor-pointer">Insert</Link>
-                </li>
-                <li className="nav-header">
-                  <Link href="/users" className="cursor-pointer">Gerenciar</Link>
-                </li>
-              </>
-            )}
-            <li className='pb-4'>
-              {status === 'authenticated' ? (
-                <Link href="/portal/logout">
-                <div className="btn btn-hover uppercase font-bold py-2 px-6 cursor-pointer">
-                  <span className="relative z-10">Logout</span>
-                </div>
-              </Link>
-              ) : (
-                <Link href="/portal/login">
-                  <div className="btn btn-hover uppercase font-bold py-2 px-6 cursor-pointer">
-                    <span className="relative z-10">Login</span>
-                  </div>
-                </Link>
-              )}
-            </li>
-          </ul>
-        </div>
+        <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} status={status} isLoggedIn={status === 'authenticated'}/>
       </div>
     </header>
   );

@@ -8,12 +8,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 const authOptions: NextAuthOptions = {
   providers: [
-    
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
-    
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
@@ -24,30 +22,26 @@ const authOptions: NextAuthOptions = {
         if (!credentials?.email || !credentials.password) {
           return null;
         }
-        
+
         try {
-          
           const result = await query('SELECT * FROM users WHERE email = $1', [credentials.email]);
           console.log('[QUERY_RESULT]:', result);
-          
+
           const user = result[0];
-          
-          
+
           if (!user) {
             console.log('[USER_NOT_FOUND]');
             return null;
           }
-          
-          
+
           const isValidPassword = await bcrypt.compare(credentials.password, user.password);
           console.log('[PASSWORD_VALIDATION]:', isValidPassword);
-          
+
           if (!isValidPassword) {
             console.log('[INVALID_PASSWORD]');
             return null;
           }
-          
-          
+
           return {
             id: user.id.toString(),
             email: user.email as string,
@@ -67,8 +61,7 @@ const authOptions: NextAuthOptions = {
         try {
           const result = await query('SELECT * FROM users WHERE email = $1', [user?.email ?? '']);
           let dbUser = result[0];
-  
-          
+
           if (!dbUser && user) {
             const newUser = await query(
               `INSERT INTO users (id, email, name, cargo) VALUES ($1, $2, $3, $4) RETURNING *`,
@@ -76,9 +69,10 @@ const authOptions: NextAuthOptions = {
             );
             dbUser = newUser[0];
           }
-  
-          
+
           if (user && dbUser) {
+            // Aqui garantimos que o ID do banco seja utilizado no lugar do ID do Google
+            user.id = dbUser.id;
             user.cargo = dbUser.cargo;
           }
           return true;
@@ -91,6 +85,7 @@ const authOptions: NextAuthOptions = {
     },
     jwt: async ({ token, user }) => {
       if (user) {
+        // Aqui usamos o ID do banco de dados (se disponível) no JWT
         token.id = user.id as string;
         token.email = user.email as string;
         token.name = user.name as string;
@@ -99,6 +94,7 @@ const authOptions: NextAuthOptions = {
       return token;
     },
     session: async ({ session, token }) => {
+      // Aqui garantimos que o ID do banco seja utilizado na sessão
       session.user = {
         id: token.id as string,
         email: token.email as string,

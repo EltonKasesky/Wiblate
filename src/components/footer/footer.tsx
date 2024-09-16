@@ -1,6 +1,7 @@
 import Link from "next/link";
 import NavFooter from "@/components/footer/nav-footer";
 import SocialFooter from "@/components/footer/social-footer";
+import Image from "next/image";
 
 export default function Footer() {
     return (
@@ -11,12 +12,25 @@ export default function Footer() {
                         <div className="mt-5">
                             <div className="w-full max-w-150px">
                                 <Link href="/" className="mt-footer-logo flex justify-start items-center text-logo-footer font-black" id="link_footer">
-                                    <i className='bx bx-movie-play bx-tada text-main-color text-3xl'></i><span className="text-text-color">ROYAL</span><span className="text-main-color">TV</span>
+                                    <div className="relative flex flex-col items-center text-2xl font-bold cursor-pointer -mt-6">
+                                        <Image
+                                            src="/images/RoyalTv.png"
+                                            alt="Logo Crown"
+                                            className="absolute"
+                                            width={80}
+                                            height={80}
+                                        />
+                                        <div className="flex items-center mt-12">
+                                            <i className="bx bx-movie-play bx-tada text-main-color"></i>
+                                            <span className="text-main-color">ROYAL</span>
+                                            <span className="text-text-color">TV</span>
+                                        </div>
+                                    </div>
                                 </Link>
                             </div>
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae blanditiis architecto sunt dignissimos doloremque. 
-                                In ad obcaecati animi explicabo libero voluptas impedit, excepturi ratione cum. Esse iusto at quam minus!
+                                O RoyalTV é uma plataforma de streaming que oferece filmes, séries e eventos ao vivo. Além de entretenimento,
+                                trazemos informações sobre eventos, gastronomia, turismo e notícias, tudo focado em Petrópolis. Descubra o melhor da cidade com a gente!
                             </p>
                             <SocialFooter />
                         </div>

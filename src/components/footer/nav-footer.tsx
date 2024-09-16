@@ -14,7 +14,7 @@ export default function NavFooter() {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/portal/login" className="nav-footer">
+                            <Link href="/dashboard/user" className="nav-footer">
                                 Perfil
                             </Link>
                         </li>
@@ -97,7 +97,6 @@ export default function NavFooter() {
                                     width={200}
                                     height={60}
                                     className="inline-block transition-transform duration-200 ease-in-out hover:translate-x-1"
-                                    priority
                                 />
                             </Link>
                         </li>
@@ -109,7 +108,6 @@ export default function NavFooter() {
                                     width={200}
                                     height={60} 
                                     className="inline-block transition-transform duration-200 ease-in-out hover:translate-x-1"
-                                    priority
                                 />
                             </Link>
                         </li>
