@@ -5,7 +5,7 @@ export default function ContactInfo(){
         <>
             <section className="w-full max-w-md bg-box-bg p-7 shadow-md rounded-l-md text-white">
                 <div className="flex flex-col items-center h-full over bg-gray-950 p-6 rounded-lg shadow-md">
-                    <h2 className="text-3xl font-semibold mb-6 text-center">RoyalTV</h2>
+                    <h2 className="text-3xl font-semibold mb-6 text-center">TIPTV</h2>
                     <div className="w-full my-6 space-y-6">
                         <div className="flex items-center space-x-4">
                             <i className='bx bx-time text-main-color text-lg' ></i>
@@ -45,7 +45,7 @@ export default function ContactInfo(){
                             <i className='bx bx-help-circle text-main-color text-lg'></i>
                             <div>
                                 <h3 className="text-lg font-semibold text-white">FAQ - Perguntas Frequentes</h3>
-                                <p className="text-gray-400">Explore as perguntas frequentes da RoyalTV para encontrar respostas rápidas e úteis.</p>
+                                <p className="text-gray-400">Explore as perguntas frequentes da TIPTV para encontrar respostas rápidas e úteis.</p>
                                 <Link href='/faq' className="text-main-color hover:underline">Acessar FAQ</Link>
                             </div>
                         </div>

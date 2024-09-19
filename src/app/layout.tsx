@@ -6,8 +6,8 @@ import '../../public/styles/jquerygrid.css';
 import { AuthProvider } from "@/providers/auth-provider";
 
 export const metadata: Metadata = {
-  title: "RoyalTV",
-  description: "O RoyalTV é uma plataforma de streaming que oferece filmes, séries e eventos ao vivo. Além de entretenimento, trazemos informações sobre eventos, gastronomia, turismo e notícias, tudo focado em Petrópolis. Descubra o melhor da cidade com a gente!",
+  title: "TIPTV",
+  description: "O TIPTV é uma plataforma de streaming que oferece filmes, séries e eventos ao vivo. Além de entretenimento, trazemos informações sobre eventos, gastronomia, turismo e notícias, tudo focado em Petrópolis. Descubra o melhor da cidade com a gente!",
 };
 
 export default function RootLayout({

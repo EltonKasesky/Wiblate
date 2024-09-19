@@ -22,7 +22,7 @@ export const POST = async (req: Request) => {
       case 'gastronomia':
         tableName = 'gastronomy';
         break;
-      case 'turismo':
+      case 'noticias':
         tableName = 'news';
         break;
       case 'conhecaacidade':

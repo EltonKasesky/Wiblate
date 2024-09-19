@@ -1,13 +1,14 @@
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 interface VideoData {
   id: string;
-  background: string;
   creators: string;
   catalog: string;
   title: string;
+  tableName: string; 
 }
 
 interface MovieItemProps {
@@ -16,15 +17,30 @@ interface MovieItemProps {
 
 const MovieItem: React.FC<MovieItemProps> = ({ videoData }) => {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
-  const handleClick = () => {
-    if (videoData && videoData.id && videoData.background) {
-      sessionStorage.setItem('videoBackground', videoData.background);
-      sessionStorage.setItem('videoCreators', videoData.creators);
-      const href = `/intermediate?id=${encodeURIComponent(videoData.id)}`;
-      router.push(href);
-    } else {
-      console.error('Invalid videoData:', videoData);
+  const handleClick = async () => {
+    try {
+      setLoading(true);
+
+      const response = await axios.get(`/api/videos/background?idYoutube=${encodeURIComponent(videoData.id)}&tableName=${encodeURIComponent(videoData.tableName)}`);
+      const { background } = response.data;
+      const {creators} = response.data
+
+
+      if (background && creators) {
+        sessionStorage.setItem('videoBackground', background);
+        sessionStorage.setItem('videoCreators', creators);
+
+        const href = `/intermediate?id=${encodeURIComponent(videoData.id)}`;
+        router.push(href);
+      } else {
+        console.error('Background não encontrado para o video:', videoData.id);
+      }
+    } catch (error) {
+      console.error('Erro ao buscar o background:', error);
+    } finally {
+      setLoading(false);
     }
   };
 

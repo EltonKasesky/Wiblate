@@ -26,8 +26,8 @@ export default function Header() {
           <Link href="/" className='flex items-center h-full'>
             <div className="flex items-center justify-center text-2xl font-bold cursor-pointer">
               <i className="bx bx-movie-play bx-tada text-main-color"></i>
-              <span className="text-main-color">ROYAL</span>
-              <span className="text-text-color">PLAY</span>
+              <span className="text-main-color">TIP</span>
+              <span className="text-text-color">TV</span>
             </div>
           </Link>
           <NavHeader isLoggedIn={status === 'authenticated'} />

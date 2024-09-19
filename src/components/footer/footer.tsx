@@ -13,14 +13,14 @@ export default function Footer() {
                                 <div className="relative flex flex-col items-center text-2xl font-bold cursor-pointer -mt-6">
                                     <div className="flex items-center mt-12">
                                         <i className="bx bx-movie-play bx-tada text-main-color"></i>
-                                        <span className="text-main-color">ROYAL</span>
+                                        <span className="text-main-color">TIP</span>
                                         <span className="text-text-color">TV</span>
                                     </div>
                                 </div>
                             </Link>
                         </div>
                         <p>
-                            O RoyalTV é uma plataforma de streaming que oferece filmes, séries e eventos ao vivo. Além de entretenimento,
+                            O TIPTV é uma plataforma de streaming que oferece filmes, séries e eventos ao vivo. Além de entretenimento,
                             trazemos informações sobre eventos, gastronomia, turismo e notícias, tudo focado em Petrópolis. Descubra o melhor da cidade com a gente!
                         </p>
                         <SocialFooter />
