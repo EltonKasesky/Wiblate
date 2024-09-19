@@ -9,12 +9,12 @@ export default function Footer() {
                 <div className="row">
                     <div className="col-4 col-md-6 col-sm-12">
                         <div className="w-full max-w-150px">
-                            <Link href="/" className="mt-footer-logo flex justify-start items-center text-logo-footer font-black" id="link_footer">
+                            <Link href="/" className="mt-footer-logo flex justify-start items-center text-logo-footer font-black group" id="link_footer">
                                 <div className="relative flex flex-col items-center text-2xl font-bold cursor-pointer -mt-6">
                                     <div className="flex items-center mt-12">
-                                        <i className="bx bx-movie-play bx-tada text-main-color"></i>
-                                        <span className="text-main-color">ROYAL</span>
-                                        <span className="text-text-color">TV</span>
+                                        <i className="bx bx-movie-play bx-tada text-main-color group-hover:text-text-color"></i>
+                                        <span className="text-text-color group-hover:text-main-color">ROYAL</span>
+                                        <span className="text-main-color group-hover:text-text-color">TV</span>
                                     </div>
                                 </div>
                             </Link>

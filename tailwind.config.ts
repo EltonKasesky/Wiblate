@@ -138,7 +138,8 @@ const config: Config = {
       screens: {
         'insert-image': '1000px',
         'terms-privacy': '1400px',
-        'gender-item': '1550px'
+        'gender-item': '1550px',
+        'dashboard-user': '1300px'
       },
       ringColor: {
         'main-color': '#2974f7'

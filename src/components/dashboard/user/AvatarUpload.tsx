@@ -2,11 +2,12 @@
 
 import { useState, FormEvent, ChangeEvent } from 'react';
 import { useSession } from 'next-auth/react';
-import FeedbackModaDashboard from '../FeedbackModalDashboard';
+import FeedbackModalDashboard from '../FeedbackModalDashboard';
 
 export default function AvatarUpload() {
   const { data: session } = useSession();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [feedbackMessage, setFeedbackMessage] = useState('');
 
@@ -17,6 +18,7 @@ export default function AvatarUpload() {
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setSelectedFile(e.target.files[0]);
+      setPreviewUrl(URL.createObjectURL(e.target.files[0])); // Preview da imagem
     }
   };
 
@@ -46,17 +48,37 @@ export default function AvatarUpload() {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
-        <input type="file" onChange={handleFileChange} className="mb-2" />
+      <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-6 h-full w-full bg-white rounded-lg">
+        <div
+          className="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 w-40 h-40 rounded-full overflow-hidden relative hover:cursor-pointer hover:border-main-color transition-colors duration-300"
+        >
+          {previewUrl ? (
+            <img src={previewUrl} alt="Avatar Preview" className="w-full h-full object-cover" />
+          ) : (
+            <div className="flex flex-col items-center justify-center text-gray-500">
+              <i className='bx bx-upload text-4xl'></i>
+              <span className="mt-2 text-sm">Selecione seu avatar</span>
+            </div>
+          )}
+          <input
+            type="file"
+            onChange={handleFileChange}
+            className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
+            style={{
+              clipPath: 'circle(50% at 50% 50%)',
+            }}
+          />
+        </div>
+
         <button
           type="submit"
-          className="flex justify-center w-40 rounded-md border border-transparent bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+          className="flex justify-center w-40 rounded-md bg-main-color px-4 py-2 text-sm font-medium text-white hover:bg-main-color transition-transform duration-200 transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-main-color focus-visible:ring-offset-2"
         >
           Atualizar Avatar
         </button>
       </form>
 
-      <FeedbackModaDashboard
+      <FeedbackModalDashboard
         isOpen={isModalOpen}
         closeModal={closeModal}
         feedbackMessage={feedbackMessage}

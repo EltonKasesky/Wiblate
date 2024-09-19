@@ -50,13 +50,13 @@ export default function DropdownMenuUser() {
         <DropdownMenuLabel>{userName ? userName : 'Minha Conta'}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <Link href="/dashboard/home" className='flex items-center justify-start'><i className='bx bxs-cog text-lg mr-1'></i>Configurações</Link>
+          <Link href="/dashboard/home" className='flex items-center justify-start cursor-pointer'><i className='bx bxs-cog text-lg mr-1'></i>Configurações</Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link href="/contact" className='flex items-center justify-start'><i className='bx bx-chat text-lg mr-1'></i>Contato</Link>
+          <Link href="/contact" className='flex items-center justify-start cursor-pointer'><i className='bx bx-chat text-lg mr-1'></i>Contato</Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={handleLogout} className='flex items-center justify-start'><i className='bx bx-exit text-lg mr-1'></i>Logout</DropdownMenuItem>
+        <DropdownMenuItem onClick={handleLogout} className='flex items-center justify-start cursor-pointer'><i className='bx bx-exit text-lg mr-1'></i>Logout</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -7,7 +7,7 @@ type FeedbackModalProps = {
   feedbackMessage: string;
 };
 
-export default function FeedbackModaDashboard({
+export default function FeedbackModalDashboard({
   isOpen,
   closeModal,
   feedbackMessage,

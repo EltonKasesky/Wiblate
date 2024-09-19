@@ -19,9 +19,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
     const userCargo = session?.user?.cargo || null;
 
     return (
-        <div className="flex h-screen">
+        <div className="flex h-screen overflow-hidden">
             <SideNavbar userCargo={userCargo} />
-            <main className="flex-grow p-6 mt-8 lg:mt-0 lg:p-0">
+            <main className="flex-grow overflow-y-auto p-6 mt-8 lg:mt-0 lg:p-0">
                 {children}
             </main>
         </div>

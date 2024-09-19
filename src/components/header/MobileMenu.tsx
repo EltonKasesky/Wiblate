@@ -11,7 +11,7 @@ type MobileMenuProps = {
 export default function MobileMenu({ menuOpen, setMenuOpen, isLoggedIn, status }: MobileMenuProps) {
   return (
     <div className={`md:hidden ${menuOpen ? 'block' : 'hidden'}`}>
-      <ul className="flex flex-col space-y-4 items-center">
+      <ul className="flex flex-col space-y-4 items-end">
         <li className="nav-header">
           <Link href="/" className="cursor-pointer">Início</Link>
         </li>
