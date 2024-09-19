@@ -44,7 +44,7 @@ export default function SideNavbar({ userCargo }: SideNavbarProps) {
                 <div className="flex justify-between items-center lg:py-3 lg:border-b lg:border-gray-200 p-4 lg:p-0">
                     <Link href="/" className="flex items-center justify-center w-full text-xl font-extrabold text-main-color">
                         <i className="bx bx-movie-play bx-tada text-3xl"></i>
-                        <span className="ml-2">ROYAL</span>
+                        <span className="ml-2">TIP</span>
                         <span>TV</span>
                     </Link>
                     <button className="lg:hidden z-50" onClick={toggleMenu}>

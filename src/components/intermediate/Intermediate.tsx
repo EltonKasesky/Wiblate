@@ -8,10 +8,32 @@ import Image from 'next/image';
 
 const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
 
-const fetchYouTubeDescription = async (videoId: string, creators: string, setVideoTitle: (title: string) => void, setVideoCreators: (creators: string) => void, setDescription: (description: string) => void, setShortDescription: (shortDescription: string) => void) => {
+// Função para converter a duração ISO 8601 em um formato mais legível
+const convertISO8601ToReadable = (duration: string): string => {
+  const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
+  
+  // Verifica se match não é null antes de acessar as propriedades
+  if (!match) return '0m 0s';
+
+  const hours = match[1] ? match[1].replace('H', '') : '0';
+  const minutes = match[2] ? match[2].replace('M', '') : '0';
+  const seconds = match[3] ? match[3].replace('S', '') : '0';
+
+  return `${hours !== '0' ? hours + 'h ' : ''}${minutes}m ${seconds}s`;
+};
+
+const fetchYouTubeDescription = async (
+  videoId: string,
+  creators: string,
+  setVideoTitle: (title: string) => void,
+  setVideoCreators: (creators: string) => void,
+  setDescription: (description: string) => void,
+  setShortDescription: (shortDescription: string) => void,
+  setDuration: (duration: string) => void 
+) => {
   try {
     const response = await axios.get(
-      `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${API_KEY}&part=snippet`
+      `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${API_KEY}&part=snippet,contentDetails`
     );
     const videoData = response.data.items[0];
 
@@ -21,11 +43,15 @@ const fetchYouTubeDescription = async (videoId: string, creators: string, setVid
 
     const title = videoData.snippet.title;
     setVideoTitle(title);
-    setVideoCreators(`Criadores: ${creators}`);
+    setVideoCreators(creators);
 
     const description = videoData.snippet.description;
     setDescription(description);
     setShortDescription(description.length > 300 ? description.slice(0, 300) + '... ' : description);
+
+    const duration = convertISO8601ToReadable(videoData.contentDetails.duration);
+    console.log(`Duração do vídeo (ID: ${videoId}): ${duration}`); 
+    setDuration(duration); 
 
   } catch (error) {
     console.error('Error fetching YouTube description:', error);
@@ -43,10 +69,11 @@ const IntermediateContent = () => {
   const [shortDescription, setShortDescription] = useState('');
   const [videoTitle, setVideoTitle] = useState('');
   const [videoCreators, setVideoCreators] = useState('');
+  const [duration, setDuration] = useState(''); 
 
   useEffect(() => {
     if (id && background) {
-      fetchYouTubeDescription(id, creators, setVideoTitle, setVideoCreators, setDescription, setShortDescription);
+      fetchYouTubeDescription(id, creators, setVideoTitle, setVideoCreators, setDescription, setShortDescription, setDuration);
     } else {
       console.error('Video ID or background is not set.');
     }
@@ -87,8 +114,13 @@ const IntermediateContent = () => {
                 </Dialog>
               )}
             </div>
-            <span className="text-white text-lg lg:text-xl leading-6 item-content-description">
-              {videoCreators}
+            <span className="text-white text-lg lg:text-xl leading-6 item-content-description flex items-center">
+              <i className="bx bx-group text-white text-lg lg:text-xl mr-2" /> 
+              {videoCreators} 
+            </span>
+            <span className="text-white text-lg lg:text-xl leading-6 item-content-description flex items-center">
+              <i className="bx bx-time text-white text-lg lg:text-xl mr-2" /> 
+              {duration} 
             </span>
 
             <div className="mt-4 lg:mt-8">

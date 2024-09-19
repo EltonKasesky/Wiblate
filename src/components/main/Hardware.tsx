@@ -13,7 +13,7 @@ const Hardware: React.FC<HardwareProps> = ({ id }) => {
         <div className="container">
           <div className="section-header">Hardware</div>
           <div className="videos-carousel">
-            <VideoSection sectionId="hardware-carousel-section" endpoint="/api/videos/hardware/" />
+            <VideoSection sectionId="hardware-carousel-section" endpoint="/api/videos?select=hardware" />
           </div>
         </div>
       </div>

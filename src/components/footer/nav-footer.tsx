@@ -6,7 +6,7 @@ export default function NavFooter() {
         <div className="row">
             <div className="col-3 col-md-6 col-sm-6">
                 <div className="mt-5">
-                    <p><b>RoyalTV</b></p>
+                    <p><b>TIPTV</b></p>
                     <ul className="footer-menu">
                         <li>
                             <Link href="/" className="nav-footer">

@@ -266,7 +266,7 @@
   /* Optional: Adjust carousel item width if needed */
   .movies-slide.owl-carousel .owl-item {
     width: auto;
-    /* Or a specific width like 20% to fit multiple items */
+    /* Or a specific width like 20% to fit mulTIPle items */
   }
 
   /* REPRODUCTION */

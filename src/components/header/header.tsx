@@ -25,9 +25,15 @@ export default function Header() {
           {/* LOGO */}
           <Link href="/" className='flex items-center h-full group'>
             <div className="flex items-center justify-center text-2xl font-bold cursor-pointer">
+<<<<<<< HEAD
               <i className="bx bx-movie-play bx-tada text-main-color group-hover:text-white"></i>
               <span className="text-text-color group-hover:text-main-color">ROYAL</span>
               <span className="text-main-color group-hover:text-text-color">PLAY</span>
+=======
+              <i className="bx bx-movie-play bx-tada text-main-color"></i>
+              <span className="text-main-color">TIP</span>
+              <span className="text-text-color">TV</span>
+>>>>>>> b41e69b04c688c234ab262f90616fde1773dca81
             </div>
           </Link>
           <NavHeader isLoggedIn={status === 'authenticated'} />

@@ -13,7 +13,7 @@ const ProgrammingLogic: React.FC<ProgrammingLogicProps> = ({ id }) => {
         <div className="container">
           <div className="section-header">Lógica de Programação</div>
           <div className="videos-carousel">
-            <VideoSection sectionId="logic-carousel-section" endpoint="/api/videos/Plogic/" />
+            <VideoSection sectionId="logic-carousel-section" endpoint="/api/videos?select=logic" />
           </div>
         </div>
       </div>

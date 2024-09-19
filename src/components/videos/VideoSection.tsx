@@ -15,6 +15,7 @@ interface VideoData {
   background: string;
   creators: string;
   uniqueKey: string;
+  tableName: string;
 }
 
 interface VideoSectionProps {
@@ -25,6 +26,11 @@ interface VideoSectionProps {
 const VideoSection: React.FC<VideoSectionProps> = ({ sectionId, endpoint }) => {
   const [videos, setVideos] = useState<VideoData[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const extractTableNameFromEndpoint = (endpoint: string): string => {
+    const urlParams = new URLSearchParams(endpoint.split('?')[1]);
+    return urlParams.get('select') || 'defaultTableName';
+  };
 
   const fetchYouTubeData = async (videoId: string): Promise<{ id: string; title: string } | null> => {
     const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
@@ -59,7 +65,8 @@ const VideoSection: React.FC<VideoSectionProps> = ({ sectionId, endpoint }) => {
               catalog: video.catalog,
               background: video.background,
               creators: video.creators,
-              uniqueKey: `${video.idyoutube}-${index}`
+              uniqueKey: `${video.idyoutube}-${index}`,
+              tableName: extractTableNameFromEndpoint(endpoint) 
             };
           }
           return null;

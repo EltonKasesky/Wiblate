@@ -13,7 +13,7 @@ const Dados: React.FC<DadosProps> = ({ id }) => {
         <div className="container">
           <div className="section-header">Banco de Dados</div>
           <div className="videos-carousel">
-            <VideoSection sectionId="database-carousel-section" endpoint="/api/videos/dados/" />
+            <VideoSection sectionId="database-carousel-section" endpoint="/api/videos?select=databank" />
           </div>
         </div>
       </div>

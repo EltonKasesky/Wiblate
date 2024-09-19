@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation } from 'swiper/modules';
 
-// Definindo os tipos para os dados do evento
+
 interface VideoData {
   id: string;
   company_name: string;

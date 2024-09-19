@@ -13,7 +13,7 @@ const NetworkStructure: React.FC<NetworkStructureProps> = ({ id }) => {
         <div className="container">
           <div className="section-header">Estrutura de Rede</div>
           <div className="videos-carousel">
-            <VideoSection sectionId="network-carousel-section" endpoint="/api/videos/network/" />
+            <VideoSection sectionId="network-carousel-section" endpoint="/api/videos?select=networkstructure" />
           </div>
         </div>
       </div>
