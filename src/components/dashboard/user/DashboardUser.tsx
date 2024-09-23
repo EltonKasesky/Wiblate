@@ -5,6 +5,7 @@ import DashboardUserSkeleton from '@/components/skeleton/DashboardUserSkeleton';
 import UserProfileInfo from './UserProfileInfo';
 import AvatarUpload from './AvatarUpload';
 import UpdatePassword from './UpdatePassword';
+import VideoMetrics from './VideoMetrics';
 
 export default function DashboardUser() {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,6 +34,9 @@ export default function DashboardUser() {
         <div className="flex-grow flex flex-col w-full min-w-[300px] h-[300px] border border-white rounded-lg lg:max-h-none">
           <UpdatePassword />
         </div>
+      </section>
+      <section className="box-border flex justify-center items-center w-full h-auto lg:px-5 lg:pb-5 px-2 py-1">
+        <VideoMetrics />
       </section>
     </>
   );

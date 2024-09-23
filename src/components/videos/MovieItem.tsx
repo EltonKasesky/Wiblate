@@ -23,6 +23,8 @@ const MovieItem: React.FC<MovieItemProps> = ({ videoData }) => {
     try {
       setLoading(true);
 
+      await axios.post('/api/videos/views', { video_id: videoData.id });
+
       const response = await axios.get(`/api/videos/background?idYoutube=${encodeURIComponent(videoData.id)}&tableName=${encodeURIComponent(videoData.tableName)}`);
       const { background } = response.data;
       const {creators} = response.data
