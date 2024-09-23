@@ -7,16 +7,16 @@ export async function GET(req: NextRequest) {
     const city = searchParams.get('city') || '';
     const state = searchParams.get('state') || '';
 
-    let sqlQuery = 'SELECT id, company_name, address, phone, city, state, description, id_youtube, logo, catalog FROM gastronomy WHERE city = $1';
+    let sqlQuery = 'SELECT id, company_name, address, phone, city, state, description, id_youtube, logo, catalog, instagram, ifood FROM gastronomy WHERE city = $1';
     let rows = await query(sqlQuery, [city]);
 
     if (rows.length === 0 && state) {
-      sqlQuery = 'SELECT id, company_name, address, phone, city, state, description, id_youtube, logo, catalog FROM gastronomy WHERE state = $1';
+      sqlQuery = 'SELECT id, company_name, address, phone, city, state, description, id_youtube, logo, catalog, instagram, ifood FROM gastronomy WHERE state = $1';
       rows = await query(sqlQuery, [state]);
     }
 
     if (rows.length === 0) {
-      sqlQuery = 'SELECT id, company_name, address, phone, city, state, description, id_youtube, logo, catalog FROM gastronomy LIMIT 10';
+      sqlQuery = 'SELECT id, company_name, address, phone, city, state, description, id_youtube, logo, catalog, instagram, ifood FROM gastronomy LIMIT 10';
       rows = await query(sqlQuery, []);
     }
 

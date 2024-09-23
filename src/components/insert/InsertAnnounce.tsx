@@ -10,10 +10,11 @@ export default function InsertCompany() {
   const [isGenderOpen, setIsGenderOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState<string>('');
   const [selectGender, setSelectedGender] = useState<string>('');
-  const [selectedState, setSelectedState] = useState<string>('Rio de Janeiro');
-  const [selectedTable, setSelectedTable] = useState<string>('eventos');
+  const [selectedState, setSelectedState] = useState<string>('');
+  const [selectedTable, setSelectedTable] = useState<string>('');
   const [feedbackMessage, setFeedbackMessage] = useState('');
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
+  const [dynamicFields, setDynamicFields] = useState<{ ifood?: string }>({}); // Estado para campos dinâmicos
   const formRef = useRef<HTMLFormElement>(null);
 
   const cityMap = {
@@ -24,12 +25,13 @@ export default function InsertCompany() {
   const genderMap = {
     Eventos: 'eventos',
     Gastronomia: 'gastronomia',
-    Turismo: 'turismo',
+    Notícias: 'noticias',
     "Conheça a Cidade": 'conheca-cidade',
   } as const;
 
   const stateMap = {
     'Rio de Janeiro': 'Rio de Janeiro',
+    'São Paulo': 'São Paulo',
   } as const;
 
   const toBase64 = (file: File): Promise<string> =>
@@ -79,6 +81,10 @@ export default function InsertCompany() {
         body: JSON.stringify(data),
       });
 
+      if (dynamicFields.ifood) {
+        data.ifood = dynamicFields.ifood;
+      }
+
       const result = await response.json();
       setFeedbackMessage(result.message);
       setIsFeedbackOpen(true);
@@ -88,7 +94,7 @@ export default function InsertCompany() {
       }
 
       setSelectedCity('');
-      setSelectedState('Rio de Janeiro');
+      setSelectedState('');
     } catch (error) {
       setFeedbackMessage('Erro ao enviar dados');
       setIsFeedbackOpen(true);
@@ -119,6 +125,12 @@ export default function InsertCompany() {
     if (genderValue) {
       setSelectedGender(genderValue);
       closeGenderModal();
+
+      if (genderValue === 'gastronomia') {
+        setDynamicFields({ ifood: '' });
+      } else {
+        setDynamicFields({});
+      }
     }
   };
 
@@ -145,7 +157,7 @@ export default function InsertCompany() {
     return entry ? entry[0] : 'Selecione um estado';
   };
 
-  return (  
+  return (
     <>
       <section className="flex items-center justify-center w-full h-screen mt-8 lg:mt-0 box-border text-main-size">
         <section className="flex justify-center items-center w-full h-auto lg:h-insert">
@@ -162,7 +174,7 @@ export default function InsertCompany() {
                   {/* Coluna 1 */}
                   <div className="flex flex-col gap-4 w-full lg:w-1/2">
                     <div className="flex flex-col">
-                      <label htmlFor="gender">Selecione o Gênero</label>
+                      <label htmlFor="gender">Selecione o Gênero *</label>
                       <button
                         type="button"
                         className="border-2 border-dashed border-text-color bg-transparent rounded-sm py-1 px-4 text-text-color"
@@ -173,7 +185,7 @@ export default function InsertCompany() {
                     </div>
 
                     <div className="flex flex-col">
-                      <label htmlFor="city">Selecione a Cidade</label>
+                      <label htmlFor="city">Selecione a Cidade *</label>
                       <button
                         type="button"
                         className="border-2 border-dashed border-text-color bg-transparent rounded-sm py-1 px-4 text-text-color"
@@ -184,7 +196,7 @@ export default function InsertCompany() {
                     </div>
 
                     <div className="flex flex-col">
-                      <label htmlFor="state">Selecione o Estado</label>
+                      <label htmlFor="state">Selecione o Estado *</label>
                       <button
                         type="button"
                         className="border-2 border-dashed border-text-color bg-transparent rounded-sm py-1 px-4 text-text-color"
@@ -196,24 +208,36 @@ export default function InsertCompany() {
 
                     <FileInput
                       id="logo"
-                      label="Logo da Empresa"
+                      label="Logo da Empresa *"
                       name="logo"
                       required={true}
                     />
 
                     <FileInput
                       id="catalog"
-                      label="Imagem de Catálogo"
+                      label="Imagem de Catálogo *"
                       name="catalog"
                       required={true}
                     />
+
+                    {selectGender === 'gastronomia' && (
+                      <TextInput
+                        id="ifood"
+                        label="Ifood"
+                        name="ifood"
+                        placeholder="Insira o link do Ifood"
+                        value={dynamicFields.ifood || ''}
+                        onChange={(e) => setDynamicFields({ ...dynamicFields, ifood: e.target.value })}
+                      />
+                    )}
+
                   </div>
 
                   {/* Coluna 2 */}
                   <div className="flex flex-col gap-4 w-full lg:w-1/2">
                     <TextInput
                       id="idYoutube"
-                      label="ID do vídeo"
+                      label="ID do vídeo *"
                       name="idYoutube"
                       placeholder="Ex: 8uQqaauS5UA"
                       required={true}
@@ -221,7 +245,7 @@ export default function InsertCompany() {
 
                     <TextInput
                       id="companyName"
-                      label="Nome da Empresa"
+                      label="Nome da Empresa *"
                       name="companyName"
                       placeholder="Ex: Empresa XYZ"
                       required={true}
@@ -232,7 +256,7 @@ export default function InsertCompany() {
                       label="Endereço"
                       name="address"
                       placeholder="Ex: Rua ABC, 123"
-                      required={true}
+                      required={false}
                     />
 
                     <TextInput
@@ -240,11 +264,19 @@ export default function InsertCompany() {
                       label="Telefone"
                       name="phone"
                       placeholder="Ex: (21) 99999-9999"
-                      required={true}
+                      required={false}
+                    />
+
+                    <TextInput
+                      id="instagram"
+                      label="Instagram"
+                      name="instagram"
+                      placeholder="Ex: https://www.instagram.com/wiblate/"
+                      required={false}
                     />
 
                     <div className="flex flex-col">
-                      <label htmlFor="message">Mensagem</label>
+                      <label htmlFor="message">Mensagem *</label>
                       <textarea
                         className="border-2 border-dashed border-text-color bg-transparent rounded-sm px-4 text-text-color"
                         name="message"

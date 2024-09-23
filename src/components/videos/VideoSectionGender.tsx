@@ -20,6 +20,8 @@ interface VideoData {
   state: string;
   description: string;
   id_youtube: string;
+  instagram: string;
+  ifood: string;
   uniqueKey: string;
 }
 
@@ -69,6 +71,8 @@ const GenderSection: React.FC<GenderSectionProps> = ({ sectionId, endpoint }) =>
               city: video.city,
               state: video.state,
               description: video.description,
+              instagram: video.instagram,
+              ifood: video.ifood,
               uniqueKey: `${video.id_youtube}-${index}`
             };
           }

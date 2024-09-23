@@ -2,31 +2,52 @@ import { query } from "@/lib/db";
 
 export const POST = async (req: Request) => {
   try {
-    const { gender, idYoutube, companyName, address, phone, city, state, logo, message, catalog } = await req.json();
+    const { gender, idYoutube, companyName, address, phone, city, state, logo, message, catalog, instagram, ifood } = await req.json();
     
-    // Adicione logs para depuração
-    console.log('Dados recebidos:', { gender, idYoutube, companyName, address, phone, city, state, logo, message, catalog });
+    let Blogo = true;
+    let Bcatalog = true;
 
-    if (!gender || !idYoutube || !companyName || !address || !phone || !city || !state || !logo || !message || !catalog) {
-      return new Response(JSON.stringify({ message: 'Todos os campos são obrigatórios' }), {
+    if(!logo || !catalog){
+      Blogo = false
+      Bcatalog = false
+    }
+
+    console.log('Dados recebidos:', { gender, idYoutube, companyName, address, phone, city, state, Blogo, message, Bcatalog, instagram, ifood });
+
+    if (!gender || !idYoutube || !companyName || !city || !state || !logo || !message || !catalog) {
+      return new Response(JSON.stringify({ message: 'Os campos com * são obrigatórios' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
       });
     }
 
-    let tableName: string;
+    let insertQuery: string;
+    let queryParams: any[] = [companyName, address, phone, city, state, logo, idYoutube, message, catalog, instagram, ifood];
+
     switch (gender) {
       case 'eventos':
-        tableName = 'events';
+        insertQuery = `
+          INSERT INTO events (company_name, address, phone, city, state, logo, id_youtube, description, catalog, instagram)
+          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+        `;
         break;
       case 'gastronomia':
-        tableName = 'gastronomy';
+        insertQuery = `
+          INSERT INTO gastronomy (company_name, address, phone, city, state, logo, id_youtube, description, catalog, instagram, ifood)
+          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+        `;
         break;
       case 'noticias':
-        tableName = 'news';
+        insertQuery = `
+          INSERT INTO news (company_name, address, phone, city, state, logo, id_youtube, description, catalog, instagram)
+          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+        `;
         break;
       case 'conhecaacidade':
-        tableName = 'know';
+        insertQuery = `
+          INSERT INTO know (company_name, address, phone, city, state, logo, id_youtube, description, catalog, instagram)
+          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+        `;
         break;
       default:
         return new Response(JSON.stringify({ message: 'Opção inválida selecionada' }), {
@@ -35,12 +56,11 @@ export const POST = async (req: Request) => {
         });
     }
 
-    const insertQuery = `
-      INSERT INTO ${tableName} (company_name, address, phone, city, state, logo, id_youtube, description, catalog)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-    `;
-    
-    await query(insertQuery, [companyName, address, phone, city, state, logo, idYoutube, message, catalog]);
+
+await query(insertQuery, queryParams); 
+
+
+
 
     return new Response(JSON.stringify({ message: 'Dados inseridos com sucesso' }), {
       status: 200,

@@ -71,7 +71,6 @@ const authOptions: NextAuthOptions = {
           }
 
           if (user && dbUser) {
-            // Aqui garantimos que o ID do banco seja utilizado no lugar do ID do Google
             user.id = dbUser.id;
             user.cargo = dbUser.cargo;
           }
@@ -85,7 +84,6 @@ const authOptions: NextAuthOptions = {
     },
     jwt: async ({ token, user }) => {
       if (user) {
-        // Aqui usamos o ID do banco de dados (se disponível) no JWT
         token.id = user.id as string;
         token.email = user.email as string;
         token.name = user.name as string;
@@ -94,7 +92,6 @@ const authOptions: NextAuthOptions = {
       return token;
     },
     session: async ({ session, token }) => {
-      // Aqui garantimos que o ID do banco seja utilizado na sessão
       session.user = {
         id: token.id as string,
         email: token.email as string,

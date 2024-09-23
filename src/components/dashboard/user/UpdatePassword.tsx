@@ -2,8 +2,10 @@
 
 import { useState, FormEvent, ChangeEvent } from 'react';
 import FeedbackModaDashboard from '../FeedbackModalDashboard';
+import { useSession } from 'next-auth/react';
 
 export default function UpdatePassword() {
+  const { data: session } = useSession();
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
@@ -18,13 +20,13 @@ export default function UpdatePassword() {
     e.preventDefault();
 
     if (newPassword !== confirmNewPassword) {
-      setFeedbackMessage('As novas senhas não coincidem.');
+      setFeedbackMessage('Erro: As novas senhas não coincidem.');
       setIsModalOpen(true);
       return;
     }
-
+    else{
     try {
-      const res = await fetch(`Faz a logica ai Cler`, {
+      const res = await fetch(`/api/dashboard/user/[${session?.user?.id}]/newPassword`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -45,6 +47,7 @@ export default function UpdatePassword() {
     } finally {
       setIsModalOpen(true);
     }
+  }
   };
 
   return (

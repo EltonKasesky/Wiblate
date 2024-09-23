@@ -12,6 +12,8 @@ interface VideoData {
   city: string;
   state: string;
   description: string;
+  instagram: string;
+  ifood: string;
 }
 
 interface GenderItemProps {
@@ -24,11 +26,14 @@ const GenderItem: React.FC<GenderItemProps> = ({ videoData }) => {
   const handleClick = () => {
     if (videoData && videoData.id) {
       sessionStorage.setItem('videoLogo', videoData.logo);
+      sessionStorage.setItem('videoCompany', videoData.company_name)
       sessionStorage.setItem('videoAddress', videoData.address);
       sessionStorage.setItem('videoPhone', videoData.phone);
       sessionStorage.setItem('videoCity', videoData.city);
       sessionStorage.setItem('videoState', videoData.state);
       sessionStorage.setItem('videoDescription', videoData.description);
+      sessionStorage.setItem('videoInstagram', videoData.instagram);
+      sessionStorage.setItem('videoIfood', videoData.ifood);
       const href = `/reproductionGender?id=${encodeURIComponent(videoData.id)}`;
       router.push(href);
     } else {
