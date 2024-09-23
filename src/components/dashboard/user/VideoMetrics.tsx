@@ -43,7 +43,7 @@ const VideoMetricsChart = () => {
               {
                 label: 'Vídeos Assistidos',
                 data: counts,
-                backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                backgroundColor: 'rgba(41, 116, 247, 1)',
               },
             ],
           });
