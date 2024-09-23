@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import DashboardUserSkeleton from '@/components/skeleton/DashboardUserSkeleton';
+import DashboardMetricsSkeleton from '@/components/skeleton/DashboardMetricsSkeleton';
 import UserProfileInfo from './UserProfileInfo';
 import AvatarUpload from './AvatarUpload';
 import UpdatePassword from './UpdatePassword';
@@ -17,7 +18,13 @@ export default function DashboardUser() {
   }, []);
 
   if (isLoading) {
-    return <DashboardUserSkeleton itemsCount={3} />;
+    return (
+      <>
+        <DashboardUserSkeleton itemsCount={3} />
+        <DashboardMetricsSkeleton itemsCount={1}/>
+      </>
+    )
+      
   }
 
   return (

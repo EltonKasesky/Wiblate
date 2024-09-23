@@ -3,17 +3,19 @@ import { pool } from '@/lib/db';
 
 export async function GET(request: Request, { params }: { params: { id: string } }) {
   const userId = params.id;
+  console.log(userId);
 
   try {
     const client = await pool.connect();
-    const res = await client.query('SELECT name, avatar FROM users WHERE id = $1', [userId]);
+    const res = await client.query('SELECT name, avatar, created_at FROM users WHERE id = $1', [userId]);
     client.release();
 
     if (res.rows.length > 0) {
       const user = res.rows[0];
       return NextResponse.json({
         name: user.name,
-        avatar: user.avatar
+        avatar: user.avatar,
+        createdAt: user.created_at,
       });
     } else {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });

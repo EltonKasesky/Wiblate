@@ -24,30 +24,33 @@ export default function UpdatePassword() {
       setIsModalOpen(true);
       return;
     }
-    else{
-    try {
-      const res = await fetch(`/api/dashboard/user/[${session?.user?.id}]/newPassword`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          currentPassword,
-          newPassword,
-        }),
-      });
+    else {
+      try {
+        const res = await fetch(`/api/dashboard/user/[${session?.user?.id}]/newPassword`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            currentPassword,
+            newPassword,
+          }),
+        });
 
-      if (!res.ok) {
+        if (!res.ok) {
+          setFeedbackMessage('Erro ao atualizar a senha. Tente novamente.');
+        } else {
+          setFeedbackMessage('Senha atualizada com sucesso!');
+        }
+      } catch (error) {
         setFeedbackMessage('Erro ao atualizar a senha. Tente novamente.');
-      } else {
-        setFeedbackMessage('Senha atualizada com sucesso!');
+      } finally {
+        setIsModalOpen(true);
+        setCurrentPassword('');
+        setNewPassword('');
+        setConfirmNewPassword('');
       }
-    } catch (error) {
-      setFeedbackMessage('Erro ao atualizar a senha. Tente novamente.');
-    } finally {
-      setIsModalOpen(true);
     }
-  }
   };
 
   return (
