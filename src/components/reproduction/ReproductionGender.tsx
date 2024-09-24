@@ -154,31 +154,36 @@ export default function ReproductionGender() {
                 <h1 className="text-2xl font-bold">{adInfo?.company_name}</h1>
               </div>
               <div className="flex space-x-4 text-center justify-center">
-                {/* Verificar se o valor é válido e não é a string "undefined" */}
-                {adInfo?.instagram && adInfo.instagram !== 'undefined' ? (
-                  <Link href={adInfo.instagram} target="_blank" rel="noopener noreferrer">
-                    <Image
-                      src="/images/reproduction/insta.png"
-                      alt="Instagram"
-                      width={64}
-                      height={64}
-                      className="cursor-pointer"
-                    />
-                  </Link>
-                ) : null}
+  {/* Verificar se o valor é válido e não é a string "undefined" */}
+  {adInfo?.instagram && adInfo.instagram !== 'undefined' ? (
+    <Link href={adInfo.instagram} target="_blank" rel="noopener noreferrer">
+      <div className="bg-white rounded-full p-1 -mt-5">
+        <Image
+          src="/images/reproduction/insta.png"
+          alt="Instagram"
+          width={64}
+          height={64}
+          className="cursor-pointer"
+        />
+      </div>
+    </Link>
+  ) : null}
 
-                {adInfo?.ifood && adInfo.ifood !== 'undefined' ? (
-                  <Link href={adInfo.ifood} target="_blank" rel="noopener noreferrer">
-                    <Image
-                      src="/images/reproduction/ifood.png"
-                      alt="iFood"
-                      width={64}
-                      height={64}
-                      className="cursor-pointer"
-                    />
-                  </Link>
-                ) : null}
-              </div>
+  {adInfo?.ifood && adInfo.ifood !== 'undefined' ? (
+    <Link href={adInfo.ifood} target="_blank" rel="noopener noreferrer">
+      <div className="bg-white rounded-full p-1 -mt-5">
+        <Image
+          src="/images/reproduction/ifood.png"
+          alt="iFood"
+          width={64}
+          height={64}
+          className="cursor-pointer"
+        />
+      </div>
+    </Link>
+  ) : null}
+</div>
+
               <p>{adInfo?.address}</p>
               <p>{adInfo?.phone}</p>
 
