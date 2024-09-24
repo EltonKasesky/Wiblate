@@ -28,7 +28,7 @@ const VideoMetricsChart = () => {
             labels.push(dayString);
 
             const entry = result.find((entry: any) =>
-              new Date(entry.day).getDate() === day && 
+              new Date(entry.day).getDate() === day &&
               new Date(entry.day).getMonth() === month
             );
 
@@ -59,12 +59,13 @@ const VideoMetricsChart = () => {
   }, []);
 
   return (
-    <div className='w-full lg:h-auto bg-white rounded-lg'>
+    <div className="w-full lg:h-auto bg-white rounded-lg min-h-[300px]">
       {data ? (
         <Bar
           data={data}
           options={{
             responsive: true,
+            maintainAspectRatio: false,
             plugins: {
               legend: {
                 position: 'top' as const,
@@ -89,6 +90,7 @@ const VideoMetricsChart = () => {
               },
             },
           }}
+          style={{ height: '100%', width: '100%' }}
         />
       ) : (
         <p>Carregando dados...</p>
