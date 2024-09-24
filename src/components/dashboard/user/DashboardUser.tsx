@@ -16,7 +16,7 @@ export default function DashboardUser() {
     const timeoutId = setTimeout(() => {
       setIsLoading(false);
       setComponentsLoaded(true);
-    }, 2000);
+    }, 500);
 
     return () => clearTimeout(timeoutId);
   }, []);
