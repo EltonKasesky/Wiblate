@@ -5,7 +5,7 @@ import { useSession } from 'next-auth/react';
 
 export default function UserProfileInfo() {
   const { data: session } = useSession();
-  const [userData, setUserData] = useState<{ name: string; email: string; avatar: string | null } | null>(null);
+  const [userData, setUserData] = useState<{ name: string; email: string; avatar: string | null; createdAt: string } | null>(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -21,6 +21,7 @@ export default function UserProfileInfo() {
           name: data.name || 'Usuário',
           email: data.email || 'sememail@exemplo.com',
           avatar: data.avatar || null,
+          createdAt: data.createdAt || '23/09;2024'
         });
       } catch (error) {
         console.error('Erro ao buscar dados do usuário:', error);
@@ -49,7 +50,7 @@ export default function UserProfileInfo() {
             </div>
             <div className="text-sm text-gray-600">
               <strong className="block text-sm text-gray-700">Membro desde:</strong>
-              23 de Setembro de 2024
+              {userData.createdAt}
             </div>
           </section>
 
