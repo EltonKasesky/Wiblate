@@ -24,6 +24,7 @@ const config: Config = {
       maxWidth: {
         '150px': '150px',
         'insert': '500px',
+        'last': '1240px',
       },
       minWidth: {
         'insert-image': '1000px',
