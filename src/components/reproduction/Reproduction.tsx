@@ -3,8 +3,17 @@
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, ArrowBigRightDash, ChevronRight, ChevronLeft, Facebook, Instagram, Twitter, Image } from 'lucide-react';
+import { ArrowLeft, ArrowBigRightDash, ChevronRight, ChevronLeft, Facebook, Instagram, Twitter } from 'lucide-react';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog';
+import Image from 'next/image';
 
 declare global {
   interface Window {
@@ -28,6 +37,9 @@ export default function Reproduction() {
   const [isPanelExpanded, setIsPanelExpanded] = useState<boolean>(false);
   const [adInfo, setAdInfo] = useState<any>(null);
   const [selectedAdId, setSelectedAdId] = useState<string | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [shortDescription, setShortDescription] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
   const router = useRouter();
 
   const location = "Petrópolis"; // Ajuste se necessário
@@ -130,87 +142,158 @@ export default function Reproduction() {
     console.log("Player state changed:", event.data);
     if (isAdPlaying && event.data === window.YT.PlayerState.ENDED) {
       console.log("Ad ended, continuing main video");
-      continueMainVideo();
     }
   };
+
+  // const generateAdTimes = (duration: number) => {
+  //   const interval = 10;
+  //   const times: number[] = [];
+
+  //   for (let time = interval; time < duration; time += interval) {
+  //     times.push(time);
+  //   }
+
+  //   setAdTimes(times);
+  //   console.log("Generated ad times:", times);
+  // };
+
+  // const checkForAd = (currentTime: number) => {
+  //   if (adTimes.includes(currentTime) && playerRef.current.getPlayerState() === window.YT.PlayerState.PLAYING) {
+  //     console.log("Playing ad at time:", currentTime);
+  //     playAd(currentTime);
+  //   }
+  // };
+
+  // const playAd = (adTime: number) => {
+  //   if (playerRef.current && adVideos.length > 0) {
+  //     const currentTime = playerRef.current.getCurrentTime();
+  //     console.log("Current main video time:", currentTime);
+  //     setMainVideoCurrentTime(currentTime);
+  //     setIsAdPlaying(true);
+  //     setShowSkipButton(false);
+
+  //     const selectedAdId = adVideos[Math.floor(Math.random() * adVideos.length)];
+
+  //     setSelectedAdId(selectedAdId);
+
+  //     console.log("Location:", location);
+  //     console.log("Available ads:", adVideos);
+  //     console.log("Selected ad ID:", selectedAdId);
+
+  //     playerRef.current.loadVideoById(selectedAdId);
+
+  //     setAdTimes((prevAdTimes) => prevAdTimes.filter((time) => time !== adTime));
+  //     setAdVideos((prevAdVideos) => prevAdVideos.filter((adId) => adId !== selectedAdId));
+
+  //     if (adVideos.length === 1) {
+  //       setAdVideos(originalAd);
+  //       console.log("Restoring original ads:", originalAd);
+  //     }
+  //   } else {
+  //     console.error("Player not available or no ads loaded.");
+  //   }
+  // };
+
+
+
+
+  // const continueMainVideo = () => {
+  //   if (playerRef.current) {
+  //     setIsAdPlaying(false);
+  //     console.log("Continuing main video from time:", mainVideoCurrentTime);
+  //     playerRef.current.loadVideoById(videoId);
+
+  //     setTimeout(() => {
+  //       if (mainVideoCurrentTime > 0) {
+  //         playerRef.current.seekTo(Math.floor(mainVideoCurrentTime));
+  //         playerRef.current.playVideo();
+  //         console.log("Resuming main video playback");
+  //       }
+  //     }, 500);
+
+  //     setElapsedTime(0);
+  //     setAdElapsedTime(0);
+  //   }
+  // };
 
   const generateAdTimes = (duration: number) => {
-    const interval = 10;
+    const adInterval = 10; 
     const times: number[] = [];
 
-    for (let time = interval; time < duration; time += interval) {
-      times.push(time);
+    for (let time = adInterval; time < duration; time += adInterval) {
+        times.push(time);
     }
-
     setAdTimes(times);
     console.log("Generated ad times:", times);
-  };
+};
 
-  const checkForAd = (currentTime: number) => {
+const checkForAd = (currentTime: number) => {
     if (adTimes.includes(currentTime) && playerRef.current.getPlayerState() === window.YT.PlayerState.PLAYING) {
-      console.log("Playing ad at time:", currentTime);
-      playAd(currentTime);
-    }
-  };
+        const remainingTime = playerRef.current.getDuration() - currentTime;
 
-  const playAd = (adTime: number) => {
-    if (playerRef.current && adVideos.length > 0) {
-      const currentTime = playerRef.current.getCurrentTime();
-      console.log("Current main video time:", currentTime);
-      setMainVideoCurrentTime(currentTime);
-      setIsAdPlaying(true);
-      setShowSkipButton(false);
-
-      const selectedAdId = adVideos[Math.floor(Math.random() * adVideos.length)];
-
-      setSelectedAdId(selectedAdId);  // Armazenar o ID do anúncio selecionado
-
-      console.log("Location:", location);
-      console.log("Available ads:", adVideos);
-      console.log("Selected ad ID:", selectedAdId);
-
-      playerRef.current.loadVideoById(selectedAdId);
-
-      setAdTimes((prevAdTimes) => prevAdTimes.filter((time) => time !== adTime));
-      setAdVideos((prevAdVideos) => prevAdVideos.filter((adId) => adId !== selectedAdId));
-
-      if (adVideos.length === 1) {
-        setAdVideos(originalAd);
-        console.log("Restoring original ads:", originalAd);
-      }
-    } else {
-      console.error("Player not available or no ads loaded.");
-    }
-  };
-
-
-
-
-  const continueMainVideo = () => {
-    if (playerRef.current) {
-      setIsAdPlaying(false);
-      console.log("Continuing main video from time:", mainVideoCurrentTime);
-      playerRef.current.loadVideoById(videoId);
-
-      setTimeout(() => {
-        if (mainVideoCurrentTime > 0) {
-          playerRef.current.seekTo(Math.floor(mainVideoCurrentTime));
-          playerRef.current.playVideo();
-          console.log("Resuming main video playback");
+        if (remainingTime >= 120) {
+            console.log("Playing ads at time:", currentTime);
+            playAds(currentTime);
+        } else {
+            console.log("Not enough time left for ads.");
         }
-      }, 500);
-
-      setElapsedTime(0);
-      setAdElapsedTime(0);
     }
-  };
+};
 
-  const skipAd = () => {
-    console.log("Skipping ad");
-    continueMainVideo();
-    setElapsedTime(0);
-    setAdElapsedTime(0);
-  };
+const playAds = (startAdTime: number) => {
+  if (playerRef.current && adVideos.length > 0) {
+      const adDuration = 30; 
+      const adsToPlay = 5; 
+      const adsPlayed: string[] = []; 
+
+      const playNextAd = () => {
+          if (adsPlayed.length < adsToPlay) {
+
+              const availableAds = adVideos.length > 0 
+                  ? adVideos 
+                  : originalAd; 
+              const selectedAdId = availableAds[Math.floor(Math.random() * availableAds.length)];
+              adsPlayed.push(selectedAdId);
+              setSelectedAdId(selectedAdId);
+              setIsAdPlaying(true);
+
+              console.log("Playing ad ID:", selectedAdId);
+              playerRef.current.loadVideoById(selectedAdId);
+
+              setTimeout(() => {
+                  console.log("Finished ad ID:", selectedAdId);
+                  playNextAd();
+              }, adDuration * 1000);
+          } else {
+              continueMainVideo(startAdTime);
+          }
+      };
+
+      playNextAd(); 
+  } else {
+      console.error("Player not available or no ads loaded.");
+  }
+};
+
+
+const continueMainVideo = (adStartTime: number) => {
+    if (playerRef.current) {
+        setIsAdPlaying(false);
+        console.log("Continuing main video from time:", adStartTime);
+        playerRef.current.loadVideoById(videoId);
+
+        setTimeout(() => {
+            if (adStartTime > 0) {
+                playerRef.current.seekTo(Math.floor(adStartTime));
+                playerRef.current.playVideo();
+                console.log("Resuming main video playback");
+            }
+        }, 500);
+
+        setElapsedTime(0);
+        setAdElapsedTime(0);
+    }
+};
 
   const renderTime = ({ remainingTime }: { remainingTime: number }) => {
     if (remainingTime === 0) {
@@ -221,36 +304,32 @@ export default function Reproduction() {
     return <div className="text-white text-sm">{remainingTime}s</div>;
   };
 
+  useEffect(() => {
+    const desc = adInfo?.description || '';
+    setDescription(desc);
+    setShortDescription(desc.length > 200 ? `${desc.slice(0, 200)}... ` : desc);
+  }, [adInfo]);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowRight') {
+        setIsPanelExpanded(true);  
+      }
+      if (event.key === 'ArrowLeft') {
+        setIsPanelExpanded(false); 
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   return (
     <div className="relative w-full h-screen">
       <div id="player" className="w-full h-full fixed top-0 left-0"></div>
-
-      {isAdPlaying && (
-        <div className="absolute bottom-4 right-4 p-2 mb-8">
-          {!showSkipButton && (
-            <CountdownCircleTimer
-              isPlaying
-              duration={10}
-              isGrowing={true}
-              strokeWidth={4}
-              colors={'#ffffff'}
-              size={40}
-              onComplete={() => { }}
-            >
-              {renderTime}
-            </CountdownCircleTimer>
-          )}
-          {showSkipButton && (
-            <button
-              className="flex items-center space-x-2 bg-white text-black rounded-full p-2 transition-opacity duration-300 ease-in-out opacity-100 hover:bg-gray-200"
-              onClick={skipAd}
-            >
-              <span>Pular</span>
-              <ArrowBigRightDash />
-            </button>
-          )}
-        </div>
-      )}
 
       {isAdPlaying && (
         <div>
@@ -288,22 +367,66 @@ export default function Reproduction() {
                           {currentAd.logo && (
                             <div className="flex justify-center pb-4">
                               <img
-                                src={`data:image/jpeg;base64,${currentAd.logo}`}
-                                alt={currentAd.company_name}
+                                src={`data:image/jpeg;base64,${currentAd?.logo}`}
+                                alt={currentAd?.company_name}
                                 width={240}
                                 height={240}
                               />
                             </div>
                           )}
-                          <h1 className="text-2xl font-bold">{currentAd.company_name}</h1>
+                          <h1 className="text-2xl font-bold">{adInfo?.company_name}</h1>
+                        </div>
+                        <div className="flex space-x-4 text-center justify-center">
+                          {adInfo?.instagram && adInfo.instagram !== 'undefined' && (
+                            <Link href={adInfo.instagram} target="_blank" rel="noopener noreferrer">
+                              <div className="bg-white rounded-full p-1 -mt-5">
+                                <Image
+                                  src="/images/reproduction/insta.png"
+                                  alt="Instagram"
+                                  width={64}
+                                  height={64}
+                                  className="cursor-pointer"
+                                />
+                              </div>
+                            </Link>
+                          )}
+
+                          {adInfo?.ifood && adInfo.ifood !== 'undefined' && (
+                            <Link href={adInfo.ifood} target="_blank" rel="noopener noreferrer">
+                              <div className="bg-white rounded-full p-1 -mt-5">
+                                <Image
+                                  src="/images/reproduction/ifood.png"
+                                  alt="iFood"
+                                  width={64}
+                                  height={64}
+                                  className="cursor-pointer"
+                                />
+                              </div>
+                            </Link>
+                          )}
                         </div>
                         <p>{currentAd.address}</p>
                         <p>{currentAd.phone}</p>
 
-                        {/* Texto de descrição */}
-                        <p className="text-2xl">
-                          {currentAd.description}
-                        </p>
+                        <div className="mt-4 lg:mt-8 text-white text-lg lg:text-xl leading-6 item-content-description">
+                <div className="text-xl hidden lg:block">{currentAd.description}</div>
+                <div className="block lg:hidden">
+                  {shortDescription}
+                  {currentAd.description.length > 300 && (
+                    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                      <DialogTrigger asChild>
+                        <button className="text-blue-500">...ler mais</button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>Descrição Completa</DialogTitle>
+                        </DialogHeader>
+                        <DialogDescription>{currentAd.description}</DialogDescription>
+                      </DialogContent>
+                    </Dialog>
+                  )}
+                </div>
+              </div>
                       </>
                     ) : (
                       <p>Nenhuma informação disponível para o anúncio.</p>
