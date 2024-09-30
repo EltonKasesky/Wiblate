@@ -4,17 +4,17 @@ import SocialFooter from "@/components/footer/social-footer";
 
 export default function Footer() {
     return (
-        <footer className="py-20 relative bg-box-bg">
+        <footer className="py-20 relative bg-box-bg-light dark:bg-box-bg-dark text-black dark:text-white">
             <div className="px-4 md:container">
                 <div className="row">
                     <div className="col-4 col-md-6 col-sm-12">
                         <div className="w-full max-w-150px">
-                            <Link href="/" className="mt-footer-logo flex justify-start items-center text-logo-footer font-black" id="link_footer">
+                            <Link href="/" className="mt-footer-logo flex justify-start items-center text-logo-footer font-black">
                                 <div className="relative flex flex-col items-center text-2xl font-bold cursor-pointer -mt-6">
-                                    <div className="flex items-center mt-12 group">
-                                        <i className="bx bx-movie-play bx-tada text-main-color group-hover:text-text-color"></i>
-                                        <span className="text-text-color group-hover:text-main-color">TIP</span>
-                                        <span className="text-main-color group-hover:text-text-color">TV</span>
+                                    <div className="flex items-center mt-12">
+                                        <i className="bx bx-movie-play bx-tada text-main-color"></i>
+                                        <span className="text-main-color">TIP</span>
+                                        <span className="text-main-color">TV</span>
                                     </div>
                                 </div>
                             </Link>

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import NavHeader from '@/components/header/nav-header';
 import MobileMenu from '@/components/header/MobileMenu';
+import { X, Menu } from 'lucide-react';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,15 +20,15 @@ export default function Header() {
   }, [session, status]);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-black">
+    <header className="fixed top-0 left-0 w-full z-50 bg-box-bg-light dark:bg-black">
       <div className="container mx-auto px-10 max-w-nav-header">
         <div className="flex items-center justify-between w-full h-16">
           {/* LOGO */}
           <Link href="/" className='flex items-center h-full group'>
-            <div className="flex items-center justify-center text-2xl font-bold cursor-pointer group">
-              <i className="bx bx-movie-play bx-tada text-main-color group-hover:text-text-color"></i>
-              <span className="text-text-color group-hover:text-main-color">TIP</span>
-              <span className="text-main-color group-hover:text-text-color">TV</span>
+            <div className="flex items-center justify-center text-2xl font-bold cursor-pointer">
+              <i className="bx bx-movie-play bx-tada text-main-color-light"></i>
+              <span className="text-main-color-light">TIP</span>
+              <span className="text-main-color-light">TV</span>
             </div>
           </Link>
           <NavHeader isLoggedIn={status === 'authenticated'} />
@@ -38,9 +39,9 @@ export default function Header() {
               onClick={() => setMenuOpen(!menuOpen)}
             >
               {menuOpen ? (
-                <Image src="/images/header/close-menu.svg" width={30} height={30} alt="Close menu" />
+                <X className='text-lg text-main-color dark:text-white'/>
               ) : (
-                <Image src="/images/header/open-menu.svg" width={30} height={30} alt="Open menu" />
+                <Menu className='text-lg text-main-color dark:text-white'/>
               )}
             </button>
           </div>

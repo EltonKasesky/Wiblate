@@ -48,14 +48,14 @@ export default function AvatarUpload() {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-6 h-full w-full bg-white rounded-lg">
+      <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-6 h-full w-full bg-white dark:bg-box-bg-dark rounded-lg">
         <div
           className="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 w-40 h-40 rounded-full overflow-hidden relative hover:cursor-pointer hover:border-main-color transition-colors duration-300"
         >
           {previewUrl ? (
             <img src={previewUrl} alt="Avatar Preview" className="w-full h-full object-cover" />
           ) : (
-            <div className="flex flex-col items-center justify-center text-gray-500">
+            <div className="flex flex-col items-center justify-center text-gray-500 dark:text-white">
               <i className='bx bx-upload text-4xl'></i>
               <span className="mt-2 text-sm">Selecione seu avatar</span>
             </div>
@@ -72,7 +72,7 @@ export default function AvatarUpload() {
 
         <button
           type="submit"
-          className="flex justify-center w-40 rounded-md bg-main-color px-4 py-2 text-sm font-medium text-white hover:bg-main-color transition-transform duration-200 transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-main-color focus-visible:ring-offset-2"
+          className="flex justify-center w-40 rounded-md bg-main-color-light px-4 py-2 text-sm font-medium text-white hover:bg-main-color transition-transform duration-200 transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-main-color focus-visible:ring-offset-2"
         >
           Atualizar Avatar
         </button>

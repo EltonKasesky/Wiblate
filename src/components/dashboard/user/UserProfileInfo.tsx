@@ -34,22 +34,22 @@ export default function UserProfileInfo() {
   }, [session]);
 
   return (
-    <section className="p-6 bg-white shadow-lg rounded-lg h-full w-full flex flex-col justify-between">
-      <h1 className="text-2xl font-semibold text-gray-800 mb-4">Minha Conta</h1>
+    <section className="p-6 bg-white dark:bg-box-bg-dark shadow-lg rounded-lg h-full w-full flex flex-col justify-between">
+      <h1 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Minha Conta</h1>
 
       {userData ? (
         <div className="flex justify-between items-center w-full">
           <section className="flex flex-col gap-2">
-            <div className="text-lg font-medium text-gray-900">
-              <strong className="block text-sm text-gray-700">Nome:</strong>
+            <div className="text-lg font-medium text-gray-900 dark:text-gray-200">
+              <strong className="block text-sm text-gray-700 dark:text-white">Nome:</strong>
               {userData.name}
             </div>
-            <div className="text-sm text-gray-600">
-              <strong className="block text-sm text-gray-700">Email:</strong>
+            <div className="text-sm text-gray-600 dark:text-gray-200">
+              <strong className="block text-sm text-gray-700 dark:text-white">Email:</strong>
               {userData.email}
             </div>
-            <div className="text-sm text-gray-600">
-              <strong className="block text-sm text-gray-700">Membro desde:</strong>
+            <div className="text-sm text-gray-600 dark:text-gray-200">
+              <strong className="block text-sm text-gray-700 dark:text-white">Membro desde:</strong>
               {userData.createdAt}
             </div>
           </section>

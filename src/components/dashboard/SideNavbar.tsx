@@ -40,7 +40,7 @@ export default function SideNavbar({ userCargo }: SideNavbarProps) {
                 <i className="bx bx-menu text-2xl"></i>
             </button>
 
-            <section className={`fixed lg:relative lg:w-64 lg:flex lg:flex-col h-screen w-full lg:bg-white shadow-lg lg:shadow-none transition-transform duration-300 transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'} z-50`}>
+            <section className={`fixed lg:relative lg:w-64 lg:flex lg:flex-col h-screen w-full lg:bg-white dark:bg-box-bg-dark shadow-lg lg:shadow-none transition-transform duration-300 transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'} z-50`}>
                 <div className="flex justify-between items-center lg:py-3 lg:border-b lg:border-gray-200 p-4 lg:p-0">
                     <Link href="/" className="flex items-center justify-center w-full text-xl font-extrabold text-main-color">
                         <i className="bx bx-movie-play bx-tada text-3xl"></i>

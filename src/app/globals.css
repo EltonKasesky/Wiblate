@@ -13,16 +13,11 @@
 
   /* FOOTER  */
   .social-item {
-    @apply grid place-items-center rounded-full transition-all duration-100;
-    height: 30px;
-    width: 30px;
-    background-color: theme('colors.text-color');
-    color: theme('colors.main-color');
+    @apply grid place-items-center rounded-full transition-all duration-100 h-[30px] w-[30px] bg-main-color-light text-white;
   }
 
   .social-item:hover {
-    background-color: theme('colors.main-color');
-    color: theme('colors.text-color');
+    @apply bg-main-color-dark
   }
 
   .container {
@@ -35,25 +30,13 @@
     @apply inline-block py-1 transition-transform duration-200 ease-in-out hover:translate-x-1 hover:text-main-color;
   }
 
-  #link_footer:hover i {
-    color: theme('colors.text-color');
-  }
-
-  #link_footer:hover span {
-    color: theme('colors.main-color');
-  }
-
-  #link_footer:hover span:last-child {
-    color: theme('colors.text-color');
-  }
-
   /* HEADER */
   .btn {
     @apply text-white uppercase font-bold inline-flex items-center relative;
   }
 
   .btn-hover::before {
-    @apply absolute top-0 left-0 w-1/2 h-full bg-[var(--main-color)] transition-all duration-300 ease-in-out;
+    @apply absolute top-0 left-0 w-1/2 h-full bg-main-color-light dark:bg-main-color-dark transition-all duration-300 ease-in-out;
     content: "";
     z-index: 0;
   }
@@ -108,16 +91,16 @@
   }
 
   .nav-header {
-    @apply text-xl uppercase font-bold text-white hover:text-[var(--main-color)] transition-colors duration-300;
+    @apply text-xl uppercase font-bold text-gray-950 hover:text-main-color dark:text-white dark:hover:text-main-color transition-colors duration-300;
   }
 
   /* INSERT */
   .input-insert {
-    @apply flex flex-col w-full bg-transparent border-2 border-dashed border-text-color py-1 px-4 rounded;
+    @apply flex flex-col w-full bg-transparent border-2 border-dashed border-text-color-light dark:border-text-color-dark py-1 px-4 rounded;
   }
 
   .input-id-insert {
-    @apply rounded bg-transparent text-text-color
+    @apply rounded bg-transparent text-text-color-light dark:text-text-color-dark
   }
 
   .file-drop-insert {
@@ -133,15 +116,7 @@
   }
 
   .file-drop-insert.drag-over {
-    @apply border-main-color;
-  }
-
-  .message.success {
-    @apply block bg-message-bg-success text-message-color-success border-insert border-solid border-message-border-success text-center;
-  }
-
-  .message.error {
-    @apply block bg-message-bg-error text-message-color-error border-insert border-solid border-message-border-error text-center;
+    @apply border-main-color dark:border-main-color-dark;
   }
 
   .modal-input-table {
@@ -313,7 +288,7 @@
   }
 
   .login-form-button {
-    @apply mt-4 bg-main-color border border-main-color text-slate-50 text-center font-semibold p-3 rounded-lg hover:bg-white hover:text-main-color transition-all duration-100;
+    @apply mt-4 bg-main-color-light dark:bg-main-color-dark border border-main-color text-slate-50 text-center font-semibold p-3 rounded-lg hover:bg-white hover:text-main-color transition-all duration-100;
   }
 
   /* GENDER */
@@ -323,11 +298,16 @@
 
   /* CONTACT */
   .contact-input {
-    @apply mt-1 block w-full px-3 py-2 border border-gray-300 bg-box-bg text-white rounded-md shadow-sm focus:outline-none focus:ring-main-color focus:border-main-color sm:text-sm;
+    @apply mt-1 block w-full px-3 py-2 border border-gray-300 bg-box-bg-light dark:bg-box-bg-dark text-white rounded-md shadow-sm focus:outline-none focus:ring-main-color focus:border-main-color-light dark:focus:border-main-color-dark sm:text-sm;
   }
 
   .contact-label {
     @apply block text-sm font-medium text-white;
+  }
+
+  /* DASHBOARD UPDATE PASSWORD */
+  .input-password {
+    @apply w-full p-2 border border-gray-300 dark:border-white dark:bg-transparent rounded-md text-black dark:text-white;
   }
 }
 

@@ -59,7 +59,7 @@ const VideoMetricsChart = () => {
   }, []);
 
   return (
-    <div className="w-full lg:h-auto bg-white rounded-lg min-h-[300px]">
+    <div className="w-full lg:h-auto bg-white dark:bg-box-bg-dark border border-gray-300 dark:border-white rounded-lg min-h-[300px]">
       {data ? (
         <Bar
           data={data}

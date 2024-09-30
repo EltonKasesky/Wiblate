@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -10,15 +11,18 @@ const config: Config = {
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       backgroundColor: {
-        'box-bg': '#221f1f',
+        'box-bg-light': '#f0f0f0',
+        'box-bg-dark': '#181616',
+        'body-bg-light': '#f0f0f0',
+        'body-bg-dark': '#181616',
         'message-bg-success': '#d4edda',
         'message-bg-error': '#f8d7da',
         'insert-modal-bg': '#181616',
-        'main-color': '#2974f7',
+        'main-color-light': '#2974f7',
+        'main-color-dark': '#1e40af',
         'gender-bg': '#25262A',
       },
       maxWidth: {
@@ -63,8 +67,10 @@ const config: Config = {
         'message-color-error': '#721c24',
       },
       colors: {
-        'text-color': '#ffffff',
-        'main-color': '#2974f7',
+        'text-color-light': '#ffffff',
+        'text-color-dark': '#e0e0e0',
+        'main-color-light': '#2974f7',
+        'main-color-dark': '#1e40af',
         'drop-color': '#aaaaaa',
         'select-color': '#aaaaaa',
         'message-border-success': '#c3e6cb',
@@ -158,4 +164,5 @@ const config: Config = {
   },
   plugins: [],
 };
+
 export default config;

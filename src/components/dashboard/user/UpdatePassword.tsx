@@ -57,14 +57,14 @@ export default function UpdatePassword() {
     <>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col justify-center items-center gap-6 h-full w-full bg-white rounded-lg p-4 overflow-y-auto"
+        className="flex flex-col justify-center items-center gap-6 h-full w-full bg-white dark:bg-box-bg-dark rounded-lg p-4 overflow-y-auto"
       >
         <input
           type="password"
           placeholder="Senha atual"
           value={currentPassword}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setCurrentPassword(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-md text-black"
+          className="input-password"
           required
         />
 
@@ -73,7 +73,7 @@ export default function UpdatePassword() {
           placeholder="Nova senha"
           value={newPassword}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setNewPassword(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-md text-black"
+          className="input-password"
           required
         />
 
@@ -82,13 +82,13 @@ export default function UpdatePassword() {
           placeholder="Confirme a nova senha"
           value={confirmNewPassword}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setConfirmNewPassword(e.target.value)}
-          className="w-full p-2 border border-gray-300 rounded-md text-black"
+          className="input-password"
           required
         />
 
         <button
           type="submit"
-          className="w-full rounded-md bg-main-color px-4 py-2 text-sm font-medium text-white hover:bg-main-color-dark transition-transform duration-200 transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-main-color focus-visible:ring-offset-2"
+          className="w-full rounded-md bg-main-color-light px-4 py-2 text-sm font-medium text-white transition-transform duration-200 transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-main-color focus-visible:ring-offset-2"
         >
           Atualizar Senha
         </button>

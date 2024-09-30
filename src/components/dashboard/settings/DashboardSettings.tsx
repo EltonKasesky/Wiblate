@@ -1,7 +1,9 @@
-export default function DashboardSettings(){
+import ThemeColor from "./ThemeColor"
+
+export default function DashboardSettings() {
     return (
-        <>  
-            <p>Settings</p>
+        <>
+            <ThemeColor />
         </>
     )
 }
