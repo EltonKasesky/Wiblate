@@ -100,7 +100,6 @@ export default function ReproductionGender() {
     }
   }, [isYouTubeAPIReady, videoId]);
 
-  // Lógica para pausar e despausar o vídeo
   useEffect(() => {
     if (isPanelExpanded && playerRef.current) {
       playerRef.current.pauseVideo();
@@ -110,9 +109,25 @@ export default function ReproductionGender() {
   }, [isPanelExpanded]);
 
   useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowRight') {
+        setIsPanelExpanded(true);  
+      }
+      if (event.key === 'ArrowLeft') {
+        setIsPanelExpanded(false); 
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  useEffect(() => {
     console.log('adInfo:', adInfo);
   }, [adInfo]);
-
 
   return (
     <div className="relative w-full h-screen">
@@ -124,10 +139,7 @@ export default function ReproductionGender() {
           <div className="absolute top-1/2 left-0 transform -translate-y-1/2 z-50 transition-all duration-[1500ms] ease-in-out">
             <div
               className="flex items-center justify-center w-10 h-10 bg-gray-700 rounded-full cursor-pointer"
-              onClick={() => {
-                setIsPanelExpanded(true);
-                console.log('Expandir painel');
-              }}
+              onClick={() => setIsPanelExpanded(true)}
             >
               <ChevronRight className="text-white w-6 h-6" />
             </div>
@@ -154,8 +166,7 @@ export default function ReproductionGender() {
                 <h1 className="text-2xl font-bold">{adInfo?.company_name}</h1>
               </div>
               <div className="flex space-x-4 text-center justify-center">
-                {/* Verificar se o valor é válido e não é a string "undefined" */}
-                {adInfo?.instagram && adInfo.instagram !== 'undefined' ? (
+                {adInfo?.instagram && adInfo.instagram !== 'undefined' && (
                   <Link href={adInfo.instagram} target="_blank" rel="noopener noreferrer">
                     <div className="bg-white rounded-full p-1 -mt-5">
                       <Image
@@ -167,9 +178,9 @@ export default function ReproductionGender() {
                       />
                     </div>
                   </Link>
-                ) : null}
+                )}
 
-                {adInfo?.ifood && adInfo.ifood !== 'undefined' ? (
+                {adInfo?.ifood && adInfo.ifood !== 'undefined' && (
                   <Link href={adInfo.ifood} target="_blank" rel="noopener noreferrer">
                     <div className="bg-white rounded-full p-1 -mt-5">
                       <Image
@@ -181,18 +192,14 @@ export default function ReproductionGender() {
                       />
                     </div>
                   </Link>
-                ) : null}
+                )}
               </div>
 
               <p>{adInfo?.address}</p>
               <p>{adInfo?.phone}</p>
 
-              {/* Descrição */}
               <div className="mt-4 lg:mt-8 text-white text-lg lg:text-xl leading-6 item-content-description">
-                {/* Exibir a descrição completa em telas grandes */}
                 <div className="text-xl hidden lg:block">{description}</div>
-
-                {/* Exibir a descrição curta em telas pequenas */}
                 <div className="block lg:hidden">
                   {shortDescription}
                   {description.length > 300 && (
@@ -222,18 +229,13 @@ export default function ReproductionGender() {
           >
             <div
               className="flex items-center justify-center w-10 h-10 bg-gray-700 rounded-full cursor-pointer"
-              onClick={() => {
-                setIsPanelExpanded(false);
-                console.log('Recolher painel');
-              }}
+              onClick={() => setIsPanelExpanded(false)}
             >
               <ChevronLeft className="text-white w-6 h-6" />
             </div>
           </div>
         )}
       </div>
-
-      {/* Botão para voltar */}
       <div className="absolute top-2 left-2 z-10">
         <div onClick={() => router.back()}>
           <ul className="absolute top-4 left-4 m-0 p-0 cursor-pointer">

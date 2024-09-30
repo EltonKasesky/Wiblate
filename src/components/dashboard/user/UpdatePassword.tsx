@@ -23,6 +23,9 @@ export default function UpdatePassword() {
       setFeedbackMessage('Erro: As novas senhas não coincidem.');
       setIsModalOpen(true);
       return;
+    }else if(newPassword.length<8){
+      setFeedbackMessage('Erro: A nova senha deve ter no mínimo 8 caracteres.');
+      setIsModalOpen(true);
     }
     else {
       try {
