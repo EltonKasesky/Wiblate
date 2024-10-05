@@ -96,9 +96,9 @@ export default function Insert() {
 
   return (
     <>
-      <section className="flex items-center justify-center w-full h-screen m-0 mt-[-100px] lg:mt-0 box-border text-main-size">
+      <section className="box-border flex items-center justify-center w-full h-screen m-0 mt-[-100px] lg:mt-0 text-main-size">
         <section className="flex justify-center items-center w-full h-insert">
-          <div className="hidden insert-image:block w-full h-insert-image max-w-insert">
+          <div className="hidden insert-image:block w-full h-insert-image max-w-insert border-r-0 rounded-lg rounded-r-none shadow-lg">
             <Image
               className="rounded-l-lg"
               src='/images/insert/insert-image.png'
@@ -108,7 +108,7 @@ export default function Insert() {
               priority
             />
           </div>
-          <div className="flex justify-center items-center w-full h-auto max-w-insert py-4 lg:py-insert-form px-4 rounded-lg lg:rounded-none lg:rounded-r-lg bg-box-bg">
+          <div className="flex justify-center items-center w-full h-auto max-w-insert p-4 bg-insert-light dark:bg-insert-dark lg:py-insert-form rounded-lg lg:rounded-none lg:rounded-r-lg">
             <div className="flex flex-col justify-center items-center w-full h-full">
               <form
                 className="w-full"
@@ -151,7 +151,7 @@ export default function Insert() {
                   />
                   <button
                     type="submit"
-                    className="border-none rounded-lg p-2 font-medium bg-main-color text-text-color transition-opacity duration-50 cursor-pointer hover:opacity-70"
+                    className="rounded-lg p-2 font-medium bg-main-color-light text-text-color border border-main-color-light hover:bg-transparent hover:text-main-color transition-all duration-100"
                   >
                     Enviar
                   </button>

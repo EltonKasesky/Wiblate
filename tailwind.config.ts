@@ -15,8 +15,8 @@ const config: Config = {
       },
       backgroundColor: {
         'box-bg-light': '#f0f0f0',
-        'box-bg-dark': '#181616',
-        'body-bg-light': '#f0f0f0',
+        'box-bg-dark': '#221f1f',
+        'body-bg-light': '#ffffff',
         'body-bg-dark': '#181616',
         'message-bg-success': '#d4edda',
         'message-bg-error': '#f8d7da',
@@ -24,6 +24,14 @@ const config: Config = {
         'main-color-light': '#2974f7',
         'main-color-dark': '#1e40af',
         'gender-bg': '#25262A',
+        'contact-form-light': '#ffffff',
+        'contact-form-dark': '#221f1f',
+        'contact-info-light': '#ffffff',
+        'contact-info-dark': '#221f1f',
+        'insert-light': '#ffffff',
+        'insert-dark': '#221f1f',
+        'users-light': '#ffffff',
+        'users-dark': '#221f1f',
       },
       maxWidth: {
         '150px': '150px',
@@ -118,6 +126,7 @@ const config: Config = {
           foreground: 'hsl(var(--card-foreground))',
         },
         'main-color': '#2974f7',
+        'color-light': '#f0f0f0'
       },
       borderRadius: {
         lg: 'var(--radius)',

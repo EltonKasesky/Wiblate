@@ -75,9 +75,9 @@ export default function ContactForm() {
     return (
         <section className="flex items-center justify-center flex-wrap container w-full h-screen pt-24 pb-16 mx-auto">
             <ContactInfo />
-            <section className="w-full max-w-md bg-box-bg p-8 shadow-md rounded-r-md text-white">
+            <section className="w-full max-w-md bg-box-bg p-8 shadow-md rounded-r-md text-black dark:text-white bg-contact-form-light dark:bg-contact-form-dark border-l-0 border-t border-r border-b border-gray-300 dark:border-white">
                 <h2 className="text-3xl font-semibold mb-6 text-center">Contato</h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6 ">
                     <div>
                         <label htmlFor="name" className="contact-label">
                             Nome
@@ -161,7 +161,7 @@ export default function ContactForm() {
                     <div>
                         <button
                             type="submit"
-                            className="w-full flex items-center font-semibold justify-center h-google-button px-6 mt-4 bg-main-color border border-main-color text-white p-3 rounded-lg hover:bg-white hover:text-main-color transition-all duration-100"
+                            className="w-full flex items-center font-semibold justify-center h-google-button px-6 mt-4 bg-main-color-light border border-main-color text-white p-3 rounded-lg hover:bg-transparent hover:text-main-color transition-all duration-100"
                             disabled={loading}
                         >
                             {loading ? "Enviando..." : "Enviar"}

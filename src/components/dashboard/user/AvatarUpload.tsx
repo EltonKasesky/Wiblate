@@ -48,7 +48,7 @@ export default function AvatarUpload() {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-6 h-full w-full bg-white dark:bg-box-bg-dark rounded-lg">
+      <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center gap-6 h-full w-full bg-white shadow-lg dark:bg-box-bg-dark rounded-lg">
         <div
           className="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 w-40 h-40 rounded-full overflow-hidden relative hover:cursor-pointer hover:border-main-color transition-colors duration-300"
         >

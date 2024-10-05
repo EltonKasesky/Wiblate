@@ -159,9 +159,9 @@ export default function InsertCompany() {
 
   return (
     <>
-      <section className="flex items-center justify-center w-full h-screen mt-8 lg:mt-0 box-border text-main-size">
+      <section className="box-border flex items-center justify-center w-full h-screen mt-8 lg:mt-0 text-main-size">
         <section className="flex justify-center items-center w-full h-auto lg:h-insert">
-          <div className="flex justify-center items-center w-full h-auto lg:max-w-[80%] px-4 pb-4 lg:py-4 rounded-lg bg-box-bg">
+          <div className="flex justify-center items-center w-full h-auto lg:max-w-[80%] px-4 pb-4 lg:py-4 rounded-lg bg-insert-light dark:bg-insert-dark">
             <div className="flex flex-col lg:flex-row justify-between w-full h-full gap-8">
               <form
                 className="w-full"
@@ -174,10 +174,10 @@ export default function InsertCompany() {
                   {/* Coluna 1 */}
                   <div className="flex flex-col gap-4 w-full lg:w-1/2">
                     <div className="flex flex-col">
-                      <label htmlFor="gender">Selecione o Gênero *</label>
+                      <label htmlFor="gender" className="text-black dark:text-white">Selecione o Gênero *</label>
                       <button
                         type="button"
-                        className="border-2 border-dashed border-text-color bg-transparent rounded-sm py-1 px-4 text-text-color"
+                        className="border-2 border-dashed border-gray-300 dark:border-white bg-transparent rounded-sm py-1 px-4 text-black dark:text-white"
                         onClick={openGenderModal}
                       >
                         {displayGenderName(selectGender)}
@@ -185,10 +185,10 @@ export default function InsertCompany() {
                     </div>
 
                     <div className="flex flex-col">
-                      <label htmlFor="city">Selecione a Cidade *</label>
+                      <label htmlFor="city" className="text-black dark:text-white">Selecione a Cidade *</label>
                       <button
                         type="button"
-                        className="border-2 border-dashed border-text-color bg-transparent rounded-sm py-1 px-4 text-text-color"
+                        className="border-2 border-dashed border-gray-300 dark:border-white bg-transparent rounded-sm py-1 px-4 text-black dark:text-white"
                         onClick={openCityModal}
                       >
                         {displayCityName(selectedCity)}
@@ -196,10 +196,10 @@ export default function InsertCompany() {
                     </div>
 
                     <div className="flex flex-col">
-                      <label htmlFor="state">Selecione o Estado *</label>
+                      <label htmlFor="state" className="text-black dark:text-white">Selecione o Estado *</label>
                       <button
                         type="button"
-                        className="border-2 border-dashed border-text-color bg-transparent rounded-sm py-1 px-4 text-text-color"
+                        className="border-2 border-dashed border-gray-300 dark:border-white bg-transparent rounded-sm py-1 px-4 text-black dark:text-white"
                         onClick={openStateModal}
                       >
                         {displayStateName(selectedState)}
@@ -276,9 +276,9 @@ export default function InsertCompany() {
                     />
 
                     <div className="flex flex-col">
-                      <label htmlFor="message">Mensagem *</label>
+                      <label htmlFor="message" className="text-black dark:text-white">Mensagem *</label>
                       <textarea
-                        className="border-2 border-dashed border-text-color bg-transparent rounded-sm px-4 text-text-color"
+                        className="border-2 border-dashed border-gray-300 dark:border-white bg-transparent rounded-sm px-4 text-black dark:text-white"
                         name="message"
                         id="message"
                         rows={4}
@@ -294,7 +294,7 @@ export default function InsertCompany() {
                 <div className="flex justify-center mt-6">
                   <button
                     type="submit"
-                    className="w-full border-none rounded-lg p-2 font-medium bg-main-color text-text-color transition-opacity duration-50 cursor-pointer hover:opacity-70"
+                    className="w-full border border-main-color-light rounded-lg p-2 font-medium bg-main-color-light text-white hover:bg-transparent hover:text-main-color transition-all duration-100"
                   >
                     Enviar
                   </button>

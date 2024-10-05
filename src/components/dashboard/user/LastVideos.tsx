@@ -29,8 +29,8 @@ export default function UserWatchedVideos() {
   }, []);
 
   return (
-<section className="box-border p-6 bg-white shadow-lg rounded-lg h-auto  flex flex-col justify-between">
-      <h1 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
+    <section className="box-border p-6 bg-white dark:bg-box-bg-dark shadow-lg rounded-lg h-auto flex flex-col justify-between max-w-full lg:max-w-[1600px] mx-auto">
+      <h1 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4 text-center">
         Últimos Vídeos Assistidos
       </h1>
 
@@ -45,8 +45,8 @@ export default function UserWatchedVideos() {
                   className="w-16 h-16 rounded-full shadow-md cursor-pointer"
                 />
               </Link>
-              <p className="mt-2 text-gray-900">{video.title}</p>
-              <p className="text-sm text-gray-500">{video.type}</p>
+              <p className="mt-2 text-gray-900 dark:text-white">{video.title}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-300">{video.type}</p>
             </div>
           ))
         ) : (
@@ -55,4 +55,4 @@ export default function UserWatchedVideos() {
       </div>
     </section>
   );
-}
+};

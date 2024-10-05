@@ -7,12 +7,12 @@ import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from '@/comp
 
 export default function About() {
     return (
-        <div className="bg-white text-gray-900 min-h-screen mt-16">
+        <div className="bg-body-bg-light dark:bg-body-bg-dark text-gray-900 dark:text-white min-h-screen mt-16">
             <div className="max-w-6xl mx-auto px-4 py-12">
                 {/* Header */}
                 <header className="text-center mb-12">
                     <h1 className="text-5xl font-extrabold mb-4">Sobre Nós</h1>
-                    <p className="text-xl text-gray-600">
+                    <p className="text-xl text-gray-600 dark:text-white">
                         Nossa missão é transformar a educação através de vídeos inovadores e acessíveis para todos.
                     </p>
                 </header>
@@ -45,17 +45,17 @@ export default function About() {
                                     className="mx-auto rounded-full mb-4"
                                 />
                                 <h3 className="text-xl font-semibold">Pedro Henrique Cler</h3>
-                                <p className="text-gray-600">Backend</p>
+                                <p className="text-gray-600 dark:text-gray-300">Backend</p>
                                 <div className="mt-4 flex justify-center space-x-4">
                                     <Tooltip>
-                                        <TooltipTrigger>
+                                        <TooltipTrigger className="group">
                                             <Link
                                                 href="https://github.com/P-Cler"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full hover:bg-main-color transition-colors duration-300"
+                                                className="flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full group-hover:bg-main-color-light transition-colors duration-150"
                                             >
-                                                <Github className="text-xl text-black hover:text-white" />
+                                                <Github className="text-xl text-black dark:text-white group-hover:text-white" />
                                             </Link>
                                         </TooltipTrigger>
                                         <TooltipContent className="w-max" side="top" align="center">
@@ -63,14 +63,14 @@ export default function About() {
                                         </TooltipContent>
                                     </Tooltip>
                                     <Tooltip>
-                                        <TooltipTrigger>
+                                        <TooltipTrigger className="group">
                                             <Link
                                                 href="https://p-cler.github.io/PortfolioCler/"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full hover:bg-main-color transition-colors duration-300"
+                                                className="flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full group-hover:bg-main-color-light transition-colors duration-150"
                                             >
-                                                <Briefcase className="text-xl text-black hover:text-white" />
+                                                <Briefcase className="text-xl text-black dark:text-white group-hover:text-white" />
                                             </Link>
                                         </TooltipTrigger>
                                         <TooltipContent className="w-max" side="top" align="center">
@@ -89,17 +89,17 @@ export default function About() {
                                     className="mx-auto rounded-full mb-4"
                                 />
                                 <h3 className="text-xl font-semibold">Elton Kasesky</h3>
-                                <p className="text-gray-600">Frontend</p>
+                                <p className="text-gray-600 dark:text-gray-300">Frontend</p>
                                 <div className="mt-4 flex justify-center space-x-4">
                                     <Tooltip>
-                                        <TooltipTrigger>
+                                        <TooltipTrigger className="group">
                                             <Link
                                                 href="https://github.com/seu-perfil"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full hover:bg-main-color transition-colors duration-300"
+                                                className="flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full group-hover:bg-main-color-light transition-colors duration-300"
                                             >
-                                                <Github className="text-xl text-black hover:text-white" />
+                                                <Github className="text-xl text-black dark:text-white group-hover:text-white" />
                                             </Link>
                                         </TooltipTrigger>
                                         <TooltipContent className="w-max" side="top" align="center">
@@ -107,14 +107,14 @@ export default function About() {
                                         </TooltipContent>
                                     </Tooltip>
                                     <Tooltip>
-                                        <TooltipTrigger>
+                                        <TooltipTrigger className="group">
                                             <Link
                                                 href="https://www.linkedin.com/in/seu-perfil"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full hover:bg-main-color transition-colors duration-300"
+                                                className="flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full group-hover:bg-main-color-light transition-colors duration-300"
                                             >
-                                                <Briefcase className="text-xl text-black hover:text-white" />
+                                                <Briefcase className="text-xl text-black dark:text-white group-hover:text-white" />
                                             </Link>
                                         </TooltipTrigger>
                                         <TooltipContent className="w-max" side="top" align="center">

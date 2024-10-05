@@ -80,8 +80,8 @@ const IntermediateContent = () => {
   }, [id, background, creators]);
 
   return (
-    <div className="section min-h-screen flex flex-col justify-center" id="primary">
-      <div className="relative pt-[50%] lg:pt-[50%] lg:h-auto overflow-hidden flex-grow">
+    <div className="section min-h-screen flex flex-col justify-center bg-body-bg-light dark:bg-body-bg-dark" id="primary">
+      <div className="relative pt-[50%] lg:pt-[50%] lg:h-auto overflow-hidden flex-grow -mt-4">
         <div className="absolute top-0 left-0 w-full h-full">
           {background && (
             <Image

@@ -9,7 +9,7 @@ import NetworkSlide from '../../components/main/NetworkSlide';
 export default function Main() {
   return (
     <>
-      <div className='py-8'>
+      <div className='py-8 bg-body-bg-light dark:bg-body-bg-dark'>
         <Banner />
         <Gender />
         <ProgrammingLogic id="logic" />

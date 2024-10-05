@@ -4,7 +4,7 @@ import SocialFooter from "@/components/footer/social-footer";
 
 export default function Footer() {
     return (
-        <footer className="py-20 relative bg-box-bg-light dark:bg-box-bg-dark text-black dark:text-white">
+        <footer className="py-12 relative bg-box-bg-light dark:bg-box-bg-dark text-black dark:text-white">
             <div className="px-4 md:container">
                 <div className="row">
                     <div className="col-4 col-md-6 col-sm-12">

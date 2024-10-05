@@ -96,15 +96,15 @@
 
   /* INSERT */
   .input-insert {
-    @apply flex flex-col w-full bg-transparent border-2 border-dashed border-text-color-light dark:border-text-color-dark py-1 px-4 rounded;
+    @apply flex flex-col w-full bg-transparent border-2 border-dashed border-gray-300 dark:border-white py-1 px-4 rounded;
   }
 
   .input-id-insert {
-    @apply rounded bg-transparent text-text-color-light dark:text-text-color-dark
+    @apply rounded bg-transparent text-black dark:text-white
   }
 
   .file-drop-insert {
-    @apply border-2 border-dashed border-insert-border rounded-lg p-5 relative cursor-pointer;
+    @apply border-2 border-dashed border-gray-300 dark:border-white text-gray-400 rounded-lg p-5 relative cursor-pointer;
   }
 
   .drop-text-insert {
@@ -293,21 +293,35 @@
 
   /* GENDER */
   .gender-content {
-    @apply relative w-full h-52 rounded-lg shadow-lg overflow-hidden cursor-pointer;
+    @apply relative w-full h-52 rounded-lg overflow-hidden cursor-pointer shadow-lg;
   }
 
   /* CONTACT */
   .contact-input {
-    @apply mt-1 block w-full px-3 py-2 border border-gray-300 bg-box-bg-light dark:bg-box-bg-dark text-white rounded-md shadow-sm focus:outline-none focus:ring-main-color focus:border-main-color-light dark:focus:border-main-color-dark sm:text-sm;
+    @apply mt-1 block w-full px-3 py-2 border border-gray-300 bg-white dark:bg-box-bg-dark text-black dark:text-white rounded-md shadow-sm focus:outline-none focus:ring-main-color focus:border-main-color sm:text-sm;
   }
 
   .contact-label {
-    @apply block text-sm font-medium text-white;
+    @apply block text-sm font-medium text-black dark:text-white;
+  }
+
+  /* CONTACT INFO */
+  .info-title {
+    @apply text-lg font-semibold text-black dark:text-white;
+  }
+
+  .info-items {
+    @apply text-gray-600 dark:text-gray-400;
   }
 
   /* DASHBOARD UPDATE PASSWORD */
   .input-password {
     @apply w-full p-2 border border-gray-300 dark:border-white dark:bg-transparent rounded-md text-black dark:text-white;
+  }
+
+  /* CATEGORY TITLE MAIN */
+  .section-header {
+    @apply flex items-center pl-5 mb-[30px] uppercase text-2xl font-bold border-l-4 border-main-color text-main-color dark:text-white;
   }
 }
 

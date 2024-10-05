@@ -60,7 +60,7 @@ export default function UpdatePassword() {
     <>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col justify-center items-center gap-6 h-full w-full bg-white dark:bg-box-bg-dark rounded-lg p-4 overflow-y-auto"
+        className="flex flex-col justify-center items-center gap-6 h-full w-full bg-white dark:bg-box-bg-dark rounded-lg p-4 overflow-y-auto shadow-lg"
       >
         <input
           type="password"

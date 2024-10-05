@@ -39,21 +39,21 @@ export default function DashboardUser() {
   return (
     <>
       <section className="box-border flex items-start lg:items-stretch lg:flex-row flex-col w-full lg:h-auto lg:gap-5 gap-3 lg:p-5 p-2">
-        <div className="flex-grow flex flex-col w-full min-w-[300px] h-[300px] border border-white rounded-lg lg:max-h-none">
+        <div className="flex-grow flex flex-col w-full min-w-[300px] h-[300px] border border-gray-300 dark:border-white rounded-lg lg:max-h-none">
           {componentsLoaded ? <UserProfileInfo /> : <DashboardUserSkeleton itemsCount={1} />}
         </div>
 
-        <div className="flex-grow flex flex-col w-full min-w-[300px] h-[300px] border border-white rounded-lg lg:max-h-none">
+        <div className="flex-grow flex flex-col w-full min-w-[300px] h-[300px] border border-gray-300 dark:border-white rounded-lg lg:max-h-none">
           {componentsLoaded ? <AvatarUpload /> : <DashboardUserSkeleton itemsCount={1} />}
         </div>
 
-        <div className="flex-grow flex flex-col w-full min-w-[300px] h-[300px] border border-white rounded-lg lg:max-h-none">
+        <div className="flex-grow flex flex-col w-full min-w-[300px] h-[300px] border border-gray-300 dark:border-white rounded-lg lg:max-h-none">
           {componentsLoaded ? <UpdatePassword /> : <DashboardUserSkeleton itemsCount={1} />}
         </div>
       </section>
 
-      <section className="box-border flex justify-start w-full lg:h-auto lg:gap-5 gap-3 lg:p-5 p-2">
-        <div className="flex-grow flex flex-col w-full h-auto border border-white rounded-lg lg:max-h-none">
+      <section className="box-border flex justify-center items-center w-full h-auto lg:px-5 lg:pb-5 px-2 py-1">
+        <div className="w-full h-auto border border-gray-300 dark:border-white rounded-lg">
           <UserWatchedVideos />
         </div>
       </section>

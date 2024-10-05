@@ -111,13 +111,13 @@ const Members = () => {
 
   return (
     <div className="container mx-auto px-2 mb-10 max-h-[100vh] overflow-y-auto sm:px-6 md:my-0 lg:px-8 lg:pt-4">
-      <h1 className="text-2xl font-bold mb-4">Lista de Usuários</h1>
+      <h1 className="text-2xl font-bold mb-4 text-black dark:text-white">Lista de Usuários</h1>
       <input
         type="text"
         placeholder="Buscar por nome ou email"
         value={searchTerm}
         onChange={handleSearch}
-        className="mb-4 p-2 border border-gray-300 bg-black rounded w-full text-white"
+        className="mb-4 p-2 border border-gray-300 dark:border-white bg-users-light dark:bg-users-dark rounded w-full text-black dark:text-white"
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {loading
@@ -125,16 +125,16 @@ const Members = () => {
             <LoadingSkeleton key={index} />
           ))
           : currentMembers.map((member) => (
-            <Card key={member.id} className="p-4">
+            <Card key={member.id} className="p-4 bg-users-light dark:bg-users-dark shadow-lg border border-gray-300 dark:border-white">
               <CardHeader>
-                <CardTitle>{member.name}</CardTitle>
-                <CardDescription>{member.email}</CardDescription>
+                <CardTitle className='text-black dark:text-white'>{member.name}</CardTitle>
+                <CardDescription className='text-gray-500 dark:text-gray-200'>{member.email}</CardDescription>
               </CardHeader>
               <CardContent>
                 <select
                   value={updatedCargos[member.id] || member.cargo}
                   onChange={(e) => handleCargoChange(member.id, e.target.value)}
-                  className="bg-box-bg border border-gray-300 rounded px-2 py-1 w-full text-white cursor-pointer"
+                  className="border border-gray-600 dark:border-white rounded bg-users-light dark:bg-users-dark px-2 py-1 w-full text-black dark:text-white cursor-pointer"
                 >
                   <option value="Membro">Membro</option>
                   <option value="Produtor">Produtor</option>

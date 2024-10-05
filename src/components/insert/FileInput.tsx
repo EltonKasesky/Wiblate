@@ -23,7 +23,7 @@ export default function FileInput({ id, label, name, required }: FileInputProps)
 
     return (
         <div className="input-file">
-            <label htmlFor={id}>{label}</label>
+            <label htmlFor={id} className="text-black dark:text-white">{label}</label>
             <div className="file-drop-insert" onDragOver={handleDragOver}>
                 <input
                     type="file"

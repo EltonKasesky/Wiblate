@@ -48,7 +48,7 @@ const MovieItem: React.FC<MovieItemProps> = ({ videoData }) => {
 
   return (
     <div className="item" onClick={handleClick}>
-      <div className="relative w-full h-100 overflow-hidden shadow-md cursor-pointer rounded-lg">
+      <div className="relative w-full h-100 overflow-hidden cursor-pointer rounded-lg">
         <Image
           src={`data:image/jpeg;base64,${videoData.catalog}`}
           alt={videoData.title}
