@@ -55,7 +55,6 @@ export default function SideNavbar({ userCargo }: SideNavbarProps) {
                 <nav className="flex flex-col flex-grow mt-6">
                     <section className="flex flex-col flex-grow justify-between w-full">
                         <div className="flex flex-col items-center justify-center gap-3">
-                            <NavLink href="/dashboard/home" iconClassName="bxs-dashboard" text="Dashboard" onClick={closeMenu} />
                             <NavLink href="/dashboard/user" iconClassName="bxs-user" text="Usuário" onClick={closeMenu} />
                             <NavLink href="/dashboard/settings" iconClassName="bxs-cog" text="Configurações" onClick={closeMenu} />
                             <NavLink href="/dashboard/contact" iconClassName="bxs-envelope" text="Contato" onClick={closeMenu} />

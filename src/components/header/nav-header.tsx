@@ -21,7 +21,7 @@ export default function NavHeader({ isLoggedIn }: NavHeaderProps) {
           ) : (
             <Link href="/portal/login">
               <div className="btn btn-hover uppercase font-bold py-2 px-6 cursor-pointer">
-                <span className="relative z-10">Login</span>
+                <span className="relative z-10 text-black dark:text-white">Login</span>
               </div>
             </Link>
           )}
