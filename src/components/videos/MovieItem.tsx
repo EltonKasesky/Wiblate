@@ -22,8 +22,7 @@ const MovieItem: React.FC<MovieItemProps> = ({ videoData }) => {
   const handleClick = async () => {
     try {
       setLoading(true);
-      await axios.post('/api/videos/watched', { video_id: videoData.id, tableName: videoData.tableName });
-      await axios.post('/api/videos/views', { video_id: videoData.id });
+
 
 
       const response = await axios.get(`/api/videos/background?idYoutube=${encodeURIComponent(videoData.id)}&tableName=${encodeURIComponent(videoData.tableName)}`);
@@ -34,7 +33,7 @@ const MovieItem: React.FC<MovieItemProps> = ({ videoData }) => {
         sessionStorage.setItem('videoBackground', background);
         sessionStorage.setItem('videoCreators', creators);
 
-        const href = `/intermediate?id=${encodeURIComponent(videoData.id)}`;
+        const href = `/intermediate?id=${encodeURIComponent(videoData.id)}&tableName=${encodeURIComponent(videoData.tableName)}`;
         router.push(href);
       } else {
         console.error('Background não encontrado para o vídeo:', videoData.id);

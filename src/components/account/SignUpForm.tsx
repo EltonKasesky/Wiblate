@@ -1,13 +1,51 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import { cookies } from 'next/headers';
 import { Checkbox } from '../../components/ui/Checkbox';
 import { Label } from '../../components/ui/label';
 import GoogleSignUpButton from './GoogleSignUpButton';
-import AuthActions from '../../app/actions/auth-actions';
+import { useState } from 'react';
 
 export default function SignUpForm() {
-  const errorMessage = cookies().get('signup_error')?.value || null;
+  const [errorMessage, setErrorMessage] = useState<string | null>(null); 
+
+  
+  const handleSignUp = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); 
+
+    const form = event.currentTarget;
+    const name = (form.elements.namedItem('name') as HTMLInputElement).value;
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value;
+    const password = (form.elements.namedItem('password') as HTMLInputElement).value;
+
+    try {
+      const response = await fetch('/api/auth/cadastro', {
+        method: 'POST',
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+          terms: true, 
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const data = await response.json(); 
+
+      if (!response.ok) {
+        
+        setErrorMessage(data.message || 'Erro ao criar conta.');
+      } else if (data.success) {
+        
+        window.location.href = data.redirect;
+      }
+    } catch (error) {
+      setErrorMessage('Erro ao tentar criar conta. Tente novamente mais tarde.');
+    }
+  };
 
   return (
     <section className='w-full h-screen flex flex-row-reverse items-center justify-center my-20 sm:my-0'>
@@ -17,7 +55,7 @@ export default function SignUpForm() {
           className='rounded-r-lg'
           src='/images/login/sign-up-image.png'
           width={384}
-          height={766}
+          height={714}
           alt='Login Image'
           priority
         />
@@ -25,8 +63,7 @@ export default function SignUpForm() {
       {/* END LOGIN IMAGE */}
       <form
         className='px-10 py-login-form border rounded-lg md:border-0 md:border-l md:border-y md:rounded-r-none md:rounded-l-lg w-96 bg-white'
-        action={AuthActions.createAccount}
-        method="POST"
+        onSubmit={handleSignUp} 
       >
         <h1 className='text-3xl font-bold mb-4 text-black'>Cadastro</h1>
         <p className='text-md text-black font-semibold mb-10'>Preencha os campos abaixo para criar uma conta.</p>

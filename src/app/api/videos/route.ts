@@ -27,6 +27,9 @@ export async function GET(req: NextRequest) {
     case 'hardware':
       tableName = 'hardware';
       break;
+      case 'movies':
+      tableName = 'movies';
+      break;
     default:
       return NextResponse.json({ error: 'Tabela inválida selecionada' }, { status: 400 });
   }

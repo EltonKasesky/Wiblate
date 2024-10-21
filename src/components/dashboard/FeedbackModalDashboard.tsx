@@ -12,7 +12,7 @@ export default function FeedbackModalDashboard({
   closeModal,
   feedbackMessage,
 }: FeedbackModalProps) {
-  const isError = feedbackMessage.includes('Erro');
+  const isError = feedbackMessage.includes('Erro') || feedbackMessage.includes('mínimo') || feedbackMessage.includes('coincidem');
   const title = isError ? 'Erro' : 'Sucesso';
   const messageColor = isError ? 'text-red-500' : 'text-green-500';
 

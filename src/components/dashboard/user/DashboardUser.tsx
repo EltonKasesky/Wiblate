@@ -8,7 +8,9 @@ import AvatarUpload from './AvatarUpload';
 import UpdatePassword from './UpdatePassword';
 import VideoMetrics from './VideoMetrics';
 import UserWatchedVideos from './LastVideos';
-import VideoSkeleton from '@/components/skeleton/DashboardLastSkeleton';
+import LastVideoSkeleton from '@/components/skeleton/DashboardLastSkeleton';
+import UserWatchedCategories from './CategoryCharts';
+import CategorySkeleton from '@/components/skeleton/DashboardCategorySkeleton';
 
 export default function DashboardUser() {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,7 +30,8 @@ export default function DashboardUser() {
       <>
         <DashboardUserSkeleton itemsCount={3} />
         <div className='p-4'>
-        <VideoSkeleton />
+        <LastVideoSkeleton />
+        <CategorySkeleton />
         </div>
         <DashboardMetricsSkeleton itemsCount={1}  />
       </>
@@ -54,7 +57,13 @@ export default function DashboardUser() {
 
       <section className="box-border flex justify-center items-center w-full h-auto lg:px-5 lg:pb-5 px-2 py-1">
         <div className="w-full h-auto border border-gray-300 dark:border-white rounded-lg">
-          <UserWatchedVideos />
+        {componentsLoaded ? <UserWatchedVideos /> : <LastVideoSkeleton />}
+        </div>
+      </section>
+
+      <section className="box-border flex justify-center items-center w-full h-auto lg:px-5 lg:pb-5 px-2 py-1">
+        <div className="w-full h-auto border border-gray-300 dark:border-white rounded-lg">
+        {componentsLoaded ? <UserWatchedCategories /> : <CategorySkeleton />}
         </div>
       </section>
 

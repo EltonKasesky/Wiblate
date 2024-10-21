@@ -7,6 +7,7 @@ interface Video {
   title: string;
   type: string;
   id: string;
+  tableName: string;
 }
 
 export default function UserWatchedVideos() {
@@ -38,7 +39,7 @@ export default function UserWatchedVideos() {
         {videos.length > 0 ? (
           videos.map((video, index) => (
             <div key={index} className="flex flex-col items-center text-center">
-              <Link href={`/reproduction?id=${video.id}`}>
+              <Link href={`/reproduction?id=${video.id}&tableName=${video.tableName}`}>
                 <img
                   src={`data:image/jpeg;base64,${video.catalog}`}
                   alt={`Vídeo ${index + 1}`}

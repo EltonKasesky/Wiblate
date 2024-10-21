@@ -18,7 +18,8 @@ export default function Insert() {
     'Lógica de Programação': 'logic',
     'Banco de Dados': 'databank',
     'Estrutura de Rede': 'networkstructure',
-    Hardware: 'hardware'
+    'Hardware': 'hardware',
+    Filmes: 'filmes'
   } as const;
 
   const toBase64 = (file: File): Promise<string> =>

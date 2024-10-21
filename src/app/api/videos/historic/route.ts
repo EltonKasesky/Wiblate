@@ -20,20 +20,18 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ message: 'Nenhum vídeo assistido encontrado.' });
     }
 
-    const videoData = [];
+    let videoData = [];
 
     for (let i = 1; i <= 5; i++) {
       const videoId = rows[0][`video_${i}_id`];
       const videoTable = rows[0][`video_${i}_table`];
 
       if (videoId && videoTable) {
-       
         const videoResult = await client.query(`SELECT catalog, idYoutube FROM ${videoTable} WHERE idYoutube = $1`, [videoId]);
 
         if (videoResult.rows.length > 0) {
           const { catalog, idyoutube } = videoResult.rows[0];
 
-          
           const youtubeResponse = await axios.get(
             `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${idyoutube}&key=${process.env.NEXT_PUBLIC_YOUTUBE_API_KEY}`
           );
@@ -45,14 +43,20 @@ export async function GET(request: NextRequest) {
             title: videoTitle,
             type: `Vídeo ${i}`,
             id: idyoutube,
+            tableName: videoTable,
           });
         }
       }
     }
 
+    const uniqueVideos = videoData.filter(
+      (video, index, self) =>
+        index === self.findIndex((v) => v.id === video.id && v.tableName === video.tableName)
+    );
+
     client.release();
 
-    return NextResponse.json(videoData);
+    return NextResponse.json(uniqueVideos);
   } catch (error) {
     console.error('Erro ao buscar vídeos assistidos:', error);
     return NextResponse.json({ error: 'Erro no servidor' }, { status: 500 });

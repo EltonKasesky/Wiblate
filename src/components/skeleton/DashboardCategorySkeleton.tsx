@@ -1,10 +1,10 @@
 import React from 'react';
 
-const LastVideoSkeleton = () => {
+const CategorySkeleton = () => {
   return (
     <section className="box-border border border-white py-8  shadow-lg rounded-lg h-auto w-full flex flex-col justify-between ">
       <h1 className="text-2xl font-semibold text-black mb-4 text-center dark:text-white">
-        Últimos Vídeos Assistidos
+        Categorias mais Assistidas
       </h1>
       
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 justify-center">
@@ -20,4 +20,4 @@ const LastVideoSkeleton = () => {
   );
 };
 
-export default LastVideoSkeleton;
+export default CategorySkeleton;

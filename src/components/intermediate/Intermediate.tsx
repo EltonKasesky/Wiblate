@@ -8,11 +8,9 @@ import Image from 'next/image';
 
 const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
 
-// Função para converter a duração ISO 8601 em um formato mais legível
 const convertISO8601ToReadable = (duration: string): string => {
   const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
   
-  // Verifica se match não é null antes de acessar as propriedades
   if (!match) return '0m 0s';
 
   const hours = match[1] ? match[1].replace('H', '') : '0';
@@ -61,6 +59,7 @@ const fetchYouTubeDescription = async (
 const IntermediateContent = () => {
   const searchParams = useSearchParams();
   const id = searchParams.get('id') || '';
+  const tableName = searchParams.get('tableName') || '';
   const background = typeof window !== 'undefined' ? sessionStorage.getItem('videoBackground') || '' : '';
   const creators = typeof window !== 'undefined' ? sessionStorage.getItem('videoCreators') || '' : '';
 
@@ -124,7 +123,7 @@ const IntermediateContent = () => {
             </span>
 
             <div className="mt-4 lg:mt-8">
-              <Link href={`/reproduction?id=${id}`} className="btn btn-hover uppercase font-bold py-2 px-6 cursor-pointer">
+              <Link href={`/reproduction?id=${id}&tableName=${tableName}`} className="btn btn-hover uppercase font-bold py-2 px-6 cursor-pointer">
                 <i className="bx bx-play bx-flip-vertical text-white text-4xl"></i>
                 <span className="relative z-10 text-lg lg:text-xl">Assistir Agora</span>
               </Link>

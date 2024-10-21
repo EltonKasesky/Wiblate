@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
   }
 
   
-  const allowedTables = ['logic', 'databank', 'hardware', 'networkstructure']; 
+  const allowedTables = ['logic', 'databank', 'hardware', 'networkstructure', 'movies']; 
   if (!allowedTables.includes(tableName)) {
     return NextResponse.json({ error: 'Invalid table name' }, { status: 400 });
   }

@@ -28,6 +28,8 @@ export const POST = async (req: Request) => {
         break;
       case 'hardware':
         tableName = 'hardware';
+        case 'filmes':
+        tableName = 'movies';
         break;
       default:
         return new Response(JSON.stringify({ message: 'Tabela inválida selecionada' }), {

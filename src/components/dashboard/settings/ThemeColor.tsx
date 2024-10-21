@@ -19,7 +19,6 @@ const ThemeColor = () => {
   }, []);
 
   useEffect(() => {
-    // Atualizar o texto do botão de acordo com o tema selecionado
     if (theme === 'light') {
       setButtonLabel('Tema: Claro');
     } else if (theme === 'dark') {
