@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import GoogleLoginButton from './GoogleLoginButton';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 const LoginForm = () => {
   const router = useRouter();
@@ -55,8 +56,9 @@ const LoginForm = () => {
       {/* END LOGIN IMAGE*/}
       {/* LOGIN FORM */}
       <form className='px-10 py-login-form border rounded-lg md:border-0 md:border-r md:border-y md:rounded-l-none md:rounded-r-lg w-96 bg-white' onSubmit={handleLogin}>
-        <h1 className='text-3xl font-bold mb-4 text-black'>Login</h1>
-        <p className='text-md text-black font-semibold mb-10'>Faça login para continuar.</p>
+        <h1 className='text-3xl font-bold mb-3 text-black'>Login</h1>
+        <p className='text-md text-black font-semibold'>Faça login para continuar.</p>
+        <p className='text-md text-main-color hover:underline font-semibold mb-6'><Link href='/forgotPassword'>Esqueci minha senha</Link></p>
         <div className='flex flex-col'>
           <div className='flex flex-col gap-1 mb-6'>
             <label htmlFor="email" className="text-black font-semibold">E-mail</label>

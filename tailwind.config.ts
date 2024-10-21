@@ -47,7 +47,7 @@ const config: Config = {
       padding: {
         'copyright': '10px',
         'insert-form': '54px',
-        'login-form': '34px',
+        'login-form': '35.5px',
       },
       height: {
         'social-item': '30px',
@@ -59,13 +59,17 @@ const config: Config = {
         'gender-pages-image-mobile': '500px',
         'gender-pages-image': '700px',
         'gender-item': '208px',
-        'contact-info': '664px'
+        'contact-info': '664px',
+        'forgot-password-image': '456px',
+        'reset-password-image': '456px',
       },
       width: {
         'social-item': '30px',
         'nav-header': '90%',
         'login-image': '384px',
-        'gender-item': '430px'
+        'gender-item': '430px',
+        'forgot-password-image': '384px',
+        'reset-password-image': '384px'
       },
       borderRadius2: {
         'social-item': '50%',
