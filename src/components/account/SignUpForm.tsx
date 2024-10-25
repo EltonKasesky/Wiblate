@@ -6,10 +6,22 @@ import { Checkbox } from '../../components/ui/Checkbox';
 import { Label } from '../../components/ui/label';
 import GoogleSignUpButton from './GoogleSignUpButton';
 import { useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
 
 export default function SignUpForm() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null); 
 
+  const {data: session} = useSession()
+  const router = useRouter();
+
+  useEffect(() => {
+    if(session){
+      router.push('/denied')
+    }
+  }, [session, router])
   
   const handleSignUp = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); 
@@ -20,7 +32,7 @@ export default function SignUpForm() {
     const password = (form.elements.namedItem('password') as HTMLInputElement).value;
 
     try {
-      const response = await fetch('/api/auth/cadastro', {
+      const response = await fetch('/api/cadastro', {
         method: 'POST',
         body: JSON.stringify({
           name,

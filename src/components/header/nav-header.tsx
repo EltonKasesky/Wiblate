@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import DropdownMenuUser from './DropDownMenu';
+import ThemeColor from '../dashboard/settings/ThemeColor';
 
 type NavHeaderProps = {
   isLoggedIn: boolean;
@@ -14,6 +15,9 @@ export default function NavHeader({ isLoggedIn }: NavHeaderProps) {
         </li>
         <li className="nav-header">
           <Link href="/about" className="cursor-pointer">Sobre</Link>
+        </li>
+        <li className="nav-header">
+          <ThemeColor />
         </li>
         <li>
           {isLoggedIn ? (

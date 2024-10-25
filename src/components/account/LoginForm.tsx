@@ -4,12 +4,21 @@ import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import GoogleLoginButton from './GoogleLoginButton';
+import { useSession } from 'next-auth/react';
+import { useEffect } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
 
 const LoginForm = () => {
+  const {data: session} = useSession()
   const router = useRouter();
+
+  useEffect(() => {
+    if(session){
+      router.push('/denied')
+    }
+  }, [session, router])
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -28,11 +37,10 @@ const LoginForm = () => {
       console.log('[LOGIN_RESPONSE]: ', response);
   
       if (!response?.error) {
-        router.refresh();
-        router.push('/');
+        router.push('/profile/');
       } else {
         setError('Email ou senha inválidos');
-      }
+      }      
     } catch (error) {
       console.log('[LOGIN_ERROR]: ', error);
     }

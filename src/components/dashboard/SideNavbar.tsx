@@ -4,6 +4,7 @@ import Link from "next/link";
 import { signOut } from "next-auth/react";
 import NavLink from './NavLink';
 import { useState } from 'react';
+import ThemeColor from "./settings/ThemeColor";
 
 type SideNavbarProps = {
     userCargo: string | null;
@@ -58,7 +59,8 @@ export default function SideNavbar({ userCargo }: SideNavbarProps) {
                             <NavLink href="/dashboard/user" iconClassName="bxs-user" text="Usuário" onClick={closeMenu} />
                             <NavLink href="/dashboard/settings" iconClassName="bxs-cog" text="Configurações" onClick={closeMenu} />
                             <NavLink href="/dashboard/contact" iconClassName="bxs-envelope" text="Contato" onClick={closeMenu} />
-
+                            <ThemeColor />
+                            
                             {userCargo && ["Produtor", "Gerenciador", "Administrador"].includes(userCargo) && (
                                 <NavLink href="/dashboard/insert" iconClassName="bxs-folder-open" text="Insert" onClick={closeMenu} />
                             )}

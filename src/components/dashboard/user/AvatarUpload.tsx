@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FormEvent, ChangeEvent } from 'react';
+import { useState, FormEvent, ChangeEvent, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import FeedbackModalDashboard from '../FeedbackModalDashboard';
 
@@ -10,6 +10,14 @@ export default function AvatarUpload() {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [feedbackMessage, setFeedbackMessage] = useState('');
+  const [profileId, setProfileId] = useState<string | null>(null);
+
+  useEffect(() => {
+    
+    const storedProfileId = localStorage.getItem('selectedProfileId');
+    setProfileId(storedProfileId);
+    console.log('profileId:', storedProfileId)
+  }, []);
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -18,19 +26,19 @@ export default function AvatarUpload() {
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setSelectedFile(e.target.files[0]);
-      setPreviewUrl(URL.createObjectURL(e.target.files[0])); // Preview da imagem
+      setPreviewUrl(URL.createObjectURL(e.target.files[0]));
     }
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!selectedFile) return;
+    if (!selectedFile || !profileId) return;
 
     const formData = new FormData();
     formData.append('avatar', selectedFile);
 
     try {
-      const res = await fetch(`/api/dashboard/user/${session?.user?.id}/avatar`, {
+      const res = await fetch(`/api/dashboard/profiles/${profileId}/avatar`, {
         method: 'POST',
         body: formData,
       });

@@ -4,6 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Button } from '../ui/button';
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
+import ThemeColor from '../dashboard/settings/ThemeColor';
 
 export default function DropdownMenuUser() {
   const { data: session } = useSession();
@@ -57,6 +58,9 @@ export default function DropdownMenuUser() {
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Link href="/contact" className='flex items-center justify-start cursor-pointer'><i className='bx bx-chat text-lg mr-1'></i>Contato</Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href="/profile" className='flex items-center justify-start cursor-pointer'><i className='bx bx-user text-lg mr-1'></i>Perfis</Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleLogout} className='flex items-center justify-start cursor-pointer'><i className='bx bx-exit text-lg mr-1'></i>Logout</DropdownMenuItem>

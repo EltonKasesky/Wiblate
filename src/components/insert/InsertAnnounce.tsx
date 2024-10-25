@@ -14,7 +14,7 @@ export default function InsertCompany() {
   const [selectedTable, setSelectedTable] = useState<string>('');
   const [feedbackMessage, setFeedbackMessage] = useState('');
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
-  const [dynamicFields, setDynamicFields] = useState<{ ifood?: string }>({}); // Estado para campos dinâmicos
+  const [dynamicFields, setDynamicFields] = useState<{ ifood?: string }>({});
   const formRef = useRef<HTMLFormElement>(null);
 
   const cityMap = {
